@@ -5,10 +5,12 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 void HospitalInterface::entryProgramInterface() {
   vector<string> initial_choices;
 
-  int escolha = 4;
+  int escolha = 0;
 
   initial_choices.push_back("Fazer login");
   initial_choices.push_back("Cadastrar-se");
@@ -33,33 +35,33 @@ void HospitalInterface::entryProgramInterface() {
   }
 }
 
-void HospitalInterface::hr() {
-  std::cout << "--------------------------------------" << std::endl;
+void hr() {
+  cout << "--------------------------------------" << endl;
 }
 
-int HospitalInterface::choiceMaker(std::vector<std::string> entries) {
-  int size = 1;
-  int choice = entries.size() + 2;
+int choiceMaker(vector<string> entries) {
+  int size = 0, choice = 0; // ao invés de iniciar com 1 ou outro valor aleatório  
 
-  for (std::string choice : entries) {
-    std::cout << "[" << size++ << "] " << choice << std::endl;
+  for (string choice : entries) {// Dá pra somar antes
+    cout << "[" << ++size << "] " << choice << endl;
   }
+
   hr();
+  //size = size - 1; <- agora esse pedaço pôde ser descartado
 
-  size = size - 1;
+  cout << "Escolha uma opção de 1 a " << size << ": ";
+  cin >> choice; getchar();
 
-  std::cout << "Escolha uma opção de 1 a " << size << ": ";
   while (choice < 1 || choice > size) {
-    std::cin >> choice;
-    if (choice < 1 || choice > size) {
-      std::cout << "Ops, valor inválido. Tente novamente..." << std::endl;
-    }
+    cout << "Ops, valor inválido. Tente novamente..." << endl;
+    cin >> choice; getchar();
   }
-  std::cout << std::endl;
+  cout << endl;
+
   return choice;
 }
 
-void HospitalInterface::loginInterface() {
+void loginInterface() {
   vector<string> login_entries;
 
   login_entries.push_back("Paciente");
@@ -80,19 +82,23 @@ void HospitalInterface::loginInterface() {
   string nome;
   string senha;
 
+
+  // Os getchar's *comem* os enter's
   titleMaker("LOGIN");
   cout << "Digite o seu nome: \n";
-  cin >> nome;
+  cin >> nome; getchar();
   titleMaker("LOGIN");
   cout << "Digite sua senha: \n";
-  cin >> senha;
+  cin >> senha; getchar();
 
   cout << "Fazendo login...\n";
 }
 
-void HospitalInterface::createPatientInterface() {}
+void HospitalInterface::createPatientInterface() {
 
-void HospitalInterface::titleMaker(string title) {
+}
+
+void titleMaker(string title) {
   transform(title.begin(), title.end(), title.begin(), ::toupper);
   hr();
   cout << title << endl;

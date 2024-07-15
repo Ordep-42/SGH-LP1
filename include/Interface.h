@@ -4,6 +4,9 @@
 #include "User.h"
 #include <string>
 #include <vector>
+
+using namespace std;
+
 class HospitalInterface {
 private:
   bool isLogged;
@@ -13,9 +16,7 @@ private:
 public:
   HospitalInterface() = default;
 
-  void entryProgramInterface();
-
-  void loginInterface();
+  void entryProgramInterface();  
 
   void createPatientInterface();
 
@@ -23,9 +24,16 @@ public:
 
   void loggedUserInterface();
 
-  void hr();
-  int choiceMaker(std::vector<std::string>);
-  void titleMaker(std::string);
+
+
+
 };
+
+// Funções auxiliares
+int choiceMaker(vector<string>);
+void loginInterface();
+void titleMaker(string);
+void hr();
+
 
 #endif // !INTERFACE_H
