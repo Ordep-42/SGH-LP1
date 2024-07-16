@@ -19,7 +19,10 @@ User::User(string name, string password, string role) {
 }
 
 // Getters
-string User::getPassWord() { return password; }
+
+string User::getRole() { return role; }
+
+string User::getPassword() { return password; }
 
 string User::getName() { return name; }
 
@@ -38,7 +41,7 @@ string User::getEmail() { return email; }
 Date User::getIngressDate() { return ingressDate; }
 
 // Setters (excluding userID, userName, and ingressDate and BirthDate!!)
-void User::setPassWord(string newPassWord) { password = newPassWord; }
+void User::setPassword(string newPassWord) { password = newPassWord; }
 
 void User::setName(string newName) { name = newName; }
 

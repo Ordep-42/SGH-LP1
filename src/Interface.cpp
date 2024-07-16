@@ -1,7 +1,9 @@
 #include "../include/Interface.h"
 #include <algorithm>
 #include <cstdio>
+#include <cstdlib>
 #include <iostream>
+#include <map>
 #include <string>
 #include <unistd.h>
 #include <vector>
@@ -31,7 +33,7 @@ void HospitalInterface::entryProgramInterface() {
     case 3:
       cout << "Finalizando programa...\n";
     default:
-      return;
+      std::exit(0);
     }
   }
 }
@@ -39,6 +41,13 @@ void HospitalInterface::entryProgramInterface() {
 // Todas as interfaces fazem parte dessa classe
 void HospitalInterface::loginInterface() {
   vector<string> login_entries;
+
+  map<int, string> roleMap = {
+      {1, "paciente"},
+      {2, "atendente"},
+      {3, "doutor"},
+      {4, "gestor"},
+  };
 
   login_entries.push_back("Paciente");
   login_entries.push_back("Atendente");
@@ -63,12 +72,36 @@ void HospitalInterface::loginInterface() {
   cout << "Digite o seu nome: \n";
   cin >> nome;
   getchar();
-  titleMaker("LOGIN");
   cout << "Digite sua senha: \n";
   cin >> senha;
   getchar();
 
   cout << "Fazendo login...\n";
+
+  User goingToLogUser = User(nome, senha, roleMap.find(tipoDeUsuario)->second);
+
+  /*if (!isValidUser(goingToLogUser)) {*/
+  /*  cout << "Usuário inválido. Tente novamente" << endl;
+   *  sleep(1);
+   *  return;*/
+  /*}*/
+
+  this->setAccessLevel(tipoDeUsuario);
+  this->setCurrentUser(&goingToLogUser);
+  this->setIsLogged(true);
+
+  switch (tipoDeUsuario) {
+  case 1:
+    patientInterface();
+  case 2:
+    attendantInterface();
+  case 3:
+    doctorInterface();
+  case 4:
+    managerInterface();
+  }
+
+  sleep(1);
 }
 
 void HospitalInterface::createPatientInterface() {
@@ -85,7 +118,9 @@ void HospitalInterface::createPatientInterface() {
 
   // #TODO
   /*if (!isValidPassword(senha)) {*/
-  /*  cout << "Senha inválida." << endl;*/
+  /*  cout << "Senha inválida. Tente novamente." << endl;
+   *  sleep(1);
+   *  */
   /*}*/
 
   User novoPaciente = User(nome, senha, "paciente");
@@ -99,11 +134,89 @@ void HospitalInterface::createPatientInterface() {
   sleep(1);
 }
 
-int choiceMaker(vector<string> entries) {
-  int size = 0,
-      choice = 0; // ao invés de iniciar com 1 ou outro valor aleatório
+void HospitalInterface::patientInterface() {
+  if (!this->assertAccessLevel(1)) {
+    HospitalInterface::entryProgramInterface();
+  }
 
-  for (string choice : entries) { // Dá pra somar antes
+  titleMaker("CENTRAL DO PACIENTE");
+
+  vector<string> choices;
+  choices.push_back("Voltar");
+  int choice = choiceMaker(choices);
+  HospitalInterface::entryProgramInterface();
+}
+
+void HospitalInterface::attendantInterface() {
+  if (!this->assertAccessLevel(2)) {
+    HospitalInterface::entryProgramInterface();
+  }
+
+  titleMaker("CENTRAL DO ATENDENTE");
+
+  vector<string> choices;
+  choices.push_back("Voltar");
+  int choice = choiceMaker(choices);
+  HospitalInterface::entryProgramInterface();
+}
+
+void HospitalInterface::doctorInterface() {
+  if (!this->assertAccessLevel(3))
+    HospitalInterface::entryProgramInterface();
+
+  titleMaker("CENTRAL DO DOUTOR");
+
+  vector<string> choices;
+  choices.push_back("Voltar");
+  int choice = choiceMaker(choices);
+  HospitalInterface::entryProgramInterface();
+}
+
+void HospitalInterface::managerInterface() {
+  if (!this->assertAccessLevel(4)) {
+    HospitalInterface::entryProgramInterface();
+  }
+
+  titleMaker("CENTRAL DO GESTOR");
+
+  vector<string> choices;
+  choices.push_back("Voltar");
+  int choice = choiceMaker(choices);
+  HospitalInterface::entryProgramInterface();
+}
+
+bool HospitalInterface::assertAccessLevel(int correctAccessLevel) {
+  if (this->getAccessLevel() != correctAccessLevel) {
+    cout << "Interface errada! Retornando ao menu." << this->getAccessLevel()
+         << " " << correctAccessLevel << endl;
+    this->setIsLogged(false);
+    return false;
+  }
+  return true;
+}
+
+int HospitalInterface::getAccessLevel() { return this->accessLevel; }
+
+bool HospitalInterface::getIsLogged() { return this->isLogged; }
+
+User *HospitalInterface::getCurrentUser() { return this->currentUser; }
+
+void HospitalInterface::setAccessLevel(int newAccessLevel) {
+  this->accessLevel = newAccessLevel;
+}
+
+void HospitalInterface::setIsLogged(bool newIsLogged) {
+  this->isLogged = newIsLogged;
+}
+
+void HospitalInterface::setCurrentUser(User *newUser) {
+  this->currentUser = newUser;
+}
+
+int choiceMaker(vector<string> entries) {
+  int size = 0, choice = 0;
+
+  for (string choice : entries) {
     cout << "[" << ++size << "] " << choice << endl;
   }
 
