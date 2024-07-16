@@ -16,24 +16,20 @@ private:
 public:
   HospitalInterface() = default;
 
-  void entryProgramInterface();  
+  void entryProgramInterface();
 
   void createPatientInterface();
+
+  void loginInterface();
 
   void createUserInterface();
 
   void loggedUserInterface();
-
-
-
-
 };
 
 // Funções auxiliares
 int choiceMaker(vector<string>);
-void loginInterface();
 void titleMaker(string);
 void hr();
-
 
 #endif // !INTERFACE_H
