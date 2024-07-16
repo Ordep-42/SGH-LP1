@@ -1,8 +1,9 @@
 #include "../include/Interface.h"
 #include <algorithm>
-#include <ios>
+#include <cstdio>
 #include <iostream>
 #include <string>
+#include <unistd.h>
 #include <vector>
 
 using namespace std;
@@ -35,33 +36,8 @@ void HospitalInterface::entryProgramInterface() {
   }
 }
 
-void hr() {
-  cout << "--------------------------------------" << endl;
-}
-
-int choiceMaker(vector<string> entries) {
-  int size = 0, choice = 0; // ao invés de iniciar com 1 ou outro valor aleatório  
-
-  for (string choice : entries) {// Dá pra somar antes
-    cout << "[" << ++size << "] " << choice << endl;
-  }
-
-  hr();
-  //size = size - 1; <- agora esse pedaço pôde ser descartado
-
-  cout << "Escolha uma opção de 1 a " << size << ": ";
-  cin >> choice; getchar();
-
-  while (choice < 1 || choice > size) {
-    cout << "Ops, valor inválido. Tente novamente..." << endl;
-    cin >> choice; getchar();
-  }
-  cout << endl;
-
-  return choice;
-}
-
-void loginInterface() {
+// Todas as interfaces fazem parte dessa classe
+void HospitalInterface::loginInterface() {
   vector<string> login_entries;
 
   login_entries.push_back("Paciente");
@@ -82,21 +58,72 @@ void loginInterface() {
   string nome;
   string senha;
 
-
   // Os getchar's *comem* os enter's
   titleMaker("LOGIN");
   cout << "Digite o seu nome: \n";
-  cin >> nome; getchar();
+  cin >> nome;
+  getchar();
   titleMaker("LOGIN");
   cout << "Digite sua senha: \n";
-  cin >> senha; getchar();
+  cin >> senha;
+  getchar();
 
   cout << "Fazendo login...\n";
 }
 
 void HospitalInterface::createPatientInterface() {
+  titleMaker("CRIANDO NOVO PACIENTE");
 
+  string nome;
+  string senha;
+  cout << "Digite seu primeiro nome: " << endl;
+  cin >> nome;
+  getchar();
+  cout << "Digite sua senha: " << endl;
+  cin >> senha;
+  getchar();
+
+  // #TODO
+  /*if (!isValidPassword(senha)) {*/
+  /*  cout << "Senha inválida." << endl;*/
+  /*}*/
+
+  User novoPaciente = User(nome, senha, "paciente");
+
+  // #TODO
+  // É preciso implementar uma classe pra encapsular o database
+  // Talvez essa classe também fique responsável pelo isValidPassword(string)
+  // mencionada na Linha 87
+  // HospitalDatabase::CreateUser(novoPaciente);
+  cout << "Usuário criado com sucesso!" << endl;
+  sleep(1);
 }
+
+int choiceMaker(vector<string> entries) {
+  int size = 0,
+      choice = 0; // ao invés de iniciar com 1 ou outro valor aleatório
+
+  for (string choice : entries) { // Dá pra somar antes
+    cout << "[" << ++size << "] " << choice << endl;
+  }
+
+  hr();
+
+  cout << "Escolha uma opção de 1 a " << size << ": ";
+  cin >> choice;
+  getchar();
+
+  while (choice < 1 || choice > size) {
+    cout << "Ops, valor inválido. Tente novamente..." << endl;
+    cin >> choice;
+    getchar();
+  }
+  cout << endl;
+
+  return choice;
+}
+
+void hr() { cout << "--------------------------------------" << endl; }
 
 void titleMaker(string title) {
   transform(title.begin(), title.end(), title.begin(), ::toupper);
