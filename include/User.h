@@ -36,7 +36,7 @@ public:
 
   short getUserID();
   string getUserName();
-  string getPassWord();
+  string getPassword();
   string getName();
   Date getBirthDate();
   string getGender();
@@ -44,15 +44,17 @@ public:
   string getAdress();
   string getPhoneNumber();
   string getEmail();
+  string getRole();
   Date getIngressDate();
 
-  void setPassWord(string newPassWord);
+  void setPassword(string newPassword);
   void setName(string newName);
   void setGender(string newGender);
   void setCivicStatus(string newCivicStatus);
   void setAdress(string newAdress);
   void setPhoneNumber(string newPhoneNumber);
   void setEmail(string newEmail);
+  void setRole(string role);
 };
 
 // Funções auxiliares

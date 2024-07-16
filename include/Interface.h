@@ -24,7 +24,23 @@ public:
 
   void createUserInterface();
 
-  void loggedUserInterface();
+  void patientInterface();
+
+  void attendantInterface();
+
+  void doctorInterface();
+
+  void managerInterface();
+
+  bool assertAccessLevel(int);
+
+  bool getIsLogged();
+  int getAccessLevel();
+  User *getCurrentUser();
+
+  void setIsLogged(bool);
+  void setAccessLevel(int);
+  void setCurrentUser(User *);
 };
 
 // Funções auxiliares
