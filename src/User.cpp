@@ -1,22 +1,28 @@
 #include "../include/User.h"
 #include <string>
+
 using namespace std;
 
 User::User(short newUserID, string newUserName, string newPassWord,
            string newName, Date newBirthDate, string newGender,
            string newCivicStatus, string newAdress, string newPhoneNumber,
            string newEmail, Date newIngressDate)
-    : ingressDate(newIngressDate), birthDate(newBirthDate), userID(newUserID),
-      userName(newUserName), passWord(newPassWord), name(newName),
-      gender(newGender), civicStatus(newCivicStatus), adress(newAdress),
+    : ingressDate(newIngressDate), birthDate(newBirthDate),
+      password(newPassWord), name(newName), gender(newGender),
+      civicStatus(newCivicStatus), adress(newAdress),
       phoneNumber(newPhoneNumber), email(newEmail) {}
 
+User::User(string name, string password, string role) {
+  this->name = name;
+  this->password = password;
+  this->role = role;
+}
+
 // Getters
-short User::getUserID() { return userID; }
 
-string User::getUserName() { return userName; }
+string User::getRole() { return role; }
 
-string User::getPassWord() { return passWord; }
+string User::getPassword() { return password; }
 
 string User::getName() { return name; }
 
@@ -35,7 +41,7 @@ string User::getEmail() { return email; }
 Date User::getIngressDate() { return ingressDate; }
 
 // Setters (excluding userID, userName, and ingressDate and BirthDate!!)
-void User::setPassWord(string newPassWord) { passWord = newPassWord; }
+void User::setPassword(string newPassWord) { password = newPassWord; }
 
 void User::setName(string newName) { name = newName; }
 
