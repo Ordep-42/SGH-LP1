@@ -3,23 +3,24 @@
 
 using namespace std;
 
-User::User(short newUserID, string newUserName, string newPassWord, string newName,
+User::User(short newUserID, string newLogin, string newPassWord, string newName,
            Date newBirthDate, string newGender, string newCivicStatus, string newAddress,
            string newPhoneNumber, string newEmail)
-    : name(newName), birthDate(newBirthDate), gender(newGender), civicStatus(newCivicStatus),
-      address(newAddress), phoneNumber(newPhoneNumber), email(newEmail) {}
+    : login(newLogin), name(newName), birthDate(newBirthDate), gender(newGender),
+      civicStatus(newCivicStatus), address(newAddress), phoneNumber(newPhoneNumber), email(newEmail) {}
 
-User::User(string newName, string newPassword, string newRole) {
-    this->name = newName;
-    this->password = newPassword;
-    this->role = newRole;
+User::User(string name, string password, string role) {
+    this->name = name;
+    this->password = password;
+    this->role = role;
 }
 
 // Getters
-
-string User::getRole() { return role; }
+string User::getLogin() { return login; }
 
 string User::getPassword() { return password; }
+
+string User::getRole() { return role; }
 
 string User::getName() { return name; }
 
@@ -42,14 +43,10 @@ void User::setName(string newName) { name = newName; }
 
 void User::setGender(string newGender) { gender = newGender; }
 
-void User::setCivicStatus(string newCivicStatus) {
-    civicStatus = newCivicStatus;
-}
+void User::setCivicStatus(string newCivicStatus) { civicStatus = newCivicStatus; }
 
 void User::setAddress(string newaddress) { address = newaddress; }
 
-void User::setPhoneNumber(string newPhoneNumber) {
-    phoneNumber = newPhoneNumber;
-}
+void User::setPhoneNumber(string newPhoneNumber) { phoneNumber = newPhoneNumber; }
 
 void User::setEmail(string newEmail) { email = newEmail; }

@@ -10,8 +10,9 @@ using namespace std;
 
 class User {
   protected:
-    Date birthDate;
+    string login;
     string password;
+    Date birthDate;
     string name;
     string gender;
     string civicStatus;
@@ -20,19 +21,15 @@ class User {
     string email;
     string role;
 
-    // vector<payment> paymentResgistry;
-    //  Plano de saúde (informações do seguro, se aplicável)
-    //  Status atual (internado, alta, em espera, etc.)
-
   public:
-    User(short newUserID, string newUserName, string newPassWord, string newName,
+    User(short newUserID, string newLogin, string newPassWord, string newName,
          Date newBirthDate, string newGender, string newCivicStatus,
          string newAddress, string newPhoneNumber, string newEmail);
 
     User(string name, string password, string role);
 
     short getUserID();
-    string getUserName();
+    string getLogin();
     string getPassword();
     string getName();
     Date getBirthDate();
