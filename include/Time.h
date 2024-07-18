@@ -29,9 +29,14 @@ public:
     void setSec(short newSec); 
 
     //resto: 
-    // void fixTime();
-    // void sumTime(Time toSum);
+    void fixSec();
+    void fixMin();   
+    void fixHour(); 
+    void fixTime();
+    void sumTime(Time toSum);
 
+    bool isEqualTo(Time anotherTime);
+    bool isBeforeThan(Time thisTime);
 
 
 };
