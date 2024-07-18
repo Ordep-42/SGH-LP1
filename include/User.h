@@ -62,6 +62,7 @@ class User {
     Role getRole();
     Date getIngressDate();
 
+    void setLogin(string newLogin);
     void setPassword(string newPassword);
     void setName(string newName);
     void setGender(Gender newGender);

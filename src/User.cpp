@@ -36,7 +36,9 @@ string User::getPhoneNumber() { return phoneNumber; }
 
 string User::getEmail() { return email; }
 
-// Setters (a menos de userID, login, e BirthDate!!)
+// Setters (a menos de userID, e BirthDate!!)
+void User::setLogin(string newLogin) { login = newLogin; }
+
 void User::setPassword(string newPassWord) { password = newPassWord; }
 
 void User::setName(string newName) { name = newName; }
