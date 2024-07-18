@@ -3,23 +3,23 @@
 #define DATE_H
 
 class Date {
-private:
-  short days;
-  short year;
-  bool isLeapYear;
-  void fixDate();
+  private:
+    short days;
+    short year;
+    bool isLeapYear;
+    void fixDate();
 
-public:
-  Date(short newDays, short newYear);
-  Date() = default;
+  public:
+    Date(short newDays, short newYear);
+    Date() = default;
 
-  short getDay() const;
-  short getMonth() const;
-  short getYear() const;
-  short getDays() const;
+    short getDay() const;
+    short getMonth() const;
+    short getYear() const;
+    short getDays() const;
 
-  bool isBeforeThan(Date thisDate);
-  Date tomorrow();
+    bool isBeforeThan(Date thisDate);
+    Date tomorrow();
 };
 
 // Funções auxiliares
