@@ -4,12 +4,12 @@
 using namespace std;
 
 User::User(short newUserID, string newLogin, string newPassWord, string newName,
-           Date newBirthDate, string newGender, string newCivicStatus, string newAddress,
+           Date newBirthDate, Gender newGender, CivilStatus newCivilStatus, string newAddress,
            string newPhoneNumber, string newEmail)
     : login(newLogin), name(newName), birthDate(newBirthDate), gender(newGender),
-      civicStatus(newCivicStatus), address(newAddress), phoneNumber(newPhoneNumber), email(newEmail) {}
+      civilStatus(newCivilStatus), address(newAddress), phoneNumber(newPhoneNumber), email(newEmail) {}
 
-User::User(string name, string password, string role) {
+User::User(string name, string password, Role role) {
     this->name = name;
     this->password = password;
     this->role = role;
@@ -20,15 +20,15 @@ string User::getLogin() { return login; }
 
 string User::getPassword() { return password; }
 
-string User::getRole() { return role; }
+Role User::getRole() { return role; }
 
 string User::getName() { return name; }
 
 Date User::getBirthDate() { return birthDate; }
 
-string User::getGender() { return gender; }
+Gender User::getGender() { return gender; }
 
-string User::getCivicStatus() { return civicStatus; }
+CivilStatus User::getCivilStatus() { return civilStatus; }
 
 string User::getAddress() { return address; }
 
@@ -41,9 +41,9 @@ void User::setPassword(string newPassWord) { password = newPassWord; }
 
 void User::setName(string newName) { name = newName; }
 
-void User::setGender(string newGender) { gender = newGender; }
+void User::setGender(Gender newGender) { gender = newGender; }
 
-void User::setCivicStatus(string newCivicStatus) { civicStatus = newCivicStatus; }
+void User::setCivilStatus(CivilStatus newCivilStatus) { civilStatus = newCivilStatus; }
 
 void User::setAddress(string newaddress) { address = newaddress; }
 
