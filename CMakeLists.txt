@@ -6,6 +6,9 @@ project(SGH-LP1)
 # Versão do C++
 set(CMAKE_CXX_STANDARD 17)
 
+# Flags do compilador
+set(CMAKE_CXX_FLAGS "-Werror -Wfatal-errors")
+
 # Diretório de headers
 include_directories(include)
 

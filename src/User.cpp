@@ -13,9 +13,9 @@ User::User(short newUserID, string newUserName, string newPassWord,
       phoneNumber(newPhoneNumber), email(newEmail) {}
 
 User::User(string name, string password, string role) {
-  this->name = name;
-  this->password = password;
-  this->role = role;
+    this->name = name;
+    this->password = password;
+    this->role = role;
 }
 
 // Getters
@@ -48,13 +48,13 @@ void User::setName(string newName) { name = newName; }
 void User::setGender(string newGender) { gender = newGender; }
 
 void User::setCivicStatus(string newCivicStatus) {
-  civicStatus = newCivicStatus;
+    civicStatus = newCivicStatus;
 }
 
 void User::setAdress(string newAdress) { adress = newAdress; }
 
 void User::setPhoneNumber(string newPhoneNumber) {
-  phoneNumber = newPhoneNumber;
+    phoneNumber = newPhoneNumber;
 }
 
 void User::setEmail(string newEmail) { email = newEmail; }
