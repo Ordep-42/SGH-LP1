@@ -1,4 +1,3 @@
-// Patient.h
 #ifndef PATIENT_H
 #define PATIENT_H
 #include "MedicalFile.h"
@@ -35,12 +34,7 @@ class Patient : public User {
             string newName, Date newBirthDate, string newCpf, Gender newGender,
             CivilStatus newCivilStatus, string newAddress,
             string newPhoneNumber, string newEmail, Role role,
-            vector<EmergencyContact> newEmergencyContacts,
-            MedicalFile newMedicalFile)
-        : User(newUserID, newLogin, newPassWord, newName, newBirthDate, newCpf,
-               newGender, newCivilStatus, newAddress, newPhoneNumber, newEmail),
-          emergencyContacts(newEmergencyContacts), medicalFile(newMedicalFile) {
-    }
+            vector<EmergencyContact> newEmergencyContacts, MedicalFile newMedicalFile);
 
     vector<EmergencyContact> getEmergencyContacts();
     MedicalFile getMedicalFile();

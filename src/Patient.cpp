@@ -1,15 +1,25 @@
-// // Patient.cpp
-// #include "Patient.h"
+#include "../include/Patient.h"
 
-// // Construtor:
+using namespace std;
 
-// Patient::Patinet(short newDays, short newYear)
-//     : days(newDays), year(newYear), isLeapYear(leapYearTest(year)) {
-//         this->fixDate();
-//     }
+Patient::Patient(unsigned short newUserID, string newLogin, string newPassWord,
+                 string newName, Date newBirthDate, string newCpf,
+                 Gender newGender, CivilStatus newCivilStatus,
+                 string newAddress, string newPhoneNumber, string newEmail,
+                 Role role, vector<EmergencyContact> newEmergencyContacts,
+                 MedicalFile newMedicalFile)
+    : User(newUserID, newLogin, newPassWord, newName, newBirthDate, newCpf,
+           newGender, newCivilStatus, newAddress, newPhoneNumber, newEmail),
+      emergencyContacts(newEmergencyContacts), medicalFile(newMedicalFile) {}
 
-// //
-// ------------------------------------------------------------------------------
-// // Métodos:
-// //
-// ------------------------------------------------------------------------------
+// Getters
+vector<EmergencyContact> Patient::getEmergencyContacts() { return emergencyContacts; }
+
+MedicalFile Patient::getMedicalFile() { return medicalFile; }
+
+// Setters
+void Patient::setEmergencyContact(EmergencyContact newEmergencyContact) {
+    emergencyContacts.push_back(newEmergencyContact);
+}
+
+void Patient::setMedicalFile(MedicalFile newMedicalFile) { medicalFile = newMedicalFile; }
