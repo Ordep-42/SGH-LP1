@@ -4,9 +4,9 @@
 using namespace std;
 
 User::User(unsigned short newUserID, string newLogin, string newPassWord, string newName,
-           Date newBirthDate, Gender newGender, CivilStatus newCivilStatus, string newAddress,
+           Date newBirthDate, string newCpf, Gender newGender, CivilStatus newCivilStatus, string newAddress,
            string newPhoneNumber, string newEmail)
-    : userID(newUserID), login(newLogin), name(newName), birthDate(newBirthDate), gender(newGender),
+    : userID(newUserID), login(newLogin), name(newName), birthDate(newBirthDate), cpf(newCpf), gender(newGender),
       civilStatus(newCivilStatus), address(newAddress), phoneNumber(newPhoneNumber), email(newEmail) {}
 
 User::User(string name, string password, Role role) {
@@ -28,6 +28,8 @@ string User::getName() { return name; }
 
 Date User::getBirthDate() { return birthDate; }
 
+string User::getCpf() { return cpf; }
+
 Gender User::getGender() { return gender; }
 
 CivilStatus User::getCivilStatus() { return civilStatus; }
@@ -44,6 +46,10 @@ void User::setLogin(string newLogin) { login = newLogin; }
 void User::setPassword(string newPassWord) { password = newPassWord; }
 
 void User::setName(string newName) { name = newName; }
+
+void User::setBirthDate(Date newBirthDate) { birthDate = newBirthDate; }
+
+void User::setCpf(string newCpf) { cpf = newCpf; }
 
 void User::setGender(Gender newGender) { gender = newGender; }
 

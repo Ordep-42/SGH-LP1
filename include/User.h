@@ -34,8 +34,9 @@ class User {
     unsigned short userID;
     string login;
     string password;
-    Date birthDate;
     string name;
+    Date birthDate;
+    string cpf;
     Gender gender;
     CivilStatus civilStatus;
     string address;
@@ -45,7 +46,7 @@ class User {
 
   public:
     User(unsigned short newUserID, string newLogin, string newPassWord, string newName,
-         Date newBirthDate, Gender newGender, CivilStatus newCivilStatus,
+         Date newBirthDate, string newCpf, Gender newGender, CivilStatus newCivilStatus,
          string newAddress, string newPhoneNumber, string newEmail);
 
     User(string name, string password, Role role);
@@ -55,6 +56,7 @@ class User {
     string getPassword();
     string getName();
     Date getBirthDate();
+    string getCpf();
     Gender getGender();
     CivilStatus getCivilStatus();
     string getAddress();
@@ -66,6 +68,8 @@ class User {
     void setLogin(string newLogin);
     void setPassword(string newPassword);
     void setName(string newName);
+    void setBirthDate(Date newBirthDate);
+    void setCpf(string newCpf);
     void setGender(Gender newGender);
     void setCivilStatus(CivilStatus newCivilStatus);
     void setAddress(string newAddress);
