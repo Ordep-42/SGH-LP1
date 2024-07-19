@@ -143,3 +143,13 @@ void Date::fixDate() {
         daysInYear = (leapYearTest(this->year) ? 366 : 365);
     }
 }
+
+bool Date::isEqualTo(Date anotherDate){
+  fixDate(); anotherDate.fixDate();
+  if(days == anotherDate.getDays() && year == anotherDate.getYear()){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
