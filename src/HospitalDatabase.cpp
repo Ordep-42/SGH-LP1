@@ -17,55 +17,41 @@ HospitalDatabase::HospitalDatabase() {
     }
 
     const char *gestorSql = "CREATE TABLE IF NOT EXISTS MANAGER("
-                            "ID INTEGER PRIMARY KEY NOT NULL,"
+                            "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                             "NAME TEXT NOT NULL,"
                             "PASSWORD TEXT NOT NULL);";
 
     const char *atendenteSql = "CREATE TABLE IF NOT EXISTS ATTENDANT("
-                               "ID INTEGER PRIMARY KEY NOT NULL,"
+                               "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                                "NAME TEXT NOT NULL,"
                                "PASSWORD TEXT NOT NULL);";
 
     const char *pacienteSql = "CREATE TABLE IF NOT EXISTS PATIENT("
-                              "ID INTEGER PRIMARY KEY NOT NULL,"
+                              "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                               "NAME TEXT NOT NULL,"
                               "PASSWORD TEXT NOT NULL);";
 
     const char *doutorSql = "CREATE TABLE IF NOT EXISTS DOCTOR("
-                            "ID INTEGER PRIMARY KEY NOT NULL,"
+                            "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                             "NAME TEXT NOT NULL,"
                             "PASSWORD TEXT NOT NULL,"
                             "CONSULT_COST INTEGER NOT NULL,"
                             "SPECIALTY TEXT NOT NULL";
 
     const char *agendaSql = "CREATE TABLE IF NOT EXISTS SCHEDULE("
-                            "ID INTEGER PRIMARY KEY NOT NULL,"
+                            "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                             "DATA TEXT NOT NULL,"
-                            "CONSULTA TEXT NOT NULL);";
-
-    const char *agenda_doutorSql =
-        "CREATE TABLE IF NOT EXISTS SCHEDULE_DOCTOR("
-        "DOCTOR_ID INTEGER,"
-        "SCHEDULE_ID INTEGER,"
-        "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID),"
-        "FOREIGN KEY (SCHEDULE_ID) REFERENCES SCHEDULE (ID),"
-        "PRIMARY KEY (DOCTOR_ID, SCHEDULE_ID));";
-
-    const char *agenda_pacienteSql =
-        "CREATE TABLE IF NOT EXISTS SCHEDULE_PATIENT("
-        "PATIENT_ID INTEGER,"
-        "SCHEDULE_ID INTEGER,"
-        "FOREIGN KEY (PATIENT_ID) REFERENCES PATIENT (ID),"
-        "FOREIGN KEY (SCHEDULE_ID) REFERENCES SCHEDULE (ID),"
-        "PRIMARY KEY (PATIENT_ID, SCHEDULE_ID));";
+                            "STATUS TEXT NOT NULL,"
+                            "PATIENT_ID INTEGER NOT NULL,"
+                            "DOCTOR_ID INTEGER NOT NULL,"
+                            "FOREIGN KEY (PATIENT_ID) REFERENCES PATIENT (ID)"
+                            "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID)";
 
     returnCode = sqlite3_exec(db, gestorSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, atendenteSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, doutorSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, pacienteSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, agendaSql, 0, 0, &errMsg);
-    returnCode = sqlite3_exec(db, agenda_doutorSql, 0, 0, &errMsg);
-    returnCode = sqlite3_exec(db, agenda_pacienteSql, 0, 0, &errMsg);
 
     if (returnCode != SQLITE_OK) {
         std::cerr << "SQL error: " << errMsg << std::endl;
@@ -124,7 +110,7 @@ string HospitalDatabase::getFromSchedule(const char *sql) {
 }
 
 string HospitalDatabase::getSchedule() {
-    return getFromSchedule("SELECT (ID, DATA, CONSULTA) FROM SCHEDULE;");
+    return getFromSchedule("SELECT * FROM SCHEDULE;");
 }
 
 string HospitalDatabase::getScheduleByPatient(User user) {
@@ -139,13 +125,13 @@ string HospitalDatabase::getScheduleByPatient(User user) {
     string queryStr = oss.str();
     const char *sql = queryStr.c_str();
 
-    return getFromSchedule(sql);
+    Appointment();
 }
 
 string HospitalDatabase::getScheduleByDate(Date date) {
     ostringstream oss;
 
-    oss << "SELECT (ID, DATA, CONSULTA) " << "FROM SCHEDULE "
+    oss << "SELECT * " << "FROM SCHEDULE "
         << "WHERE SCHEDULE.DATA = " << date.getYear() << "/" << date.getMonth()
         << "/" << date.getDay();
 
