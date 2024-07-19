@@ -1,6 +1,8 @@
 #include "../include/HospitalDatabase.h"
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
+#include <string>
 
 HospitalDatabase::HospitalDatabase() {
     sqlite3 *db;
@@ -88,7 +90,7 @@ void HospitalDatabase::setReturnCode(int returnCode) {
     this->returnCode = returnCode;
 }
 
-string HospitalDatabase::getAgenda() {
+string HospitalDatabase::getFromAgenda(const char *sql) {
     string agenda = "";
     returnCode = sqlite3_open("../data/hospital.db", &db);
 
@@ -98,14 +100,71 @@ string HospitalDatabase::getAgenda() {
     } else {
         std::cout << "Acesso ao banco de dados realizado" << std::endl;
     }
-    const char *sql = "SELECT (ID, DATA, CONSULTA) FROM AGENDA;";
     returnCode = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (returnCode != SQLITE_OK) {
         std::cerr << "Statement com erro: " << sqlite3_errmsg(db) << std::endl;
         exit(1);
     }
 
+    while ((returnCode = sqlite3_step(stmt)) == SQLITE_ROW) {
+        int id = sqlite3_column_int(stmt, 0);
+        const unsigned char *data = sqlite3_column_text(stmt, 1);
+        const unsigned char *consulta = sqlite3_column_text(stmt, 2);
+
+        ostringstream oss;
+        oss << id << ", " << data << ", " << consulta << "\n";
+        string result = oss.str();
+        agenda.append(result);
+    }
+
+    sqlite3_finalize(stmt);
     sqlite3_close(db);
 
     return agenda;
+}
+
+string HospitalDatabase::getAgenda() {
+    return getFromAgenda("SELECT (ID, DATA, CONSULTA) FROM SCHEDULE;");
+}
+
+string HospitalDatabase::getAgendaByPatient(User user) {
+    ostringstream oss;
+
+    // Isso só vai funcionar quando a Class Patient estiver ok! pra pegar o Id.
+    oss << "SELECT (ID, DATA, CONSULTA) " << "FROM SCHEDULE "
+        << "JOIN SCHEDULE_PATIENT ON PATIENT.ID = SCHEDULE_PATIENT.PATIENT_ID "
+        << "WHERE SCHEDULE_PATIENT.PATIENT_ID =" /*<< user.getId() */
+        << ";";
+
+    string queryStr = oss.str();
+    const char *sql = queryStr.c_str();
+
+    return getFromAgenda(sql);
+}
+
+string HospitalDatabase::getAgendaByDate(Date date) {
+    ostringstream oss;
+
+    oss << "SELECT (ID, DATA, CONSULTA) " << "FROM SCHEDULE "
+        << "WHERE SCHEDULE.DATA = " << date.getYear() << "/" << date.getMonth()
+        << "/" << date.getDay();
+
+    string queryStr = oss.str();
+    const char *sql = queryStr.c_str();
+    return getFromAgenda(sql);
+}
+
+string HospitalDatabase::getAgendaByDoctor(User user) {
+    ostringstream oss;
+
+    // Isso só vai funcionar quando a Class Doctor estiver ok! pra pegar o Id.
+    oss << "SELECT (ID, DATA, CONSULTA) " << "FROM SCHEDULE "
+        << "JOIN SCHEDULE_PATIENT ON PATIENT.ID = SCHEDULE_PATIENT.PATIENT_ID "
+        << "WHERE SCHEDULE_PATIENT.PATIENT_ID =" /*<< user.getId() */
+        << ";";
+
+    string queryStr = oss.str();
+    const char *sql = queryStr.c_str();
+
+    return getFromAgenda(sql);
 }

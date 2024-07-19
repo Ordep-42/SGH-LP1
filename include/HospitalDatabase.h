@@ -15,6 +15,7 @@ class HospitalDatabase {
     sqlite3_stmt *stmt;
     char *errMsg;
     int returnCode;
+    string getFromAgenda(const char *);
 
   public:
     HospitalDatabase();
@@ -26,6 +27,12 @@ class HospitalDatabase {
     void setDBPointer(sqlite3 *);
     void setErrMsg(char *);
     void setReturnCode(int);
+
+    void createPatient(User patient);
+    void createDoctor(User doctor);
+    void createAppointment(User doctor, User patient, Date);
+    void createAttendant(User attendant);
+    void createManager(User manager);
 
     string getAgenda();
 
