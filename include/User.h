@@ -6,55 +6,72 @@
 #include <string>
 #include <vector>
 
+typedef enum roles {
+    Admin,
+    Manager,
+    Doctor,
+    Assistant,
+    Patient
+} Role;
+
+typedef enum genders {
+    Masculino,
+    Feminino,
+    Outro
+} Gender;
+
+typedef enum civilStatus {
+    Solteiro,
+    Casado,
+    Divorciado,
+    Viuvo
+} CivilStatus;
+
 using namespace std;
 
 class User {
-  private:
-    Date ingressDate;
-    Date birthDate;
-
+  protected:
+    unsigned short userID;
+    string login;
     string password;
+    Date birthDate;
     string name;
-    string gender;
-    string civicStatus;
-    string adress;
+    Gender gender;
+    CivilStatus civilStatus;
+    string address;
     string phoneNumber; // como tratar?
     string email;
-    string role;
-
-    // vector<payment> paymentResgistry;
-    //  Plano de saúde (informações do seguro, se aplicável)
-    //  Status atual (internado, alta, em espera, etc.)
+    Role role;
 
   public:
-    User(short newUserID, string newUserName, string newPassWord,
-         string newName, Date newBirthDate, string newGender,
-         string newCivicStatus, string newAdress, string newPhoneNumber,
-         string newEmail, Date newIngressDate);
+    User(unsigned short newUserID, string newLogin, string newPassWord, string newName,
+         Date newBirthDate, Gender newGender, CivilStatus newCivilStatus,
+         string newAddress, string newPhoneNumber, string newEmail);
 
-    User(string name, string password, string role);
+    User(string name, string password, Role role);
 
-    short getUserID();
-    string getUserName();
+    unsigned short getUserID();
+    string getLogin();
     string getPassword();
     string getName();
     Date getBirthDate();
-    string getGender();
-    string getCivicStatus();
-    string getAdress();
+    Gender getGender();
+    CivilStatus getCivilStatus();
+    string getAddress();
     string getPhoneNumber();
     string getEmail();
-    string getRole();
+    Role getRole();
     Date getIngressDate();
 
+    void setLogin(string newLogin);
     void setPassword(string newPassword);
     void setName(string newName);
-    void setGender(string newGender);
-    void setCivicStatus(string newCivicStatus);
-    void setAdress(string newAdress);
+    void setGender(Gender newGender);
+    void setCivilStatus(CivilStatus newCivilStatus);
+    void setAddress(string newAddress);
     void setPhoneNumber(string newPhoneNumber);
     void setEmail(string newEmail);
-    void setRole(string role);
+    void setRole(Role role);
 };
 
 // Funções auxiliares
