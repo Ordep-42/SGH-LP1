@@ -7,37 +7,46 @@
 
 using namespace std;
 
+typedef enum bloodTypes {
+    AB, A, B, O
+} BloodType;
+
+typedef enum rhFactors {
+    Positivo, Negativo
+} RhFactor;
+
 class MedicalFile {
   private:
-    vector<string> currentMedications;
-    string bloodType; //; vai que ne, sla...
-    string sex;
+    BloodType bloodType;
+    RhFactor rhFactor;
     vector<string> allergies;
+    vector<string> currentMedications;
     vector<string> vaccinationRegistry;
     // Notas e observações (comentários adicionais do pessoal médico)
     vector<string> notes;
 
   public:
-    MedicalFile(vector<string> newCurrentMedications, string newBloodType,
-                vector<string> newAllergies,
-                vector<string> newVaccinationRegistry, vector<string> newNotes,
-                string newSex);
+    MedicalFile(BloodType newBloodType, RhFactor newRhFactor, 
+                vector<string> newAllergies, vector<string> newCurrentMedications,
+                vector<string> newVaccinationRegistry, vector<string> newNotes);
 
-    // métodos get:
-    vector<string> getCurrentMedications();
-    string getBloodType();
+    // Getters
+    BloodType getBloodType();
+    RhFactor getRhFactor();
     vector<string> getAllergies();
+    vector<string> getCurrentMedications();
     vector<string> getVaccinationRegistry();
     vector<string> getNotes();
 
-    // métodos set:
-    void setBloodType(string newBloodType);
+    // Setters
+    void setBloodType(BloodType newBloodType);
+    void setRhFactor(RhFactor newRhFactor);
     void setAllergies(vector<string> newAllergies);
 
-    /* Será melhor trabalhar nesses com métodos:
-    void setCurrentMedications(vector<string> newCurrentMedications);
-    void setVaccinationRegistry(vector<string> newVaccinationRegistry);
-    void setNotes(vector<string> newNotes); */
+    // Adders
+    void addCurrentMedication(string newCurrentMedication);
+    void addVaccinationRegistry(string newVaccinationRegistry);
+    void addNote(string newNote);
 };
 
 #endif // MEDICALFILE_H

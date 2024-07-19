@@ -2,22 +2,25 @@
 #include <string>
 using namespace std;
 
-MedicalFile::MedicalFile(vector<string> newCurrentMedications,
-                         string newBloodType, vector<string> newAllergies,
+MedicalFile::MedicalFile(BloodType newBloodType, RhFactor newRhFactor,
+                         vector<string> newAllergies,
+                         vector<string> newCurrentMedications,
                          vector<string> newVaccinationRegistry,
-                         vector<string> newNotes, string newSex)
-    : currentMedications(newCurrentMedications), bloodType(newBloodType),
-      sex(newSex), allergies(newAllergies),
+                         vector<string> newNotes)
+    : bloodType(newBloodType), rhFactor(newRhFactor), allergies(newAllergies),
+      currentMedications(newCurrentMedications),
       vaccinationRegistry(newVaccinationRegistry), notes(newNotes) {}
 
 // Getters
+BloodType MedicalFile::getBloodType() { return bloodType; }
+
+RhFactor MedicalFile::getRhFactor() { return rhFactor; }
+
+vector<string> MedicalFile::getAllergies() { return allergies; }
+
 vector<string> MedicalFile::getCurrentMedications() {
     return currentMedications;
 }
-
-string MedicalFile::getBloodType() { return bloodType; }
-
-vector<string> MedicalFile::getAllergies() { return allergies; }
 
 vector<string> MedicalFile::getVaccinationRegistry() {
     return vaccinationRegistry;
@@ -26,28 +29,28 @@ vector<string> MedicalFile::getVaccinationRegistry() {
 vector<string> MedicalFile::getNotes() { return notes; }
 
 // Setters
-void MedicalFile::setBloodType(string newBloodType) {
+void MedicalFile::setBloodType(BloodType newBloodType) {
     bloodType = newBloodType;
+}
+
+void MedicalFile::setRhFactor(RhFactor newRhFactor) {
+    rhFactor = newRhFactor;
 }
 
 void MedicalFile::setAllergies(vector<string> newAllergies) {
     allergies = newAllergies;
 }
 
-/*
-// You can implement these methods if needed, but it's generally recommended
-// to use add/remove methods for vectors to avoid replacing the entire vector:
-// i was thinking in the same :PP
-
-void MedicalFile::setCurrentMedications(vector<string> newCurrentMedications) {
-    currentMedications = newCurrentMedications;
+// Adders (Como são arrays, é melhor método pra adicionar do que setar)
+void MedicalFile::addCurrentMedication(string newCurrentMedication) {
+    currentMedications.push_back(newCurrentMedication);
 }
 
-void MedicalFile::setVaccinationRegistry(vector<string> newVaccinationRegistry)
-{ vaccinationRegistry = newVaccinationRegistry;
+void MedicalFile::addVaccinationRegistry(string newVaccinationRegistry) { 
+    vaccinationRegistry.push_back(newVaccinationRegistry);
 }
 
-void MedicalFile::setNotes(vector<string> newNotes) {
-    notes = newNotes;
+void MedicalFile::addNote(string newNote) {
+    notes.push_back(newNote);
 }
-*/
+
