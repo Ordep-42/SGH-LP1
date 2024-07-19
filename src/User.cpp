@@ -3,10 +3,10 @@
 
 using namespace std;
 
-User::User(short newUserID, string newLogin, string newPassWord, string newName,
+User::User(unsigned short newUserID, string newLogin, string newPassWord, string newName,
            Date newBirthDate, Gender newGender, CivilStatus newCivilStatus, string newAddress,
            string newPhoneNumber, string newEmail)
-    : login(newLogin), name(newName), birthDate(newBirthDate), gender(newGender),
+    : userID(newUserID), login(newLogin), name(newName), birthDate(newBirthDate), gender(newGender),
       civilStatus(newCivilStatus), address(newAddress), phoneNumber(newPhoneNumber), email(newEmail) {}
 
 User::User(string name, string password, Role role) {
@@ -16,6 +16,8 @@ User::User(string name, string password, Role role) {
 }
 
 // Getters
+unsigned short User::getUserID() { return userID; }
+
 string User::getLogin() { return login; }
 
 string User::getPassword() { return password; }

@@ -31,6 +31,7 @@ using namespace std;
 
 class User {
   protected:
+    unsigned short userID;
     string login;
     string password;
     Date birthDate;
@@ -43,13 +44,13 @@ class User {
     Role role;
 
   public:
-    User(short newUserID, string newLogin, string newPassWord, string newName,
+    User(unsigned short newUserID, string newLogin, string newPassWord, string newName,
          Date newBirthDate, Gender newGender, CivilStatus newCivilStatus,
          string newAddress, string newPhoneNumber, string newEmail);
 
     User(string name, string password, Role role);
 
-    short getUserID();
+    unsigned short getUserID();
     string getLogin();
     string getPassword();
     string getName();
