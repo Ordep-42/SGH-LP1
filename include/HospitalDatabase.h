@@ -15,7 +15,7 @@ class HospitalDatabase {
     sqlite3_stmt *stmt;
     char *errMsg;
     int returnCode;
-    string getFromAgenda(const char *);
+    string getFromSchedule(const char *);
 
   public:
     HospitalDatabase();
@@ -34,15 +34,15 @@ class HospitalDatabase {
     void createAttendant(User attendant);
     void createManager(User manager);
 
-    string getAgenda();
+    string getSchedule();
 
-    string getAgendaByPatient(User);
+    string getScheduleByPatient(User);
 
-    string getAgendaByDoctor(User);
+    string getScheduleByDoctor(User);
 
-    string getAgendaByDate(Date);
+    string getScheduleByDate(Date);
 
-    string getAgendaBetweenDates(Date, Date);
+    string getScheduleBetweenDates(Date, Date);
 };
 
 #endif // !HOSPITAL_DATABASE_H

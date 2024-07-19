@@ -90,7 +90,7 @@ void HospitalDatabase::setReturnCode(int returnCode) {
     this->returnCode = returnCode;
 }
 
-string HospitalDatabase::getFromAgenda(const char *sql) {
+string HospitalDatabase::getFromSchedule(const char *sql) {
     string agenda = "";
     returnCode = sqlite3_open("../data/hospital.db", &db);
 
@@ -123,11 +123,11 @@ string HospitalDatabase::getFromAgenda(const char *sql) {
     return agenda;
 }
 
-string HospitalDatabase::getAgenda() {
-    return getFromAgenda("SELECT (ID, DATA, CONSULTA) FROM SCHEDULE;");
+string HospitalDatabase::getSchedule() {
+    return getFromSchedule("SELECT (ID, DATA, CONSULTA) FROM SCHEDULE;");
 }
 
-string HospitalDatabase::getAgendaByPatient(User user) {
+string HospitalDatabase::getScheduleByPatient(User user) {
     ostringstream oss;
 
     // Isso só vai funcionar quando a Class Patient estiver ok! pra pegar o Id.
@@ -139,10 +139,10 @@ string HospitalDatabase::getAgendaByPatient(User user) {
     string queryStr = oss.str();
     const char *sql = queryStr.c_str();
 
-    return getFromAgenda(sql);
+    return getFromSchedule(sql);
 }
 
-string HospitalDatabase::getAgendaByDate(Date date) {
+string HospitalDatabase::getScheduleByDate(Date date) {
     ostringstream oss;
 
     oss << "SELECT (ID, DATA, CONSULTA) " << "FROM SCHEDULE "
@@ -151,10 +151,10 @@ string HospitalDatabase::getAgendaByDate(Date date) {
 
     string queryStr = oss.str();
     const char *sql = queryStr.c_str();
-    return getFromAgenda(sql);
+    return getFromSchedule(sql);
 }
 
-string HospitalDatabase::getAgendaByDoctor(User user) {
+string HospitalDatabase::getScheduleByDoctor(User user) {
     ostringstream oss;
 
     // Isso só vai funcionar quando a Class Doctor estiver ok! pra pegar o Id.
@@ -166,5 +166,5 @@ string HospitalDatabase::getAgendaByDoctor(User user) {
     string queryStr = oss.str();
     const char *sql = queryStr.c_str();
 
-    return getFromAgenda(sql);
+    return getFromSchedule(sql);
 }
