@@ -22,7 +22,7 @@ public:
 
   bool isBeforeThan(Date thisDate);
   bool isEqualTo(Date anotherDate);
-  Date tomorrow();  
+  Date tomorrow();
 };
 
 // Funções auxiliares
