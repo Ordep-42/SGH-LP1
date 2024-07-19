@@ -8,39 +8,39 @@
 using namespace std;
 
 class HospitalInterface {
-private:
-  bool isLogged;
-  int accessLevel;
-  User *currentUser;
+  private:
+    bool isLogged;
+    int accessLevel;
+    User *currentUser;
 
-public:
-  HospitalInterface() = default;
+  public:
+    HospitalInterface() = default;
 
-  void entryProgramInterface();
+    void entryProgramInterface();
 
-  void createPatientInterface();
+    void createPatientInterface();
 
-  void loginInterface();
+    void loginInterface();
 
-  void createUserInterface();
+    void createUserInterface();
 
-  void patientInterface();
+    void patientInterface();
 
-  void attendantInterface();
+    void attendantInterface();
 
-  void doctorInterface();
+    void doctorInterface();
 
-  void managerInterface();
+    void managerInterface();
 
-  bool assertAccessLevel(int);
+    bool assertAccessLevel(int);
 
-  bool getIsLogged();
-  int getAccessLevel();
-  User *getCurrentUser();
+    bool getIsLogged();
+    int getAccessLevel();
+    User *getCurrentUser();
 
-  void setIsLogged(bool);
-  void setAccessLevel(int);
-  void setCurrentUser(User *);
+    void setIsLogged(bool);
+    void setAccessLevel(int);
+    void setCurrentUser(User *);
 };
 
 // Funções auxiliares

@@ -12,7 +12,7 @@ MedicalFile::MedicalFile(vector<string> newCurrentMedications,
 
 // Getters
 vector<string> MedicalFile::getCurrentMedications() {
-  return currentMedications;
+    return currentMedications;
 }
 
 string MedicalFile::getBloodType() { return bloodType; }
@@ -20,18 +20,18 @@ string MedicalFile::getBloodType() { return bloodType; }
 vector<string> MedicalFile::getAllergies() { return allergies; }
 
 vector<string> MedicalFile::getVaccinationRegistry() {
-  return vaccinationRegistry;
+    return vaccinationRegistry;
 }
 
 vector<string> MedicalFile::getNotes() { return notes; }
 
 // Setters
 void MedicalFile::setBloodType(string newBloodType) {
-  bloodType = newBloodType;
+    bloodType = newBloodType;
 }
 
 void MedicalFile::setAllergies(vector<string> newAllergies) {
-  allergies = newAllergies;
+    allergies = newAllergies;
 }
 
 /*

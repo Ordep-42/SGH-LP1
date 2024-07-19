@@ -47,8 +47,6 @@ void User::setGender(Gender newGender) { gender = newGender; }
 
 void User::setCivilStatus(CivilStatus newCivilStatus) { civilStatus = newCivilStatus; }
 
-void User::setAddress(string newaddress) { address = newaddress; }
-
 void User::setPhoneNumber(string newPhoneNumber) { phoneNumber = newPhoneNumber; }
 
 void User::setEmail(string newEmail) { email = newEmail; }
