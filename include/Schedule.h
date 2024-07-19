@@ -34,7 +34,7 @@ struct Appointment {
     //int room;
     //No nosso hospital, cada médico só atende numa única sala :)     
 
-  Appointment(const Section &newSection, string newStatus, const int &newID)
+  Appointment(const Section& newSection, string newStatus, const int& newID)
       : section(newSection) {}
 };
 
@@ -56,7 +56,7 @@ public:
   vector<Appointment> getSchldApptms(); 
   vector<Section> getWorkSchld(); 
 
-  void setWorkSchld(vector<Section> newWorkSchld);
+  //void setWorkSchld(vector<Section> newWorkSchld);
 
   Schedule() = default;
   void makeAppointment(Appointment newAppointment);
@@ -66,7 +66,7 @@ public:
   vector<Appointment> searchByDate();
   vector<Appointment> searchByStatus();
   
-  bool checkAvailability(Date tryDate, Time tryTime); // tryDate to the CatchTime ;)
+  //bool checkAvailability(Date tryDate, Time tryTime); // tryDate to the CatchTime ;)
   bool isAppointed(Section test);
 
   Section nextWorkSection();
