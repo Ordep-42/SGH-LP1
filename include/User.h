@@ -6,26 +6,11 @@
 #include <string>
 #include <vector>
 
-typedef enum roles {
-    Admin,
-    Manager,
-    Doctor,
-    Assistant,
-    Patient
-} Role;
+typedef enum roles { Admin, Manager, Medic, Assistant, Patient } Role;
 
-typedef enum genders {
-    Masculino,
-    Feminino,
-    Outro
-} Gender;
+typedef enum genders { Masculino, Feminino, Outro } Gender;
 
-typedef enum civilStatus {
-    Solteiro,
-    Casado,
-    Divorciado,
-    Viuvo
-} CivilStatus;
+typedef enum civilStatus { Solteiro, Casado, Divorciado, Viuvo } CivilStatus;
 
 using namespace std;
 
@@ -44,9 +29,10 @@ class User {
     Role role;
 
   public:
-    User(unsigned short newUserID, string newLogin, string newPassWord, string newName,
-         Date newBirthDate, Gender newGender, CivilStatus newCivilStatus,
-         string newAddress, string newPhoneNumber, string newEmail);
+    User(unsigned short newUserID, string newLogin, string newPassWord,
+         string newName, Date newBirthDate, Gender newGender,
+         CivilStatus newCivilStatus, string newAddress, string newPhoneNumber,
+         string newEmail);
 
     User(string name, string password, Role role);
 

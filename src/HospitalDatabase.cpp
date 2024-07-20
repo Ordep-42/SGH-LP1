@@ -36,7 +36,7 @@ HospitalDatabase::HospitalDatabase() {
                             "NAME TEXT NOT NULL,"
                             "PASSWORD TEXT NOT NULL,"
                             "CONSULT_COST INTEGER NOT NULL,"
-                            "SPECIALTY TEXT NOT NULL";
+                            "SPECIALTY TEXT NOT NULL);";
 
     const char *agendaSql = "CREATE TABLE IF NOT EXISTS SCHEDULE("
                             "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -45,7 +45,7 @@ HospitalDatabase::HospitalDatabase() {
                             "PATIENT_ID INTEGER NOT NULL,"
                             "DOCTOR_ID INTEGER NOT NULL,"
                             "FOREIGN KEY (PATIENT_ID) REFERENCES PATIENT (ID)"
-                            "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID)";
+                            "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID));";
 
     returnCode = sqlite3_exec(db, gestorSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, atendenteSql, 0, 0, &errMsg);
@@ -125,7 +125,8 @@ string HospitalDatabase::getScheduleByPatient(User user) {
     string queryStr = oss.str();
     const char *sql = queryStr.c_str();
 
-    Appointment();
+    // Appointment();
+    return queryStr;
 }
 
 string HospitalDatabase::getScheduleByDate(Date date) {

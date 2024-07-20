@@ -45,7 +45,7 @@ void HospitalInterface::loginInterface() {
     map<int, Role> roleMap = {
         {1, Patient},
         {2, Assistant},
-        {3, Doctor},
+        {3, Medic},
         {4, Manager},
     };
 
