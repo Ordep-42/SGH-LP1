@@ -4,9 +4,8 @@
 // Construtor:
 
 Date::Date(short newDays, short newYear)
-    : days(newDays), year(newYear), isLeapYear(leapYearTest(year)) {
-    this->fixDate();
-}
+    : days(newDays), year(newYear), isLeapYear(leapYearTest(year)) { fixDate(); }
+    
 
 // ------------------------------------------------------------------------------
 // Métodos:
@@ -115,17 +114,30 @@ short Date::getDays() const { return this->days; }
 //     this->year = new_year;
 // }
 
-bool Date::isBeforeThan(Date thisDate) {
-    // this->fixDate();
-    // thisDate.fixDate();
-    if (this->year > thisDate.getYear()) {
+bool Date::isBeforeThan(Date thatDate) {
+    fixDate(); thatDate.fixDate(); //fixers
+    if (year > thatDate.getYear()) {
         return false;
-    } else if (this->year == thisDate.getYear()) {
-        if (this->days >= thisDate.getDays()) {
+    } else if (year == thatDate.getYear()) {
+        if (days >= thatDate.getDays()) {
             return false;
         }
     }
     return true;
+}
+
+Date firstDate(Date date1, Date date2){ // "min" binário
+    if(date1.isBeforeThan(date2)){
+        return date1;
+    }
+    return date2;
+}
+
+Date lastDate(Date date1, Date date2){ // "max" binário
+    if(date1.isBeforeThan(date2)){
+        return date2;
+    }
+    return date1;
 }
 
 Date Date::tomorrow() {
@@ -144,12 +156,20 @@ void Date::fixDate() {
     }
 }
 
-bool Date::isEqualTo(Date anotherDate){
-  fixDate(); anotherDate.fixDate();
-  if(days == anotherDate.getDays() && year == anotherDate.getYear()){
+bool Date::isEqualTo(Date thatDate){
+  fixDate(); thatDate.fixDate(); //fixers
+  if(days == thatDate.getDays() && year == thatDate.getYear()){
     return true;
   }
   else{
     return false;
   }
+}
+
+bool Date::isBetween(Date date1, Date date2){ // Intervalo fechado (incluindo data 1 e data 2)
+    Date first = firstDate(date1, date2); Date last = lastDate(date1, date2); 
+    if((isBeforeThan(last) && first.isBeforeThan(*this)) || isEqualTo(first) || isEqualTo(last)){  //talvez esse asterisco bugue muito no futuro... CUIDADO!!!
+        return true;
+    }
+    return false;    
 }

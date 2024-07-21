@@ -38,10 +38,13 @@ public:
     bool isEqualTo(Time anotherTime);
     bool isBeforeThan(Time thisTime);
 
+    bool isBetween(Date date1, Date date2);
 
 };
 
 // Funções auxiliares
+Time firsTime(Date date1, Date date2);
+Time lastTime(Date date1, Date date2);
 
 
 #endif // !TIME_H
