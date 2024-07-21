@@ -98,11 +98,11 @@ Time firsTime(Date date1, Date date2){ // "min" binário
     return date2;
 }
 
-Time lastTime(Date date1, Date date2){ // "max" binário
-    if(date1.isBeforeThan(date2)){
-        return date2;
+Time lastTime(Time time1, Time time2){ // "max" binário
+    if(time1.isBeforeThan(time2)){
+        return time2;
     }
-    return date1;
+    return time1;
 }
 
 bool Time::isBetween(Date time1, Date time2){ // Intervalo fechado (incluindo data 1 e data 2)
