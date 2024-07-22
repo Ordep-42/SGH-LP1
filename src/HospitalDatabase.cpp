@@ -4,6 +4,11 @@
 #include <sstream>
 #include <string>
 
+sqlite3 *HospitalDatabase::db;
+sqlite3_stmt *HospitalDatabase::stmt;
+char *HospitalDatabase::errMsg;
+int HospitalDatabase::returnCode;
+
 HospitalDatabase::HospitalDatabase() {
     sqlite3 *db;
     char *errMsg;
@@ -141,17 +146,40 @@ string HospitalDatabase::getScheduleByDate(Date date) {
     return getFromSchedule(sql);
 }
 
-string HospitalDatabase::getScheduleByDoctor(User user) {
+vector<string>
+HospitalDatabase::getAppointmentsByDoctor(short unsigned doctorId) {
     ostringstream oss;
 
-    // Isso só vai funcionar quando a Class Doctor estiver ok! pra pegar o Id.
-    oss << "SELECT (ID, DATA, CONSULTA) " << "FROM SCHEDULE "
-        << "JOIN SCHEDULE_PATIENT ON PATIENT.ID = SCHEDULE_PATIENT.PATIENT_ID "
-        << "WHERE SCHEDULE_PATIENT.PATIENT_ID =" /*<< user.getId() */
-        << ";";
+    oss << "SELECT (ID, DATA, STATUS, PATIENT_ID) " << "FROM SCHEDULE "
+        << "WHERE SCHEDULE_PATIENT.DOCTOR_ID =" << doctorId << ";";
 
     string queryStr = oss.str();
     const char *sql = queryStr.c_str();
+    vector<string> agenda;
+    returnCode = sqlite3_open("../data/hospital.db", &db);
 
-    return getFromSchedule(sql);
+    if (returnCode) {
+        std::cerr << "Não foi possível abrir banco de dados: "
+                  << sqlite3_errmsg(db) << std::endl;
+    } else {
+        std::cout << "Acesso ao banco de dados realizado" << std::endl;
+    }
+    returnCode = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    if (returnCode != SQLITE_OK) {
+        std::cerr << "Statement com erro: " << sqlite3_errmsg(db) << std::endl;
+        exit(1);
+    }
+
+    while ((returnCode = sqlite3_step(stmt)) == SQLITE_ROW) {
+        int id = sqlite3_column_int(stmt, 0);
+        const unsigned char *data = sqlite3_column_text(stmt, 1);
+        const unsigned char *status = sqlite3_column_text(stmt, 2);
+        int patient_id = sqlite3_column_int(stmt, 3);
+
+        ostringstream oss;
+        oss << id << ", " << data << ", " << status << "\n";
+        string result = oss.str();
+        agenda.push_back(result);
+    }
+    return agenda;
 }

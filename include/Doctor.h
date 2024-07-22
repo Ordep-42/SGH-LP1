@@ -21,14 +21,14 @@ class Doctor : public User {
     Doctor(string name, string password, string especialidade);
 
     vector<Section> getWorkSchedule();
-    vector<User> getScheduledPatients();
-    vector<User> getScheduledPatientsByDate();
+    vector<Appointment> getAppointments();
+    vector<User> getAppointmentsByDate();
 
     void doAppointment(Section);
     void requestMedicalEquipment(Equipment);
 
     string getEspecialidade();
-    void setEspecialidade();
+    void setEspecialidade(string);
 };
 
 #endif // !DOCTOR_H

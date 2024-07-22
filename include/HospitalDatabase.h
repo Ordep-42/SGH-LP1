@@ -2,22 +2,20 @@
 #define HOSPITAL_DATABASE_H
 
 #include "Date.h"
+#include "Doctor.h"
 #include "User.h"
 #include <sqlite3.h>
 #include <string>
 #include <vector>
 
-class Schedule {};
-
 class HospitalDatabase {
-  private:
-    sqlite3 *db;
-    sqlite3_stmt *stmt;
-    char *errMsg;
-    int returnCode;
+  public:
+    static sqlite3 *db;
+    static sqlite3_stmt *stmt;
+    static char *errMsg;
+    static int returnCode;
     string getFromSchedule(const char *);
 
-  public:
     HospitalDatabase();
 
     sqlite3 *getDBPointer();
@@ -38,11 +36,13 @@ class HospitalDatabase {
 
     string getScheduleByPatient(User);
 
-    string getScheduleByDoctor(User);
+    string getScheduleByDoctor(Doctor);
 
     string getScheduleByDate(Date);
 
     string getScheduleBetweenDates(Date, Date);
+
+    static vector<string> getAppointmentsByDoctor(short unsigned);
 };
 
 #endif // !HOSPITAL_DATABASE_H
