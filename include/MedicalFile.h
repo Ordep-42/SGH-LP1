@@ -30,6 +30,8 @@ class MedicalFile {
                 vector<string> newAllergies, vector<string> newCurrentMedications,
                 vector<string> newVaccinationRegistry, vector<string> newNotes);
 
+    MedicalFile() {}
+
     // Getters
     BloodType getBloodType();
     RhFactor getRhFactor();

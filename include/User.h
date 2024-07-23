@@ -50,6 +50,8 @@ class User {
 
     User(string name, string password, Role role);
 
+    User() {}
+
     unsigned short getUserID();
     string getLogin();
     string getPassword();
