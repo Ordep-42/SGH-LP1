@@ -16,6 +16,7 @@ struct Equipment {
 class Doctor : public User {
   private:
     string especialidade;
+    int consultCost;
 
   public:
     Doctor(string name, string password, string especialidade);
@@ -26,6 +27,9 @@ class Doctor : public User {
 
     void doAppointment(Section);
     void requestMedicalEquipment(Equipment);
+
+    int getConsultCost();
+    void setConsultCost(int);
 
     string getEspecialidade();
     void setEspecialidade(string);

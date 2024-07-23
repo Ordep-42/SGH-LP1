@@ -1,9 +1,9 @@
 #include "../include/Doctor.h"
-#include "../include/HospitalDatabase.h"
+#include "../include/HospitalDatabase/HospitalDatabase.h"
 #include <string>
 
 Doctor::Doctor(string name, string password, string especialidade)
-    : User(name, password, Medic), especialidade(especialidade) {
+    : User(name, password, Roles::Doctor), especialidade(especialidade) {
     this->especialidade = especialidade;
 }
 
@@ -19,3 +19,5 @@ string Doctor::getEspecialidade() { return especialidade; }
 void Doctor::setEspecialidade(string especialidade) {
     this->especialidade = especialidade;
 }
+
+int Doctor::getConsultCost() { return this->consultCost; }
