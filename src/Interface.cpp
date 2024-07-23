@@ -43,10 +43,10 @@ void HospitalInterface::loginInterface() {
     vector<string> login_entries;
 
     map<int, Role> roleMap = {
-        {1, Patient},
-        {2, Assistant},
-        {3, Doctor},
-        {4, Manager},
+        {1, Paciente},
+        {2, Atendente},
+        {3, Doutor},
+        {4, Gestor},
     };
 
     login_entries.push_back("Paciente");
@@ -124,7 +124,7 @@ void HospitalInterface::createPatientInterface() {
      *  */
     /*}*/
 
-    User novoPaciente = User(nome, senha, Patient);
+    User novoPaciente = User(nome, senha, Paciente);
 
     // #TODO
     // É preciso implementar uma classe pra encapsular o database

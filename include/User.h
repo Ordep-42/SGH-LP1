@@ -8,16 +8,15 @@
 
 typedef enum roles {
     Admin,
-    Manager,
-    Doctor,
-    Assistant,
-    Patient
+    Gestor,
+    Doutor,
+    Atendente,
+    Paciente
 } Role;
 
 typedef enum genders {
     Masculino,
     Feminino,
-    Outro
 } Gender;
 
 typedef enum civilStatus {
