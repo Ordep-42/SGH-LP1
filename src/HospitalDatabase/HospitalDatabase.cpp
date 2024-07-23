@@ -1,4 +1,4 @@
-#include "../include/HospitalDatabase.h"
+#include "../../include/HospitalDatabase/HospitalDatabase.h"
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
@@ -75,12 +75,6 @@ sqlite3 *HospitalDatabase::getDBPointer() { return this->db; }
 char *HospitalDatabase::getErrMsg() { return this->errMsg; }
 int HospitalDatabase::getReturnCode() { return this->returnCode; }
 
-void HospitalDatabase::setDBPointer(sqlite3 *db) { this->db = db; }
-void HospitalDatabase::setErrMsg(char *errMsg) { this->errMsg = errMsg; }
-void HospitalDatabase::setReturnCode(int returnCode) {
-    this->returnCode = returnCode;
-}
-
 string HospitalDatabase::getFromSchedule(const char *sql) {
     string agenda = "";
     returnCode = sqlite3_open("../data/hospital.db", &db);
@@ -91,11 +85,11 @@ string HospitalDatabase::getFromSchedule(const char *sql) {
     } else {
         std::cout << "Acesso ao banco de dados realizado" << std::endl;
     }
+
     returnCode = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
-    if (returnCode != SQLITE_OK) {
-        std::cerr << "Statement com erro: " << sqlite3_errmsg(db) << std::endl;
+    if (!verifyErrorCode()) {
         exit(1);
-    }
+    };
 
     while ((returnCode = sqlite3_step(stmt)) == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);
@@ -112,26 +106,6 @@ string HospitalDatabase::getFromSchedule(const char *sql) {
     sqlite3_close(db);
 
     return agenda;
-}
-
-string HospitalDatabase::getSchedule() {
-    return getFromSchedule("SELECT * FROM SCHEDULE;");
-}
-
-string HospitalDatabase::getScheduleByPatient(User user) {
-    ostringstream oss;
-
-    // Isso só vai funcionar quando a Class Patient estiver ok! pra pegar o Id.
-    oss << "SELECT (ID, DATA, CONSULTA) " << "FROM SCHEDULE "
-        << "JOIN SCHEDULE_PATIENT ON PATIENT.ID = SCHEDULE_PATIENT.PATIENT_ID "
-        << "WHERE SCHEDULE_PATIENT.PATIENT_ID =" /*<< user.getId() */
-        << ";";
-
-    string queryStr = oss.str();
-    const char *sql = queryStr.c_str();
-
-    // Appointment();
-    return queryStr;
 }
 
 string HospitalDatabase::getScheduleByDate(Date date) {
@@ -183,3 +157,11 @@ HospitalDatabase::getAppointmentsByDoctor(short unsigned doctorId) {
     }
     return agenda;
 }
+
+bool HospitalDatabase::verifyErrorCode() {
+    if (returnCode != SQLITE_OK) {
+        std::cerr << "SQLITE ERROR : " << sqlite3_errmsg(db) << std::endl;
+        return false;
+    }
+    return true;
+};
