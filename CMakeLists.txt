@@ -15,5 +15,11 @@ include_directories(include)
 # Arquivos cpp
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
+find_package(SQLite3)
+
+include_directories(${SQLite3_INCLUDE_DIRS})
+
 # Executável
 add_executable(SGH-LP1 ${SOURCES})
+
+target_link_libraries(SGH-LP1 ${SQLite3_LIBRARIES})
