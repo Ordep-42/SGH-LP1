@@ -17,11 +17,12 @@ vector<EmergencyContact> Patient::getEmergencyContacts() { return emergencyConta
 
 MedicalFile Patient::getMedicalFile() { return medicalFile; }
 
-vector<Appointment> Patient::getScheduledAppointments() { return scheduledAppointments; }
+/*vector<Appointment> Patient::getScheduledAppointments() { return scheduledAppointments; }
 
 vector<Appointment> Patient::getEndedAppointments() { return endedAppointments; }
 
 vector<Appointment> Patient::getCanceledAppointments() { return canceledAppointments; }
+*/
 
 // Setters
 void Patient::setEmergencyContact(vector<EmergencyContact> newEmergencyContacts) {
@@ -35,6 +36,7 @@ void Patient::addEmergencyContact(EmergencyContact newEmergencyContact) {
     emergencyContacts.push_back(newEmergencyContact);
 }
 
+/*
 void Patient::setScheduledAppointments(vector<Appointment> newScheduledAppointments) {
     scheduledAppointments = newScheduledAppointments;
 }
@@ -45,4 +47,4 @@ void Patient::setEndedAppointments(vector<Appointment> newEndedAppointments) {
 
 void Patient::setCanceledAppointments(vector<Appointment> newCanceledAppointments) {
     canceledAppointments = newCanceledAppointments;
-}
+}*/
