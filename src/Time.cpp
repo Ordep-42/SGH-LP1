@@ -3,6 +3,10 @@
 
 using namespace std;
 
+Time::Time(){
+    hour = -1; minute = -1; second = -1;
+}
+
 Time::Time(short newHour, short newMin, short newSec)
     : hour(newHour), minute(newMin), second(newSec) { fixTime(); }
 

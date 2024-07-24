@@ -6,6 +6,11 @@ using namespace std;
 Session::Session(Time newTime, Date newDate)
     : time(newTime), date(newDate) {}
 
+Session::Session() {
+  Time newTime(-1,-1,-1); Date newDate(-1,-1);
+  time = newTime; date = newDate;
+}
+
 // Getters: 
 Time Session::getTime() { return time; }
 

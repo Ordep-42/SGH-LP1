@@ -15,6 +15,7 @@ private:
 
 public:
     Time(short newHour, short newMin, short newSec);
+    Time(); 
 
     //getters:
     short getHour();

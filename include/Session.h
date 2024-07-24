@@ -17,7 +17,7 @@ private:
 
 public:
     Session(Time newTime, Date newDate);
-    Session() = default;
+    Session(); // isso resolveu sabe-se lá pq.
 
     Time getTime();
     Date getDate();
