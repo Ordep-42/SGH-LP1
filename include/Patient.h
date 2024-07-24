@@ -35,7 +35,7 @@ class Patient : public User {
     Patient(unsigned short newUserID, string newLogin, string newPassWord,
             string newName, Date newBirthDate, string newCpf, Gender newGender,
             CivilStatus newCivilStatus, string newAddress,
-            string newPhoneNumber, string newEmail, Role role,
+            string newPhoneNumber, string newEmail, Roles::Role role,
             vector<EmergencyContact> newEmergencyContacts, MedicalFile newMedicalFile);
 
     Patient() {}

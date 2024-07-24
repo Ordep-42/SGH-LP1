@@ -39,6 +39,8 @@ class User {
 
     User(string name, string password, Roles::Role role);
 
+    User() {}
+
     unsigned short getUserID();
     string getLogin();
     string getPassword();
