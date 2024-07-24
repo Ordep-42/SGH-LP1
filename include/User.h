@@ -6,25 +6,13 @@
 #include <string>
 #include <vector>
 
-typedef enum roles {
-    Admin,
-    Gestor,
-    Doutor,
-    Atendente,
-    Paciente
-} Role;
+namespace Roles {
+typedef enum roles { Admin, Manager, Doctor, Assistant, Patient } Role;
+}
 
-typedef enum genders {
-    Masculino,
-    Feminino,
-} Gender;
+typedef enum genders { Masculino, Feminino, Outro } Gender;
 
-typedef enum civilStatus {
-    Solteiro,
-    Casado,
-    Divorciado,
-    Viuvo
-} CivilStatus;
+typedef enum civilStatus { Solteiro, Casado, Divorciado, Viuvo } CivilStatus;
 
 using namespace std;
 
@@ -41,16 +29,15 @@ class User {
     string address;
     string phoneNumber; // como tratar?
     string email;
-    Role role;
+    Roles::Role role;
 
   public:
-    User(unsigned short newUserID, string newLogin, string newPassWord, string newName,
-         Date newBirthDate, string newCpf, Gender newGender, CivilStatus newCivilStatus,
-         string newAddress, string newPhoneNumber, string newEmail);
+    User(unsigned short newUserID, string newLogin, string newPassWord,
+         string newName, Date newBirthDate, Gender newGender,
+         CivilStatus newCivilStatus, string newAddress, string newPhoneNumber,
+         string newEmail);
 
-    User(string name, string password, Role role);
-
-    User() {}
+    User(string name, string password, Roles::Role role);
 
     unsigned short getUserID();
     string getLogin();
@@ -63,7 +50,7 @@ class User {
     string getAddress();
     string getPhoneNumber();
     string getEmail();
-    Role getRole();
+    Roles::Role getRole();
     Date getIngressDate();
 
     void setLogin(string newLogin);
@@ -76,7 +63,7 @@ class User {
     void setAddress(string newAddress);
     void setPhoneNumber(string newPhoneNumber);
     void setEmail(string newEmail);
-    void setRole(Role role);
+    void setRole(Roles::Role role);
 };
 
 // Funções auxiliares
