@@ -16,24 +16,24 @@ public:
     // Construtor
     WorkSchedule(vector<WorkSession> newSchedule, int newId, int newDoctor_id);
     // Getters para os novos atributos
-    int getId(); // Daria pra ser const
-    int getDoctorId();
+    
+    int getID(); // Daria pra ser const
+    int getDoctorID();
+    vector<WorkSession> getWorkSchedule(); // Esse nome fica estranho...
 
     //getHoraInicio() =  getSession().getTime(); 
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
 
-    WorkSchedule searchByPatient(int byPatientID);
     WorkSchedule searchByTime();
-    WorkSchedule searchById();
+    WorkSchedule searchByID(int id);
     WorkSchedule searchByDate();
     WorkSchedule searchByStatus();
 
-    Section lastSection(vector<Section> sections);
-    // next
-    Section nextWorkSection();
-    Appointment nextAppointment();
+    WorkSession lastSession(); // pelo vetor
+    WorkSession nextWorkSection(); //pela data X time
+    //Appointment nextAppointment();
     // Pra marcar uma consulta: 
-    Section nextAvaiableSection();
+    //Section nextAvaiableSection();
 };
 
 #endif // WORKSCHEDULE_H

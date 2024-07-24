@@ -11,6 +11,7 @@ private:
 public:
     // Construtor
     WorkSession(Time newTime, Date newDate, int newId, int newDoctorId);
+    WorkSession() = default; 
 
     // Getters para os novos atributos
     int getId();
