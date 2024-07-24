@@ -1,6 +1,8 @@
 // Date.cpp
 #include "../include/Date.h"
 
+using namespace std;
+
 // Construtor:
 
 Date::Date(short newDays, short newYear)
