@@ -5,7 +5,7 @@
 
 Date::Date(short newDays, short newYear)
     : days(newDays), year(newYear), isLeapYear(leapYearTest(year)) { fixDate(); }
-    
+
 
 // ------------------------------------------------------------------------------
 // Métodos:

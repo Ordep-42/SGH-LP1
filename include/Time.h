@@ -1,8 +1,6 @@
 #ifndef TIME_H
 #define TIME_H
 
-#include "User.h"
-#include "Time.h"
 #include <string>
 #include <vector>
 
@@ -38,13 +36,13 @@ public:
     bool isEqualTo(Time anotherTime);
     bool isBeforeThan(Time thisTime);
 
-    bool isBetween(Date date1, Date date2);
+    bool isBetween(Time time1, Time time2);
 
 };
 
 // Funções auxiliares
-Time firsTime(Date date1, Date date2);
-Time lastTime(Date date1, Date date2);
+Time firsTime(Time time1, Time time2);
+Time lastTime(Time time1, Time time2);
 
 
 #endif // !TIME_H

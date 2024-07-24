@@ -29,7 +29,7 @@ void Time::fixMin(){
     // if(minute >= 60) { x = -60; y = 1; b = minute >= 60 }
     // else { x = 60; y = -1; }
     //fix minuto >= 60
-    
+
     while(minute >= 60 ){
         minute-=60; 
         hour++;                
@@ -91,11 +91,11 @@ bool Time::isBeforeThan(Time thatTime){
     return false;
 }
 
-Time firsTime(Date date1, Date date2){ // "min" binário
-    if(date1.isBeforeThan(date2)){
-        return date1;
+Time firsTime(Time time1, Time time2){ // "min" binário
+    if(time1.isBeforeThan(time2)){
+        return time1;
     }
-    return date2;
+    return time2;
 }
 
 Time lastTime(Time time1, Time time2){ // "max" binário
@@ -105,8 +105,8 @@ Time lastTime(Time time1, Time time2){ // "max" binário
     return time1;
 }
 
-bool Time::isBetween(Date time1, Date time2){ // Intervalo fechado (incluindo data 1 e data 2)
-    Time first = firstTime(time1, time2); Time last = lastTime(time1, time2); 
+bool Time::isBetween(Time time1, Time time2){ // Intervalo fechado (incluindo data 1 e data 2)
+    Time first = firsTime(time1, time2); Time last = lastTime(time1, time2); 
     if((isBeforeThan(last) && first.isBeforeThan(*this)) || isEqualTo(first) || isEqualTo(last)){  //talvez esse asterisco bugue muito no futuro... CUIDADO!!!
         return true;
     }

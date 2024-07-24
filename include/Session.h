@@ -1,7 +1,7 @@
 #ifndef SESSION_H
 #define SESSION_H
 
-#include "User.h"
+#include "Date.h"
 #include "Time.h"
 #include <string>
 #include <vector>
@@ -13,10 +13,11 @@ private:
     Time time;
     Date date; 
     //short room;
+    // int doctorId
 
 public:
     Session(Time newTime, Date newDate);
-    
+
     Time getTime();
     Date getDate();
 

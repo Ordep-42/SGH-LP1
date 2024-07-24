@@ -1,4 +1,4 @@
-#include "Session.h"
+#include "../include/Session.h"
 
 using namespace std;
 
@@ -34,7 +34,7 @@ Session nextSessionFrom(vector<Session> sessions){ // o mais recente em tempo
   Time timeC(-1,-1,-1); Date dataC(-1, -1); // Falta conferir oq acontece nos construtores!!!
   Session sessionC(timeC, dataC); // de Candidate
   if(sessions.size() == 0) { return sessionC; } // Tratamento de erros
-  
+
   //sessionC.getDate() = sessions[0].getDate(); sessionC.getTime() = sessions[0].getTime();   
   sessionC = sessions[0]; // Dá problema cm ponteiro?
   for(Session session : sessions){
