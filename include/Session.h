@@ -26,6 +26,7 @@ public:
 
     bool isEqualTo(Session thatSession);
     bool isBeforeThan(Session thatSession);
+    bool isBetween(Session session1, Session session2);
 
     bool isIn(vector<Session> sessions);
 
@@ -34,5 +35,7 @@ public:
 // Funções auxiliares
 Session nextSessionFrom(vector<Session> sessions); // Seção mais recente em data
 Session lastSessionFrom(vector<Session> sections); // Última sessão feita
+Session firstSession(Session session1, Session session2);
+Session lastSession(Session session1, Session session2);
 
 #endif // !SESSION_H

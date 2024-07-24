@@ -62,3 +62,34 @@ bool Session::isIn(vector<Session> sessions){
     }
     return false;
 }
+
+Session firstSession(Session session1, Session session2){ // "min" binário
+    if(session1.getDate().isBeforeThan(session2.getDate())){ return session1; }
+    else if(session2.getDate().isBeforeThan(session1.getDate())) { return session2; }
+    //As datas são iguais, então testemos os horários
+    if(session1.getTime().isBeforeThan(session2.getTime())){ return session1; }
+     return session2; 
+}  
+    
+
+// em termos do first:
+Session lastSession(Session session1, Session session2){ // "max" binário
+    Session fSession = firstSession(session1, session2); 
+
+    if(session1.isEqualTo(fSession)) { return session2; }
+    return session1;  
+}
+
+
+bool Session::isBetween(Session session1, Session session2){ // Intervalo fechado (incluindo data 1 e data 2)
+    Session first = firstSession(session1, session2); Session last = lastSession(session1, session2); 
+    if((isBeforeThan(last) && first.isBeforeThan(*this)) || isEqualTo(first) || isEqualTo(last)){  //talvez esse asterisco bugue muito no futuro... CUIDADO!!!
+        return true;
+    }
+    return false;    
+}
+
+
+bool Session::isBetween(Session session1, Session session2){
+
+}

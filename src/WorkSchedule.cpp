@@ -16,8 +16,15 @@ vector<WorkSession> WorkSchedule::getWorkSchedule() { return schedule; }
 // test session -> ESSE NAO É LEGAL DE TESTAR ANTES DE DEFINIRMOS UM TEMPO PRAS CONSULTAS NO CÓDIGO
 
 // Time between 
-WorkSchedule WorkSchedule::searchByTimeBetween(Time time1, Time time2){
-    
+WorkSchedule WorkSchedule::searchByTimeBetween(Time time1, Time time2){ // tratar pra ver se veio vazio ou se não. 
+    vector<WorkSession> vetorWS; 
+    for(WorkSession wSession : schedule){
+        if(wSession.getTime().isBetween(time1, time2)){
+            vetorWS.push_back(wSession); 
+        }
+    }
+    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    return wScheduleBtwn; 
 }
 // Time before 
 // Time after
