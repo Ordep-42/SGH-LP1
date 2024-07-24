@@ -25,6 +25,7 @@ public:
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
 
     WorkSchedule searchByTime();
+    WorkSchedule searchByTimeBetween(Time time1, Time time2);
     WorkSchedule searchByID(int id);
     WorkSchedule searchByDate();
     WorkSchedule searchByStatus();

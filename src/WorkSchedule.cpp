@@ -11,16 +11,24 @@ int WorkSchedule::getID() { return id; }
 int WorkSchedule::getDoctorID() { return doctor_id; };
 vector<WorkSession> WorkSchedule::getWorkSchedule() { return schedule; }
 
-// Search's by Time: 
+// Search's: 
 
-// test date
+// test session -> ESSE NAO É LEGAL DE TESTAR ANTES DE DEFINIRMOS UM TEMPO PRAS CONSULTAS NO CÓDIGO
+
 // Time between 
+WorkSchedule WorkSchedule::searchByTimeBetween(Time time1, Time time2){
+    
+}
 // Time before 
 // Time after
 WorkSchedule WorkSchedule::searchByTime(){
 
 }
 
+// test Date
+// Date between 
+// Date before 
+// Date after
 WorkSchedule WorkSchedule::searchByDate(){
 
 }
