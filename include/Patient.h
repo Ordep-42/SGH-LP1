@@ -1,9 +1,7 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 #include "MedicalFile.h"
-#include "User.h"
-#include <string>
-#include <vector>
+#include "Schedule.h"
 
 using namespace std;
 
@@ -27,34 +25,34 @@ class Patient : public User {
   private:
     vector<EmergencyContact> emergencyContacts;
     MedicalFile medicalFile;
-    //vector<Appointment> scheduledAppointments;
-    //vector<Appointment> endedAppointments;
-    //vector<Appointment> canceledAppointments;
+    vector<Appointment> scheduledAppointments;
+    vector<Appointment> endedAppointments;
+    vector<Appointment> canceledAppointments;
 
   public:
     Patient(unsigned short newUserID, string newLogin, string newPassWord,
             string newName, Date newBirthDate, string newCpf, Gender newGender,
             CivilStatus newCivilStatus, string newAddress,
-            string newPhoneNumber, string newEmail, Roles::Role role,
+            string newPhoneNumber, string newEmail,
             vector<EmergencyContact> newEmergencyContacts, MedicalFile newMedicalFile);
 
     Patient() {}
 
     vector<EmergencyContact> getEmergencyContacts();
     MedicalFile getMedicalFile();
-    //vector<Appointment> getScheduledAppointments();
-    //vector<Appointment> getEndedAppointments();
-    //vector<Appointment> getCanceledAppointments();
+    vector<Appointment> getScheduledAppointments();
+    vector<Appointment> getEndedAppointments();
+    vector<Appointment> getCanceledAppointments();
     
     void addEmergencyContact(EmergencyContact newEmergencyContact);
-    //void makeAppointment(Appointment newAppointment);
-    //bool cancelScheduledAppointment(Appointment appointment);
+    void makeAppointment(Appointment newAppointment);
+    bool cancelScheduledAppointment(Appointment appointment);
 
     void setEmergencyContact(vector<EmergencyContact> newEmergencyContacts);
     void setMedicalFile(MedicalFile newMedicalFile);
-    //void setScheduledAppointments(vector<Appointment> newScheduledAppointments);
-    //void setEndedAppointments(vector<Appointment> newEndedAppointments);
-    //void setCanceledAppointments(vector<Appointment> newCanceledAppointments);
+    void setScheduledAppointments(vector<Appointment> newScheduledAppointments);
+    void setEndedAppointments(vector<Appointment> newEndedAppointments);
+    void setCanceledAppointments(vector<Appointment> newCanceledAppointments);
 };
 
 // Funções auxiliares
