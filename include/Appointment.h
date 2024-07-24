@@ -9,16 +9,27 @@ using namespace std;
 
 class Appointment {
 private:
-    int id; 
-    Session session;
+    const int id ; 
+    const Session session;
     string status; // Marcada, confirmada, cancelada Xou finalizada
-    //short room;
-    int patientId;
-    int doctorId;
-    string procedure; //Exame Xou consulta, apenas. 
+    //const short room;
+    const int patientID;
+    const int doctorID;
+    const string procedure; //Exame Xou consulta, apenas. 
 
 public:
     Appointment() = default;
+
+    //getters: 
+    int getId(); 
+    Session getSession();
+    string getStatus();
+    int getPatientID();
+    int getDoctorID();
+    string getProcedure();
+
+    //setters: 
+    void setStatus(string newStatus); //precisa conferir se é um status válido!
     // Métodos?? 
 
 };
