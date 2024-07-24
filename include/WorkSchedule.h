@@ -22,7 +22,18 @@ public:
     //getHoraInicio() =  getSession().getTime(); 
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
 
-    // Outros métodos herdados da Session podem ser usados diretamente
+    WorkSchedule searchByPatient(int byPatientID);
+    WorkSchedule searchByTime();
+    WorkSchedule searchById();
+    WorkSchedule searchByDate();
+    WorkSchedule searchByStatus();
+
+    Section lastSection(vector<Section> sections);
+    // next
+    Section nextWorkSection();
+    Appointment nextAppointment();
+    // Pra marcar uma consulta: 
+    Section nextAvaiableSection();
 };
 
 #endif // WORKSCHEDULE_H
