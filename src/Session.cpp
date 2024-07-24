@@ -88,8 +88,3 @@ bool Session::isBetween(Session session1, Session session2){ // Intervalo fechad
     }
     return false;    
 }
-
-
-bool Session::isBetween(Session session1, Session session2){
-
-}
