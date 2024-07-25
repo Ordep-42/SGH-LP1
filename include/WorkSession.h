@@ -21,6 +21,7 @@ public:
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
 
     // Outros métodos herdados da Session podem ser usados diretamente
+    // IsEqual??
 };
 
 #endif // WORKSESSION_H
