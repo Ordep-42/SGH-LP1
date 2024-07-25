@@ -1,5 +1,4 @@
 #include "../include/User.h"
-#include <string>
 
 using namespace std;
 
@@ -30,6 +29,8 @@ string User::getName() { return name; }
 
 Date User::getBirthDate() { return birthDate; }
 
+string User::getCpf() { return cpf; }
+
 Gender User::getGender() { return gender; }
 
 CivilStatus User::getCivilStatus() { return civilStatus; }
@@ -40,12 +41,16 @@ string User::getPhoneNumber() { return phoneNumber; }
 
 string User::getEmail() { return email; }
 
-// Setters (a menos de userID, e BirthDate!!)
+// Setters (a menos de userID!!)
 void User::setLogin(string newLogin) { login = newLogin; }
 
 void User::setPassword(string newPassWord) { password = newPassWord; }
 
 void User::setName(string newName) { name = newName; }
+
+void User::setBirthDate(Date newBirthDate) { birthDate = newBirthDate; }
+
+void User::setCpf(string newCpf) { cpf = newCpf; }
 
 void User::setGender(Gender newGender) { gender = newGender; }
 
