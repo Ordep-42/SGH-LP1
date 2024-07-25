@@ -41,6 +41,7 @@ class User {
 
     User() {}
 
+
     unsigned short getUserID();
     string getLogin();
     string getPassword();
