@@ -59,24 +59,15 @@ public:
   //void setWorkSchld(vector<Section> newWorkSchld);
 
   Schedule() = default;
-  void makeAppointment(Appointment newAppointment);
-  vector<Appointment> searchByPatient(int byPatientID);
-  //Schedule searchByTime();
-  //Schedule searchById();
-  vector<Appointment> searchByDate();
-  vector<Appointment> searchByStatus();
-  
+    
   //bool checkAvailability(Date tryDate, Time tryTime); // tryDate to the CatchTime ;)
-  bool isAppointed(Section test);
+  
 
-  Section nextWorkSection();
-  Appointment nextAppointment();
-  // Pra marcar uma consulta: 
-  Section nextAvaiableSection();
+  
 
 };
 
 // Funções auxiliares
-Section lastSection(vector<Section> sections);
+
 
 #endif // !SCHEDULE_H
