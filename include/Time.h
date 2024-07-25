@@ -1,8 +1,6 @@
 #ifndef TIME_H
 #define TIME_H
 
-#include "User.h"
-#include "Time.h"
 #include <string>
 #include <vector>
 
@@ -17,6 +15,7 @@ private:
 
 public:
     Time(short newHour, short newMin, short newSec);
+    Time(); 
 
     //getters:
     short getHour();
@@ -38,10 +37,13 @@ public:
     bool isEqualTo(Time anotherTime);
     bool isBeforeThan(Time thisTime);
 
+    bool isBetween(Time time1, Time time2);
 
 };
 
 // Funções auxiliares
+Time firsTime(Time time1, Time time2);
+Time lastTime(Time time1, Time time2);
 
 
 #endif // !TIME_H
