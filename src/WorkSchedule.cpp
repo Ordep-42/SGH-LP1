@@ -167,7 +167,7 @@ void WorkSchedule::safeAdd(WorkSession addMe){
 }
 
 void WorkSchedule::safeAdd(vector<WorkSession> addMe){
-    if(addMe.size() == 0){ return ; }    
+    if(addMe.size() == 0){ return ; } // Precisa msm?
    
     for(WorkSession wSession : addMe){
         safeAdd(wSession);
