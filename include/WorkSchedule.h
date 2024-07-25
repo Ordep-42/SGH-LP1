@@ -13,7 +13,8 @@ private:
     vector<WorkSession> schedule; 
 
 public:
-    // Construtor
+    // Construtores*
+    WorkSchedule(/*vector<WorkSession> newSchedule,*/ int newId, int newDoctor_id);
     WorkSchedule(vector<WorkSession> newSchedule, int newId, int newDoctor_id);
     // Getters para os novos atributos
     
@@ -23,19 +24,33 @@ public:
 
     //getHoraInicio() =  getSession().getTime(); 
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
-
-    WorkSchedule searchByTimeBetween(Time time1, Time time2);
-    WorkSchedule searchByTimeBefore(Time thatTime);
+    bool testSession(Session testSession);
+        
+    //TIME:
+    WorkSchedule searchByTime(Time thatTime);
     WorkSchedule searchByTimeAfter(Time thatTime);
-    WorkSchedule searchByID(int id);
-    WorkSchedule searchByDate();
-    WorkSchedule searchByStatus();
+    WorkSchedule searchByTimeBefore(Time thatTime);
+    WorkSchedule searchByTimeBetween(Time time1, Time time2);
+    
 
+    //DATE: 
+    WorkSchedule searchByDate(Date thatDate);    
+    WorkSchedule searchByDateAfter(Date thatDate);
+    WorkSchedule searchByDateBefore(Date thatDate);
+    WorkSchedule searchByDateBetween(Date date1, Date date2);
+
+    //ANOTHER STUFF:
+    WorkSchedule searchByID(int id);
+    WorkSchedule removeWS(WorkSession removeMe);
     WorkSession lastSession(); // pelo vetor
     WorkSession nextWorkSection(); //pela data X time
+    void safeAdd(WorkSession addMe);
+    void safeAdd(vector<WorkSession> addMe);
+    //WorkSchedule searchByStatus();
     //Appointment nextAppointment();
-    // Pra marcar uma consulta: 
+    //Pra marcar uma consulta: 
     //Section nextAvaiableSection();
+    ///Sorts: 
 };
 
 #endif // WORKSCHEDULE_H
