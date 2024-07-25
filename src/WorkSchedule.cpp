@@ -26,11 +26,29 @@ WorkSchedule WorkSchedule::searchByTimeBetween(Time time1, Time time2){ // trata
     WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
     return wScheduleBtwn; 
 }
-// Time before 
-// Time after
-WorkSchedule WorkSchedule::searchByTime(){
 
+WorkSchedule WorkSchedule::searchByTimeBefore(Time thatTime){ // tratar pra ver se veio vazio ou se não. 
+    vector<WorkSession> vetorWS; 
+    for(WorkSession wSession : schedule){
+        if((wSession.getTime().isBeforeThan(thatTime))||thatTime.isEqualTo(wSession.getTime())){
+            vetorWS.push_back(wSession); 
+        }
+    }
+    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    return wScheduleBtwn; 
 }
+
+WorkSchedule WorkSchedule::searchByTimeAfter(Time thatTime){ // tratar pra ver se veio vazio ou se não. 
+    vector<WorkSession> vetorWS; 
+    for(WorkSession wSession : schedule){
+        if((thatTime.isBeforeThan(wSession.getTime()))||thatTime.isEqualTo(wSession.getTime())){
+            vetorWS.push_back(wSession); 
+        }
+    }
+    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    return wScheduleBtwn; 
+}
+
 
 // test Date
 // Date between 
@@ -52,7 +70,9 @@ WorkSchedule WorkSchedule::searchByID(int testID){ // Caso o retorno tenha size 
     return scheduleByPatient;
 }
 
+// AnotherStuff:
 
+// removeWS
 //WorkSession lastSession(vector<WorkSession> sections);
 // next
 WorkSession WorkSchedule:: lastSession(){ // Safe

@@ -24,8 +24,9 @@ public:
     //getHoraInicio() =  getSession().getTime(); 
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
 
-    WorkSchedule searchByTime();
     WorkSchedule searchByTimeBetween(Time time1, Time time2);
+    WorkSchedule searchByTimeBefore(Time thatTime);
+    WorkSchedule searchByTimeAfter(Time thatTime);
     WorkSchedule searchByID(int id);
     WorkSchedule searchByDate();
     WorkSchedule searchByStatus();
