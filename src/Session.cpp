@@ -105,11 +105,8 @@ string getSecondPart(string firstSecond){
 // TimeDateString
 string Session::toTDString(){
   string sessionString = "";
-  //sessionString += (this->date.toString()) + " " + (this->time.toString());  
   sessionString += (this->time.toString()) + " " + (this->date.toString()); 
-  // troque as linhas pra alterar a formatação, mas não esqueça:
-  // Mude também os nomes "Time" e "Date" nas duas funções acima.
-
+  
   return sessionString;
 }
 
