@@ -3,6 +3,12 @@
 
 using namespace std;
 
+Appointment::Appointment(int newID, Session newSession, string newStatus, int newPatientID, int newDoctorID, string newProcedure)
+    : id(newID), session(newSession), status(newStatus), patientID(newPatientID), doctorID(newDoctorID), procedure(newProcedure) {}
+
+Appointment::Appointment(int newID, Session newSession, int newPatientID, int newDoctorID, string newProcedure)
+    : id(newID), session(newSession), status("scheduled"), patientID(newPatientID), doctorID(newDoctorID), procedure(newProcedure) {}
+
 // Getters
 int Appointment::getId() { return id; }
 

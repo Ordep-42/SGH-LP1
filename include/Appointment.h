@@ -18,6 +18,8 @@ private:
     const string procedure; //Exame Xou consulta, apenas. 
 
 public:
+    Appointment(int newID, Session newSession, string newStatus, int newPatientID, int newDoctorID, string newProcedure); 
+    Appointment(int newID, Session newSession, int newPatientID, int newDoctorID, string newProcedure);
     Appointment() = default;
 
     //getters: 
