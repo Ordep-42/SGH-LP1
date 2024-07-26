@@ -8,31 +8,41 @@
 using namespace std;
 
 class ScheduledAppointments {
-private:
+private:  
+    int id;
     vector<Appointment> appointments;
     int doctor_id; //??
     // se colocar doctor id, vai ter q fazer um vetor de scheduled appointments pra acessar o de todos os medicos, oq é bem viavel.
 
 public:
+    ScheduledAppointments(int id, vector<Appointment> appointments, int doctor_id);
+    ScheduledAppointments(int id, int doctor_id);
     ScheduledAppointments() = default;
 
+    // GETTERS:
+    int getId();
     ScheduledAppointments getAppointments();
-    // Métodos
-    void makeAppointment(Appointment newAppointment);
+    int getDoctorId(); 
+
+    // SEARCH'S: 
+    bool checkSessionPresence(Session testMe);
+    bool testSessionAvaiability(Session testMe);
     vector<Appointment> searchByPatient(int byPatientID);
     //Schedule searchByTime();
     //Schedule searchById();
     vector<Appointment> searchByDate();
     vector<Appointment> searchByStatus();
 
-    bool isAppointed(Session test);
-    Section lastSection(vector<Section> sections);
-    // next
-
-    Section nextWorkSection();
+    // ANOTHER STUFF:
+    void safeAdd(Appointment addMe);
+    void safeAdd(vector<Appointment> addMe);
+    bool isAppointed(Session test);   
     Appointment nextAppointment();
+    Appointment lastAppointment();
+
     // Pra marcar uma consulta: 
-    Section nextAvaiableSection();
+    //Session nextAvaiableSection();
+    // make appointment
 };
 
 // Funções auxiliares

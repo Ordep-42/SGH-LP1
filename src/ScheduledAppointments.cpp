@@ -1,14 +1,61 @@
-WorkSchedule WorkSchedule::searchByStatus(string testStatus){
-    vector<WorkSession> vetorWS;  
-    for(WorkSession wSession : schedule){
-        if(wSession.getStatus() == testStatus){
-            vetorWS.push_back(wSession);   
-        }
-    } 
-    // Sem ser um vetor vamos ter mais dados, vai que, né... 
-    WorkSchedule scheduleByPatient(vetorWS, id, doctor_id); 
-    return scheduleByPatient;
+#include "../include/ScheduledAppointments.h"
+
+using namespace std; 
+
+ScheduledAppointments::ScheduledAppointments(int newID, int newDoctorID) 
+    : id(newID), doctor_id(newDoctorID), appointments()  {}
+
+ScheduledAppointments::ScheduledAppointments(int newID, vector<Appointment> newAppointments, int newDoctorID)
+    : id(newID), doctor_id(newDoctorID), appointments()  { safeAdd(newAppointments); }
+
+
+void ScheduledAppointments::safeAdd(Appointment addMe){    
+    if(testSessionAvaiability(addMe.getSession())){
+        appointments.push_back(addMe);
+    }
+    return ;
 }
+
+void ScheduledAppointments::safeAdd(vector<Appointment> addMe){
+    for(Appointment app : addMe){
+        safeAdd(app);
+    }
+    return ;
+}
+
+// "check" teria sido um nome melhor??
+bool ScheduledAppointments::testSessionPresence(Session testMe){
+    bool isIn = false;
+    for(Appointment app : appointments){
+        if(app.getSession().isEqualTo(testMe)){
+            isIn = true;
+        }
+    }
+    return isIn; 
+}
+
+bool ScheduledAppointments::testSessionAvaiability(Session testMe){
+    bool isAvaiable = true;
+    for(Appointment app : appointments){
+        if(( app.getSession().isEqualTo(testMe)) && (app.getStatus() != "canceled") ){
+            isAvaiable = false;
+        }
+    }
+    return isAvaiable; 
+}
+
+
+// WorkSchedule WorkSchedule::searchByStatus(string testStatus){
+//     vector<WorkSession> vetorWS;  
+//     for(WorkSession wSession : schedule){
+//         if(wSession.getStatus() == testStatus){
+//             vetorWS.push_back(wSession);   
+//         }
+//     } 
+//     // Sem ser um vetor vamos ter mais dados, vai que, né... 
+//     WorkSchedule scheduleByPatient(vetorWS, id, doctor_id); 
+//     return scheduleByPatient;
+// }
 
 
 
