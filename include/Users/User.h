@@ -66,6 +66,9 @@ class User {
     void setPhoneNumber(string newPhoneNumber);
     void setEmail(string newEmail);
     void setRole(Roles::Role role);
+
+    virtual ~User() = default;
+    virtual void whoAmI() {}
 };
 
 // Funções auxiliares

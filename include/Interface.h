@@ -2,6 +2,7 @@
 #define INTERFACE_H
 
 #include "./Users/User.h"
+#include "Users/Patient.h"
 #include <string>
 #include <vector>
 
@@ -41,6 +42,8 @@ class HospitalInterface {
     void setIsLogged(bool);
     void setAccessLevel(int);
     void setCurrentUser(User *);
+
+    void marcarConsulta();
 };
 
 // Funções auxiliares

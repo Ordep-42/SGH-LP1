@@ -5,6 +5,7 @@
 #include "../Users/Doctor.h"
 #include "../Users/Manager.h"
 #include "../Users/User.h"
+#include <set>
 #include <sqlite3.h>
 #include <string>
 #include <vector>
@@ -32,7 +33,7 @@ class HospitalDatabase {
     static void deletePatient(short unsigned);
 
     static void createDoctor(Doctor);
-    static void listDoctors();
+    static set<int> listDoctors();
     static void deleteDoctor(short unsigned);
 
     static void createAppointment(User doctor, User patient, Date);

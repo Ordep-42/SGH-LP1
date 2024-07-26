@@ -1,10 +1,8 @@
 #include "../../../include/Interface.h"
+#include <cstdlib>
 
 void HospitalInterface::attendantInterface() {
-    if (!this->assertAccessLevel(2)) {
-        HospitalInterface::entryProgramInterface();
-    }
-
+    system("clear");
     titleMaker("CENTRAL DO ATENDENTE");
 
     vector<string> choices;

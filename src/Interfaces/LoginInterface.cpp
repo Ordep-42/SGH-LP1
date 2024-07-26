@@ -1,10 +1,12 @@
 
 #include "../../include/Interface.h"
+#include <cstdlib>
 #include <iostream>
 #include <map>
 #include <unistd.h>
 
 void HospitalInterface::loginInterface() {
+    system("clear");
     vector<string> login_entries;
 
     map<int, Roles::Role> roleMap = {
@@ -33,7 +35,6 @@ void HospitalInterface::loginInterface() {
     string senha;
 
     // Os getchar's *comem* os enter's
-    titleMaker("LOGIN");
     cout << "Digite o seu nome: \n";
     cin >> nome;
     getchar();
@@ -59,12 +60,16 @@ void HospitalInterface::loginInterface() {
     switch (tipoDeUsuario) {
     case 1:
         patientInterface();
+        break;
     case 2:
         attendantInterface();
+        break;
     case 3:
         doctorInterface();
+        break;
     case 4:
         managerInterface();
+        break;
     }
 
     sleep(1);

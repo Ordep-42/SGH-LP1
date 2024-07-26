@@ -10,8 +10,8 @@
 using namespace std;
 
 void HospitalInterface::entryProgramInterface() {
+    system("clear");
     vector<string> initial_choices;
-
     int escolha = 0;
 
     initial_choices.push_back("Fazer login");
