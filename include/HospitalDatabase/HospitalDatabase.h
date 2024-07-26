@@ -1,10 +1,10 @@
 #ifndef HOSPITAL_DATABASE_H
 #define HOSPITAL_DATABASE_H
 
-#include "../Date.h"
-#include "../Doctor.h"
-#include "../Manager.h"
-#include "../User.h"
+#include "../Time/Date.h"
+#include "../Users/Doctor.h"
+#include "../Users/Manager.h"
+#include "../Users/User.h"
 #include <sqlite3.h>
 #include <string>
 #include <vector>

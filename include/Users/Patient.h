@@ -1,14 +1,25 @@
 #ifndef PATIENT_H
 #define PATIENT_H
-#include "MedicalFile.h"
-#include "Schedule.h"
+#include "../MedicalFile.h"
+#include "../Time/Schedule.h"
 
 using namespace std;
 
 typedef enum relations {
-    Pai, Mãe, Irmão, Irmã, Avô, Avó, 
-    Tio, Tia, Sobrinho, Sobrinha,
-    Esposo, Esposa, Filho, Filha, Outro // Não consegui pensar em mais nenhum e acho q ta bom!
+    Pai,
+    Mãe,
+    Irmão,
+    Irmã,
+    Avô,
+    Avó,
+    Tio,
+    Tia,
+    Sobrinho,
+    Sobrinha,
+    Esposo,
+    Esposa,
+    Filho,
+    Filha,
 } Relation;
 
 struct EmergencyContact {
@@ -34,7 +45,8 @@ class Patient : public User {
             string newName, Date newBirthDate, string newCpf, Gender newGender,
             CivilStatus newCivilStatus, string newAddress,
             string newPhoneNumber, string newEmail,
-            vector<EmergencyContact> newEmergencyContacts, MedicalFile newMedicalFile);
+            vector<EmergencyContact> newEmergencyContacts,
+            MedicalFile newMedicalFile);
 
     Patient() {}
 
@@ -43,7 +55,7 @@ class Patient : public User {
     vector<Appointment> getScheduledAppointments();
     vector<Appointment> getEndedAppointments();
     vector<Appointment> getCanceledAppointments();
-    
+
     void addEmergencyContact(EmergencyContact newEmergencyContact);
     void makeAppointment(Appointment newAppointment);
     bool cancelScheduledAppointment(Appointment appointment);

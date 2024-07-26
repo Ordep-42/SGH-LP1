@@ -1,5 +1,5 @@
-#include "../include/Manager.h"
-#include "../include/HospitalDatabase/HospitalDatabase.h"
+#include "../../../include/Users/Manager.h"
+#include "../../../include/HospitalDatabase/HospitalDatabase.h"
 
 Manager::Manager(string name, string password)
     : User(name, password, Roles::Manager) {}

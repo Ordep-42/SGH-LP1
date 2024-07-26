@@ -1,4 +1,4 @@
-#include "Appointment.h"
+#include "../../include/Time/Appointment.h"
 #include <stdexcept>
 
 using namespace std;
@@ -18,10 +18,13 @@ string Appointment::getProcedure() { return procedure; }
 
 // Setters
 void Appointment::setStatus(string newStatus) {
-    if (newStatus == "Marcada" || newStatus == "Confirmada" || newStatus == "Cancelada" || newStatus == "Finalizada") {
+    if (newStatus == "Marcada" || newStatus == "Confirmada" ||
+        newStatus == "Cancelada" || newStatus == "Finalizada") {
         status = newStatus;
     } else {
-        throw invalid_argument("Status inválido!"); // isso aqui foi gpt, acho que basta colocar a propria string no status, mas oq eu sei, ne?
+        throw invalid_argument(
+            "Status inválido!"); // isso aqui foi gpt, acho que basta colocar a
+                                 // propria string no status, mas oq eu sei, ne?
     }
 }
 

@@ -1,15 +1,20 @@
 // Date.cpp
-#include "../include/Date.h"
+#include "../../include/Time/Date.h"
 
 using namespace std;
 
 // ConstrutorES*:
 
 Date::Date(short newDays, short newYear)
-    : days(newDays), year(newYear), isLeapYear(leapYearTest(newYear)) { fixDate(); }
+    : days(newDays), year(newYear), isLeapYear(leapYearTest(newYear)) {
+    fixDate();
+}
 
 Date::Date(short newDay, short newMonth, short newYear)
-    : days(dateToDaysBF(newDay,newMonth, newYear)), year(newYear), isLeapYear(leapYearTest(newYear)) { fixDate(); }
+    : days(dateToDaysBF(newDay, newMonth, newYear)), year(newYear),
+      isLeapYear(leapYearTest(newYear)) {
+    fixDate();
+}
 
 // ------------------------------------------------------------------------------
 // Métodos:
@@ -119,7 +124,8 @@ short Date::getDays() const { return this->days; }
 // }
 
 bool Date::isBeforeThan(Date thatDate) {
-    fixDate(); thatDate.fixDate(); //fixers
+    fixDate();
+    thatDate.fixDate(); // fixers
     if (year > thatDate.getYear()) {
         return false;
     } else if (year == thatDate.getYear()) {
@@ -130,15 +136,15 @@ bool Date::isBeforeThan(Date thatDate) {
     return true;
 }
 
-Date firstDate(Date date1, Date date2){ // "min" binário
-    if(date1.isBeforeThan(date2)){
+Date firstDate(Date date1, Date date2) { // "min" binário
+    if (date1.isBeforeThan(date2)) {
         return date1;
     }
     return date2;
 }
 
-Date lastDate(Date date1, Date date2){ // "max" binário
-    if(date1.isBeforeThan(date2)){
+Date lastDate(Date date1, Date date2) { // "max" binário
+    if (date1.isBeforeThan(date2)) {
         return date2;
     }
     return date1;
@@ -160,43 +166,56 @@ void Date::fixDate() {
     }
 }
 
-bool Date::isEqualTo(Date thatDate){
-  fixDate(); thatDate.fixDate(); //fixers
-  if(days == thatDate.getDays() && year == thatDate.getYear()){
-    return true;
-  }
-  else{
-    return false;
-  }
+bool Date::isEqualTo(Date thatDate) {
+    fixDate();
+    thatDate.fixDate(); // fixers
+    if (days == thatDate.getDays() && year == thatDate.getYear()) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-bool Date::isBetween(Date date1, Date date2){ // Intervalo fechado (incluindo data 1 e data 2)
-    Date first = firstDate(date1, date2); Date last = lastDate(date1, date2); 
-    if((isBeforeThan(last) && first.isBeforeThan(*this)) || isEqualTo(first) || isEqualTo(last)){  //talvez esse asterisco bugue muito no futuro... CUIDADO!!!
+bool Date::isBetween(
+    Date date1, Date date2) { // Intervalo fechado (incluindo data 1 e data 2)
+    Date first = firstDate(date1, date2);
+    Date last = lastDate(date1, date2);
+    if ((isBeforeThan(last) && first.isBeforeThan(*this)) || isEqualTo(first) ||
+        isEqualTo(last)) { // talvez esse asterisco bugue muito no futuro...
+                           // CUIDADO!!!
         return true;
     }
-    return false;    
+    return false;
 }
 
-string Date::toString(){
+string Date::toString() {
     string dateString = "";
     // Dias
-    if(getDay() < 10) { dateString += "0"; }
+    if (getDay() < 10) {
+        dateString += "0";
+    }
     dateString += to_string(getDay()) + "/";
     // Mês
-    if(getMonth() < 10) { dateString += "0"; }
+    if (getMonth() < 10) {
+        dateString += "0";
+    }
     dateString += to_string(getMonth()) + "/";
     // Ano
-    if(getYear() < 1000) { dateString += "0"; }
-    if(getYear() < 100) { dateString += "0"; }
-    if(getYear() < 10) { dateString += "0"; }
+    if (getYear() < 1000) {
+        dateString += "0";
+    }
+    if (getYear() < 100) {
+        dateString += "0";
+    }
+    if (getYear() < 10) {
+        dateString += "0";
+    }
     dateString += to_string(getYear());
-
 
     return dateString;
 }
 
-Date stringToDate(string convertMe){
+Date stringToDate(string convertMe) {
     short day = stoi(convertMe.substr(0, 2));
     short month = stoi(convertMe.substr(3, 2));
     short year = stoi(convertMe.substr(6, 4));

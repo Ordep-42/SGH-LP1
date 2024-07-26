@@ -1,7 +1,7 @@
 #ifndef DOCTOR_H
 #define DOCTOR_H
 
-#include "Schedule.h"
+#include "../Time/Schedule.h"
 #include "User.h"
 
 using namespace std;

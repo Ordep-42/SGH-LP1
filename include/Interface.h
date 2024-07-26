@@ -1,7 +1,7 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#include "User.h"
+#include "./Users/User.h"
 #include <string>
 #include <vector>
 

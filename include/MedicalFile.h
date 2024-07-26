@@ -1,19 +1,15 @@
 // User.h
 #ifndef MEDICALFILE_H
 #define MEDICALFILE_H
-#include "Date.h"
+#include "./Time/Date.h"
 #include <string>
 #include <vector>
 
 using namespace std;
 
-typedef enum bloodTypes {
-    AB, A, B, O
-} BloodType;
+typedef enum bloodTypes { AB, A, B, O } BloodType;
 
-typedef enum rhFactors {
-    Positivo, Negativo
-} RhFactor;
+typedef enum rhFactors { Positivo, Negativo } RhFactor;
 
 class MedicalFile {
   private:
@@ -26,8 +22,9 @@ class MedicalFile {
     vector<string> notes;
 
   public:
-    MedicalFile(BloodType newBloodType, RhFactor newRhFactor, 
-                vector<string> newAllergies, vector<string> newCurrentMedications,
+    MedicalFile(BloodType newBloodType, RhFactor newRhFactor,
+                vector<string> newAllergies,
+                vector<string> newCurrentMedications,
                 vector<string> newVaccinationRegistry, vector<string> newNotes);
 
     MedicalFile() {}

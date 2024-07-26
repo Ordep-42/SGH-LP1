@@ -1,5 +1,5 @@
-#include "../include/Doctor.h"
-#include "../include/HospitalDatabase/HospitalDatabase.h"
+#include "../../../include/Users/Doctor.h"
+#include "../../../include/HospitalDatabase/HospitalDatabase.h"
 #include <string>
 
 Doctor::Doctor(string name, string password, string especialidade)

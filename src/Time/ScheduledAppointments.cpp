@@ -1,63 +1,62 @@
-#include "../include/ScheduledAppointments.h"
+#include "../../include/Time/ScheduledAppointments.h"
 
-using namespace std; 
+using namespace std;
 
-ScheduledAppointments::ScheduledAppointments(int newID, int newDoctorID) 
-    : id(newID), doctor_id(newDoctorID), appointments()  {}
+ScheduledAppointments::ScheduledAppointments(int newID, int newDoctorID)
+    : id(newID), doctor_id(newDoctorID), appointments() {}
 
-ScheduledAppointments::ScheduledAppointments(int newID, vector<Appointment> newAppointments, int newDoctorID)
-    : id(newID), doctor_id(newDoctorID), appointments()  { safeAdd(newAppointments); }
+ScheduledAppointments::ScheduledAppointments(
+    int newID, vector<Appointment> newAppointments, int newDoctorID)
+    : id(newID), doctor_id(newDoctorID), appointments() {
+    safeAdd(newAppointments);
+}
 
-
-void ScheduledAppointments::safeAdd(Appointment addMe){    
-    if(testSessionAvaiability(addMe.getSession())){
+void ScheduledAppointments::safeAdd(Appointment addMe) {
+    if (testSessionAvaiability(addMe.getSession())) {
         appointments.push_back(addMe);
     }
-    return ;
+    return;
 }
 
-void ScheduledAppointments::safeAdd(vector<Appointment> addMe){
-    for(Appointment app : addMe){
+void ScheduledAppointments::safeAdd(vector<Appointment> addMe) {
+    for (Appointment app : addMe) {
         safeAdd(app);
     }
-    return ;
+    return;
 }
 
-// "check" teria sido um nome melhor??
-bool ScheduledAppointments::testSessionPresence(Session testMe){
+bool ScheduledAppointments::checkSessionPresence(Session testMe) {
     bool isIn = false;
-    for(Appointment app : appointments){
-        if(app.getSession().isEqualTo(testMe)){
+    for (Appointment app : appointments) {
+        if (app.getSession().isEqualTo(testMe)) {
             isIn = true;
         }
     }
-    return isIn; 
+    return isIn;
 }
 
-bool ScheduledAppointments::testSessionAvaiability(Session testMe){
+bool ScheduledAppointments::testSessionAvaiability(Session testMe) {
     bool isAvaiable = true;
-    for(Appointment app : appointments){
-        if(( app.getSession().isEqualTo(testMe)) && (app.getStatus() != "canceled") ){
+    for (Appointment app : appointments) {
+        if ((app.getSession().isEqualTo(testMe)) &&
+            (app.getStatus() != "canceled")) {
             isAvaiable = false;
         }
     }
-    return isAvaiable; 
+    return isAvaiable;
 }
 
-
 // WorkSchedule WorkSchedule::searchByStatus(string testStatus){
-//     vector<WorkSession> vetorWS;  
+//     vector<WorkSession> vetorWS;
 //     for(WorkSession wSession : schedule){
 //         if(wSession.getStatus() == testStatus){
-//             vetorWS.push_back(wSession);   
+//             vetorWS.push_back(wSession);
 //         }
-//     } 
-//     // Sem ser um vetor vamos ter mais dados, vai que, né... 
-//     WorkSchedule scheduleByPatient(vetorWS, id, doctor_id); 
+//     }
+//     // Sem ser um vetor vamos ter mais dados, vai que, né...
+//     WorkSchedule scheduleByPatient(vetorWS, id, doctor_id);
 //     return scheduleByPatient;
 // }
-
-
 
 // #include "../include/Schedule.h"
 // #include <algorithm>
@@ -65,19 +64,22 @@ bool ScheduledAppointments::testSessionAvaiability(Session testMe){
 
 // //Schedule() = default;
 
-//  vector<Appointment> Schedule::getSchldApptms() { return scheduledAppointments; }
-//  vector<Section> Schedule::getWorkSchld() { return workSchedule; }
+//  vector<Appointment> Schedule::getSchldApptms() { return
+//  scheduledAppointments; } vector<Section> Schedule::getWorkSchld() { return
+//  workSchedule; }
 
 // // confira se é seguro chamar esse método antes de o chamar
-// void Schedule::makeAppointment(Appointment newAppointment) { scheduledAppointments.push_back(newAppointment); }
+// void Schedule::makeAppointment(Appointment newAppointment) {
+// scheduledAppointments.push_back(newAppointment); }
 
 // // depois mudamos como lidar com os Id's
 // vector<Appointment> Schedule::searchByPatient(int byPatientID){
-//   vector<Appointment> patientAppointments; 
+//   vector<Appointment> patientAppointments;
 //   for(Appointment appointment : patientAppointments){
-//     if(appointment.patientID == byPatientID) { patientAppointments.push_back(appointment); }
+//     if(appointment.patientID == byPatientID) {
+//     patientAppointments.push_back(appointment); }
 //   }
-  
+
 //   return patientAppointments;
 // }
 
@@ -91,55 +93,56 @@ bool ScheduledAppointments::testSessionAvaiability(Session testMe){
 //   return scheduledAppointments;
 // }
 
-
-
 // bool Schedule::isAppointed(Section test){ //nome meme, pse...
 //    for(Appointment appointment : scheduledAppointments){
-//     if(sectionEquals(appointment.section, test)) { return true; } //Falta verificar o status da consulta!!!
+//     if(sectionEquals(appointment.section, test)) { return true; } //Falta
+//     verificar o status da consulta!!!
 //   }
 
 //   return false;
-// } 
+// }
 
 // Section Schedule::nextWorkSection(){ // o mais recente em tempo
-//   Time timeC(-1,-1,-1); Date dataC(-1, -1); 
+//   Time timeC(-1,-1,-1); Date dataC(-1, -1);
 //   Section sectionC(timeC, dataC); // de Candidate
 //   if(workSchedule.size() == 0) { return sectionC; }
-  
-//   sectionC.date = workSchedule[0].date; sectionC.time = workSchedule[0].time;   
+
+//   sectionC.date = workSchedule[0].date; sectionC.time = workSchedule[0].time;
 //   for(Section section : workSchedule){
-//     if(sectionIsBeforethan(section, sectionC)){ 
-//       sectionC.date = section.date; sectionC.time = section.time; 
+//     if(sectionIsBeforethan(section, sectionC)){
+//       sectionC.date = section.date; sectionC.time = section.time;
 //     }
 //   }
 
-//   return sectionC;  
+//   return sectionC;
 // }
 
 // // Pro médico conferir, sei lá... Tbm vai servir pra uma outra função chamar.
 // Appointment Schedule::nextAppointment(){
-//   Time timeC(-1,-1,-1); Date dataC(-1, -1); 
+//   Time timeC(-1,-1,-1); Date dataC(-1, -1);
 //   Section sectionC(timeC, dataC); // de Candidate
 //   Appointment appointmentC(sectionC, "erro", -1);
 //   if(scheduledAppointments.size() == 0) { return appointmentC; }
-  
+
 //   appointmentC = scheduledAppointments[0];
 //   for(Appointment appointment : scheduledAppointments){
-//     if(sectionIsBeforethan(appointment.section, appointmentC.section)){ // FALTA VERIFICAR O STATUS!!!! 
+//     if(sectionIsBeforethan(appointment.section, appointmentC.section)){ //
+//     FALTA VERIFICAR O STATUS!!!!
 //       appointmentC = appointment;
 //     }
 //   }
-  
+
 //   return appointmentC;
 // }
 
 // Section Schedule::nextAvaiableSection(){
-//   Time timeC(-1,-1,-1); Date dateC(-1, -1); 
-//   Section sectionC(timeC, dateC); // de Candidate 
+//   Time timeC(-1,-1,-1); Date dateC(-1, -1);
+//   Section sectionC(timeC, dateC); // de Candidate
 //   if(workSchedule.size() == 0){ return sectionC; }
 
-//   vector<Section> sectionsToTry; sectionsToTry.assign(workSchedule.begin(), workSchedule.end());
-  
+//   vector<Section> sectionsToTry; sectionsToTry.assign(workSchedule.begin(),
+//   workSchedule.end());
+
 //   while(sectionsToTry.size() > 0){
 //     sectionC = nextSection(sectionsToTry);
 //     if(not isAppointed(sectionC)) { return sectionC; }
@@ -147,7 +150,7 @@ bool ScheduledAppointments::testSessionAvaiability(Session testMe){
 //   }
 
 //   sectionC.time = timeC; sectionC.date = dateC;
-//   return sectionC; 
+//   return sectionC;
 // }
 
 // // sortByDate!!
