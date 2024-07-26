@@ -1,5 +1,6 @@
 #include "../include/Time.h"
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -115,4 +116,33 @@ bool Time::isBetween(Time time1, Time time2){ // Intervalo fechado (incluindo da
         return true;
     }
     return false;    
+}
+
+string Time::toString(){
+    string timeString = "";
+    if(hour < 10) { timeString+= "0"; } 
+    timeString+= to_string(hour) + ":";
+    if(minute < 10) { timeString+= "0"; } 
+    timeString+= to_string(minute) + ":";
+    if(second < 10) { timeString+= "0"; } 
+    timeString+= to_string(second);
+
+    return timeString;
+}
+
+Time stringToTime(string convertMe) {
+    // stringSpliter: 
+    int hour, minute, second;
+    istringstream iss(convertMe);
+
+    // let's go! 
+    getline(iss, convertMe, ':'); 
+    hour = stoi(convertMe);
+    getline(iss, convertMe, ':'); 
+    minute = stoi(convertMe);
+    getline(iss, convertMe, ':'); 
+    second = stoi(convertMe);
+    
+    Time newTime(hour, minute, second);
+    return newTime;
 }

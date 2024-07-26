@@ -21,6 +21,7 @@ public:
 
     Time getTime();
     Date getDate();
+    string toString();
 
     void fixSession();
 
@@ -37,5 +38,7 @@ Session nextSessionFrom(vector<Session> sessions); // Seção mais recente em da
 Session lastSessionFrom(vector<Session> sections); // Última sessão feita
 Session firstSession(Session session1, Session session2);
 Session lastSession(Session session1, Session session2);
+
+Session StringToSession(Session thatSession);
 
 #endif // !SESSION_H

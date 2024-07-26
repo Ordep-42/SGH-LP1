@@ -88,3 +88,14 @@ bool Session::isBetween(Session session1, Session session2){ // Intervalo fechad
     }
     return false;    
 }
+
+string Session::toString(){
+  string sessionString = ;
+  
+}
+
+Session StringToSession(Session thatSession){
+
+}
+// S to String
+// String to S

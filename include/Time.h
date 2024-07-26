@@ -21,6 +21,7 @@ public:
     short getHour();
     short getMin();
     short getSec();
+    string toString();
 
     //setters: 
     void setHour(short newHour); 
@@ -39,11 +40,13 @@ public:
 
     bool isBetween(Time time1, Time time2);
 
+    
+
 };
 
 // Funções auxiliares
 Time firsTime(Time time1, Time time2);
 Time lastTime(Time time1, Time time2);
-
+Time stringToTime(string convertMe);
 
 #endif // !TIME_H
