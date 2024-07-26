@@ -3,11 +3,13 @@
 
 using namespace std;
 
-// Construtor:
+// ConstrutorES*:
 
 Date::Date(short newDays, short newYear)
-    : days(newDays), year(newYear), isLeapYear(leapYearTest(year)) { fixDate(); }
+    : days(newDays), year(newYear), isLeapYear(leapYearTest(newYear)) { fixDate(); }
 
+Date::Date(short newDay, short newMonth, short newYear)
+    : days(dateToDaysBF(newDay,newMonth, newYear)), year(newYear), isLeapYear(leapYearTest(newYear)) { fixDate(); }
 
 // ------------------------------------------------------------------------------
 // Métodos:
@@ -174,4 +176,29 @@ bool Date::isBetween(Date date1, Date date2){ // Intervalo fechado (incluindo da
         return true;
     }
     return false;    
+}
+
+string Date::toString(){
+    string dateString = "";
+    // Dias
+    if(getDay() < 10) { dateString += "0"; }
+    dateString += to_string(getDay()) + "/";
+    // Mês
+    if(getMonth() < 10) { dateString += "0"; }
+    dateString += to_string(getMonth()) + "/";
+    // Ano
+    if(getYear() < 1000) { dateString += "0"; }
+    if(getYear() < 100) { dateString += "0"; }
+    if(getYear() < 10) { dateString += "0"; }
+    dateString += to_string(getYear());
+
+
+    return dateString;
+}
+
+Date stringToDate(string convertMe){  // BEEEEEEEM mais simples doq o stringToTime, mas vou deixar ele lá pq em time q tá ganhando...
+    short day = stoi(convertMe.substr(0, 2));
+    short month = stoi(convertMe.substr(3, 2));
+    short year = stoi(convertMe.substr(6, 4));
+    return Date(day, month, year);
 }
