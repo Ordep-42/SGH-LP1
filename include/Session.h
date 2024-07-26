@@ -21,7 +21,10 @@ public:
 
     Time getTime();
     Date getDate();
-    string toString();
+    string getTimeString();
+    string getDateString();
+    string toTDString();
+    string toString(); // Ou toDTString
 
     void fixSession();
 
@@ -39,6 +42,11 @@ Session lastSessionFrom(vector<Session> sections); // Última sessão feita
 Session firstSession(Session session1, Session session2);
 Session lastSession(Session session1, Session session2);
 
-Session StringToSession(Session thatSession);
+Session tdStringToSession(string convertMe);
+Session stringToSession(string convertMe);
+string getFirstPart(string firstSecond);
+string getSecondPart(string firstSecond);
+
+
 
 #endif // !SESSION_H

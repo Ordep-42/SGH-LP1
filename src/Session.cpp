@@ -16,6 +16,10 @@ Time Session::getTime() { return time; }
 
 Date Session::getDate() { return date; }
 
+string Session::getDateString() { return getFirstPart(toString()); }
+
+string Session::getTimeString() { return getSecondPart(toString()); }
+
 void Session::fixSession() { time.fixTime(); date.fixDate(); }
 
 bool Session::isEqualTo(Session thatSession){ //diferenciando do "this->"
@@ -70,7 +74,7 @@ Session firstSession(Session session1, Session session2){ // "min" binário
     if(session1.getTime().isBeforeThan(session2.getTime())){ return session1; }
      return session2; 
 }  
-    
+
 
 // em termos do first:
 Session lastSession(Session session1, Session session2){ // "max" binário
@@ -89,13 +93,47 @@ bool Session::isBetween(Session session1, Session session2){ // Intervalo fechad
     return false;    
 }
 
+string getFirstPart(string firstSecond){
+  int pos = firstSecond.find(" ");
+  return firstSecond.substr(0,pos);
+}
+string getSecondPart(string firstSecond){
+  int pos = firstSecond.find(" ");
+  return firstSecond.substr(pos + 1);
+}
+
+// TimeDateString
+string Session::toTDString(){
+  string sessionString = "";
+  //sessionString += (this->date.toString()) + " " + (this->time.toString());  
+  sessionString += (this->time.toString()) + " " + (this->date.toString()); 
+  // troque as linhas pra alterar a formatação, mas não esqueça:
+  // Mude também os nomes "Time" e "Date" nas duas funções acima.
+
+  return sessionString;
+}
+
 string Session::toString(){
-  string sessionString = ;
+  string sessionString = toTDString();
+  string time = getFirstPart(sessionString)
+       , date = getSecondPart(sessionString);
+
+  return date + " " + time;
+}
+
+Session tdStringToSession(string convertMe){
+  Session newSession(stringToTime(getFirstPart(convertMe)), 
+  stringToDate(getSecondPart(convertMe)));
   
+  return newSession;
 }
 
-Session StringToSession(Session thatSession){
+//Eu só flippei os gets oq deixou BEM gambiarroso!!
+Session stringToSession(string convertMe){
+  Session newSession(stringToTime(getSecondPart(convertMe)), 
+  stringToDate(getFirstPart(convertMe)));
 
+  return newSession;
 }
-// S to String
-// String to S
+
+

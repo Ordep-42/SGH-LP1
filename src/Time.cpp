@@ -4,12 +4,11 @@
 
 using namespace std;
 
-Time::Time(){
-    hour = -1; minute = -1; second = -1;
-}
-
 Time::Time(short newHour, short newMin, short newSec)
     : hour(newHour), minute(newMin), second(newSec) { fixTime(); }
+
+Time::Time()
+    : hour(-1), minute(-1), second(-1) {}
 
     //getters:
     short Time::getHour() { return hour; }
@@ -69,6 +68,7 @@ void Time::fixTime(){
 }
 
 // Dá pra subtrair horas :)
+// UM OVERLOAD CAIRIA BEM AQUI!!!
 void Time::sumTime(Time toSum){
     hour+= toSum.getHour();
     minute+= toSum.getMin();
@@ -117,6 +117,7 @@ bool Time::isBetween(Time time1, Time time2){ // Intervalo fechado (incluindo da
     }
     return false;    
 }
+
 
 string Time::toString(){
     string timeString = "";

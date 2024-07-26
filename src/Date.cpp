@@ -196,7 +196,7 @@ string Date::toString(){
     return dateString;
 }
 
-Date stringToDate(string convertMe){  // BEEEEEEEM mais simples doq o stringToTime, mas vou deixar ele lá pq em time q tá ganhando...
+Date stringToDate(string convertMe){
     short day = stoi(convertMe.substr(0, 2));
     short month = stoi(convertMe.substr(3, 2));
     short year = stoi(convertMe.substr(6, 4));
