@@ -42,8 +42,6 @@ class HospitalInterface {
     void setIsLogged(bool);
     void setAccessLevel(int);
     void setCurrentUser(User *);
-
-    void marcarConsulta();
 };
 
 // Funções auxiliares

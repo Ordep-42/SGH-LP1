@@ -1,7 +1,9 @@
 #ifndef DOCTOR_H
 #define DOCTOR_H
 
+#include "../Time/Appointment.h"
 #include "../Time/Schedule.h"
+#include "../Time/Session.h"
 #include "User.h"
 
 using namespace std;
@@ -21,11 +23,11 @@ class Doctor : public User {
   public:
     Doctor(string name, string password, string especialidade);
 
-    vector<Section> getWorkSchedule();
+    vector<Session> getWorkSchedule();
     vector<Appointment> getAppointments();
     vector<User> getAppointmentsByDate();
 
-    void doAppointment(Section);
+    void doAppointment(Session);
     void requestMedicalEquipment(Equipment);
 
     int getConsultCost();

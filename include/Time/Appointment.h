@@ -2,6 +2,7 @@
 #define APPOINTMENT_H
 
 #include "Session.h"
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -9,16 +10,16 @@ using namespace std;
 
 class Appointment {
   private:
-    const int id;
-    const Session session;
+    int id;
+    Session session;
     string status; // Marcada, confirmada, cancelada Xou finalizada
-    // const short room;
-    const int patientID;
-    const int doctorID;
-    const string procedure; // Exame Xou consulta, apenas.
+                   // const short room;
+    int patientID;
+    int doctorID;
+    string procedure; // Exame Xou consulta, apenas.
 
   public:
-    Appointment() = default;
+    Appointment(string, int, int, string, Session);
 
     // getters:
     int getId();
@@ -29,7 +30,16 @@ class Appointment {
     string getProcedure();
 
     // setters:
-    void setStatus(string newStatus); // precisa conferir se é um status válido!
+    void setStatus(string newStatus); // precisa conferir se é um status válido
+    void printAppointment() {
+        cout << "Appointment ID: " << id << endl;
+        cout << "Status: " << status << endl;
+        cout << "Patient ID: " << patientID << endl;
+        cout << "Doctor ID: " << doctorID << endl;
+        cout << "Procedure: " << procedure << endl;
+        cout << "Session Date: " << this->session.getDateString() << endl;
+        cout << "Session Time: " << session.getTimeString() << endl;
+    }
     // Métodos??
 };
 

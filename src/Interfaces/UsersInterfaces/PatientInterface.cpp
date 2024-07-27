@@ -91,5 +91,9 @@ void HospitalInterface::marcarConsulta() {
     cout << "Qual o tipo de consulta?\n";
     cin >> consultType;
     getchar();
-    Appointment novoAgendamento("Marcada", 3, 3, appointmentSession);
+
+    Appointment agendamentoMarcado =
+        Appointment("Marcado", 3, medId, consultType, appointmentSession);
+    // #TODO
+    // AGENDAR NO BANCO DE DADOS
 }
