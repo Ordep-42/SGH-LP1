@@ -50,6 +50,11 @@ class Patient : public User {
 
     Patient() {}
 
+    Patient(string nome, string senha) {
+        this->name = nome;
+        this->password = senha;
+    }
+
     vector<EmergencyContact> getEmergencyContacts();
     MedicalFile getMedicalFile();
     vector<Appointment> getScheduledAppointments();

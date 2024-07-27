@@ -20,6 +20,7 @@ class Appointment {
 
   public:
     Appointment(string, int, int, string, Session);
+    Appointment(int, string, int, int, string, Session);
 
     // getters:
     int getId();

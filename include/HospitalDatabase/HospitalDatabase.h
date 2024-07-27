@@ -4,6 +4,7 @@
 #include "../Time/Date.h"
 #include "../Users/Doctor.h"
 #include "../Users/Manager.h"
+#include "../Users/Patient.h"
 #include "../Users/User.h"
 #include <set>
 #include <sqlite3.h>
@@ -35,11 +36,12 @@ class HospitalDatabase {
     static void createDoctor(Doctor);
     static set<int> listDoctors();
     static void deleteDoctor(short unsigned);
+    static bool validateDoctor(string name, string password);
 
-    static void createAppointment(User doctor, User patient, Date);
+    static void createAppointment(Doctor doctor, Patient patient, Date);
     static void listAppointments();
     static void listAppointmentsByDoctor();
-    static void listAppointmentsByPatient();
+    static void listAppointmentsByPatient(int patientId);
     static void listAppointmentsByDate();
     static void deleteAppointment(short unsigned);
 

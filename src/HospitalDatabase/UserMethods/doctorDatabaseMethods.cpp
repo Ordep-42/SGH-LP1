@@ -3,7 +3,6 @@
 #include <iostream>
 #include <set>
 #include <string>
-#include <vector>
 
 void HospitalDatabase::createDoctor(Doctor doctor) {
     int returnCode = sqlite3_open("../data/hospital.db", &db);
@@ -86,3 +85,5 @@ void HospitalDatabase::deleteDoctor(unsigned short doctorId) {
 
     sqlite3_close(db);
 }
+
+bool HospitalDatabase::validateDoctor(string name, string password) {}

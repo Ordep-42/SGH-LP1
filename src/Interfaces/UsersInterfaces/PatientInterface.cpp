@@ -97,3 +97,12 @@ void HospitalInterface::marcarConsulta() {
     // #TODO
     // AGENDAR NO BANCO DE DADOS
 }
+
+void HospitalInterface::listarConsultas() {
+    system("clear");
+    titleMaker("LISTAR CONSULTAS");
+
+    HospitalDatabase::listAppointmentsByPatient(
+        this->getCurrentUser()->getUserID());
+    hr();
+}
