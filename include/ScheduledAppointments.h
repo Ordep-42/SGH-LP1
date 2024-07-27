@@ -10,9 +10,9 @@ using namespace std;
 class ScheduledAppointments {
 private:  
     int id;
-    vector<Appointment> appointments;
     int doctor_id; //??
-    // se colocar doctor id, vai ter q fazer um vetor de scheduled appointments pra acessar o de todos os medicos, oq é bem viavel.
+    vector<Appointment> appointments;
+    // se colocar doctor id, vai ter q fazer um vetor de scheduled appointments pra acessar o de todos os medicos, mas ainda é bem viável.
 
 public:
     ScheduledAppointments(int id, vector<Appointment> appointments, int doctor_id);
@@ -20,23 +20,40 @@ public:
     ScheduledAppointments() = default;
 
     // GETTERS:
-    int getId();
-    ScheduledAppointments getAppointments();
-    int getDoctorId(); 
+    int getID();
+    int getDoctorID(); 
+    vector<Appointment> getAppointments();
+    
 
     // SEARCH'S: 
-    bool checkSessionPresence(Session testMe);
-    bool testSessionAvaiability(Session testMe);
-    vector<Appointment> searchByPatient(int byPatientID);
-    //Schedule searchByTime();
-    //Schedule searchById();
-    vector<Appointment> searchByDate();
+    // Lembre que é só misturar searchbyStatus("canceled").searchbyDateAter();
+
+
+    //TIME:
+    ScheduledAppointments searchByTime(Time thatTime);
+    ScheduledAppointments searchByTimeAfter(Time thatTime);
+    ScheduledAppointments searchByTimeBefore(Time thatTime);
+    ScheduledAppointments searchByTimeBetween(Time time1, Time time2);
+
+    //DATE: 
+    ScheduledAppointments searchByDate(Date thatDate);    
+    ScheduledAppointments searchByDateAfter(Date thatDate);
+    ScheduledAppointments searchByDateBefore(Date thatDate);
+    ScheduledAppointments searchByDateBetween(Date date1, Date date2);
+
+    vector<Appointment> searchByPatient(int byPatientID);    
+    //Schedule searchById();    
     vector<Appointment> searchByStatus();
+
+    //CHECKERS:
+    bool testSessionPresence(Session testMe);
+    bool testSessionAvaiability(Session testMe);
+    bool isAppointed(Session test);  // Só pra ter um nome alternativo mais fácil...
 
     // ANOTHER STUFF:
     void safeAdd(Appointment addMe);
     void safeAdd(vector<Appointment> addMe);
-    bool isAppointed(Session test);   
+      
     Appointment nextAppointment();
     Appointment lastAppointment();
 

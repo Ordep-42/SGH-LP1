@@ -2,12 +2,27 @@
 
 using namespace std; 
 
+// --------------------------------------------------------------------------------------------
+// CONSTRUCTOR'S:
+// --------------------------------------------------------------------------------------------
+
 ScheduledAppointments::ScheduledAppointments(int newID, int newDoctorID) 
     : id(newID), doctor_id(newDoctorID), appointments()  {}
 
 ScheduledAppointments::ScheduledAppointments(int newID, vector<Appointment> newAppointments, int newDoctorID)
     : id(newID), doctor_id(newDoctorID), appointments()  { safeAdd(newAppointments); }
 
+// --------------------------------------------------------------------------------------------
+// GETTER'S:
+// --------------------------------------------------------------------------------------------
+
+int ScheduledAppointments::getID() { return id; }
+vector<Appointment> ScheduledAppointments::getAppointments() { return appointments; }
+int ScheduledAppointments::getDoctorID() { return doctor_id; } 
+
+// --------------------------------------------------------------------------------------------
+// ADD'S:
+// --------------------------------------------------------------------------------------------
 
 void ScheduledAppointments::safeAdd(Appointment addMe){    
     if(testSessionAvaiability(addMe.getSession())){
@@ -22,6 +37,10 @@ void ScheduledAppointments::safeAdd(vector<Appointment> addMe){
     }
     return ;
 }
+
+// --------------------------------------------------------------------------------------------
+// TEST'S:
+// --------------------------------------------------------------------------------------------
 
 // "check" teria sido um nome melhor??
 bool ScheduledAppointments::testSessionPresence(Session testMe){
@@ -42,6 +61,87 @@ bool ScheduledAppointments::testSessionAvaiability(Session testMe){
         }
     }
     return isAvaiable; 
+}
+
+// nome alternativo e legal
+bool ScheduledAppointments::isAppointed(Session test) { return testSessionAvaiability(test); }
+
+// --------------------------------------------------------------------------------------------
+// SEARCH'S:
+// --------------------------------------------------------------------------------------------
+
+//TIME:
+ScheduledAppointments ScheduledAppointments::searchByTime(Time thatTime){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getSession().getTime().isEqualTo(thatTime)) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+ScheduledAppointments ScheduledAppointments::searchByTimeAfter(Time thatTime){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(thatTime.isBeforeThan(app.getSession().getTime())) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+ScheduledAppointments ScheduledAppointments::searchByTimeBefore(Time thatTime){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getSession().getTime().isBeforeThan(thatTime)) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+ScheduledAppointments ScheduledAppointments::searchByTimeBetween(Time time1, Time time2){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getSession().getTime().isBetween(time1, time2)) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+//DATE: 
+ScheduledAppointments ScheduledAppointments::searchByDate(Date thatDate){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getSession().getDate().isEqualTo(thatDate)) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+ScheduledAppointments ScheduledAppointments::searchByDateAfter(Date thatDate){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(thatDate.isBeforeThan(app.getSession().getDate())) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+ScheduledAppointments ScheduledAppointments::searchByDateBefore(Date thatDate){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getSession().getDate().isBeforeThan(thatDate)) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+ScheduledAppointments ScheduledAppointments::searchByDateBetween(Date date1, Date date2){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getSession().getDate().isBetween(date1, date2)) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
 }
 
 

@@ -8,36 +8,6 @@
 
 using namespace std;
 
-struct Section {
-  Time time;
-  Date date; 
-
-  Section(Time newTime, Date newDate) 
-  : time(newTime), date(newDate) {}
-};
-
-struct Appointment {
-    // preciso por "const" aqui??
-    int id; // Essa necessidade vai aparecer??
-    Section section;
-    string status; // confirmado, cancelado ou "aguardando", livre com todos os codigos sendo -1 e coisas assim, por ex.
-    int patientID;// alternativamente, poderia ser o cpf.
-    /* O objetivo aqui é ter uma forma do médico puxar a ficha dum
-    paciente só pela agenda. */
-
-    // versão alternativa:
-    //int doctorID 
-    /* Aqui é para uma atendente poder puxar a agenda de um 
-    médico, por ex, pra informar que dias ele ainda 
-    tem disponíveis.*/
-
-    //int room;
-    //No nosso hospital, cada médico só atende numa única sala :)     
-
-  Appointment(const Section& newSection, string newStatus, const int& newID)
-      : section(newSection) {}
-};
-
 
 
 class Schedule {

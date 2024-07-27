@@ -25,6 +25,9 @@ public:
     //getHoraInicio() =  getSession().getTime(); 
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
     bool testSession(Session testSession);
+
+
+    // Fazer overload pra facilitar chamados igual na ScheduledAppointments
         
     //TIME:
     WorkSchedule searchByTime(Time thatTime);
