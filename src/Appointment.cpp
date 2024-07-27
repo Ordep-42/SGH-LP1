@@ -9,6 +9,14 @@ Appointment::Appointment(int newID, Session newSession, string newStatus, int ne
 Appointment::Appointment(int newID, Session newSession, int newPatientID, int newDoctorID, string newProcedure)
     : id(newID), session(newSession), status("scheduled"), patientID(newPatientID), doctorID(newDoctorID), procedure(newProcedure) {}
 
+Appointment::Appointment(int newID, Time newTime, Date newDate, int newPatientID, int newDoctorID, string newProcedure)
+    : id(newID), status("scheduled"), patientID(newPatientID), doctorID(newDoctorID), procedure(newProcedure) {
+        Session newSession(newTime, newDate); 
+        session = newSession;
+    }
+
+   
+
 // Getters
 int Appointment::getId() { return id; }
 

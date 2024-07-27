@@ -6,7 +6,7 @@ using namespace std;
 // CONSTRUCTOR'S:
 // --------------------------------------------------------------------------------------------
 
-ScheduledAppointments::ScheduledAppointments(int newID, int newDoctorID) 
+ScheduledAppointments::ScheduledAppointments(int newID, int newDoctorID) // faltou garantir a integridade dos status
     : id(newID), doctor_id(newDoctorID), appointments()  {}
 
 ScheduledAppointments::ScheduledAppointments(int newID, vector<Appointment> newAppointments, int newDoctorID)
@@ -144,6 +144,57 @@ ScheduledAppointments ScheduledAppointments::searchByDateBetween(Date date1, Dat
     return newSchedule;
 }
 
+//APPOINTMENT ATRBTS:
+ScheduledAppointments ScheduledAppointments::searchByPatient(int thatPatientID){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getPatientID() == thatPatientID) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}  
+ScheduledAppointments ScheduledAppointments::searchByAppointmentId(int thatAppointmentID){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getId() == thatAppointmentID) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+} 
+
+ScheduledAppointments ScheduledAppointments::searchByStatus(string thatStatus){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getStatus() == thatStatus) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+ScheduledAppointments ScheduledAppointments::searchByProcedure(string thatProcedure){
+    ScheduledAppointments newSchedule(id, doctor_id);
+    for(Appointment app : appointments){
+        if(app.getProcedure() == thatProcedure) { newSchedule.getAppointments().push_back(app); }
+    }
+
+    return newSchedule;
+}
+
+Appointment ScheduledAppointments::nextAppointment(){
+    Appointment error(); // tem como tratar melhor?? 
+    if(appointments.size() == 0) { return error(); }    
+
+    Appointment candidateAppointment = appointments[0];
+    for(Appointment app : appointments){
+        if(app.getSession().isBeforeThan(candidateAppointment.getSession())){
+            candidateAppointment = app; 
+        }
+    }
+    
+    return candidateAppointment;
+}
+
+Appointment ScheduledAppointments::lastAppointment() { return appointments[appointments.size() - 1]; }
 
 // WorkSchedule WorkSchedule::searchByStatus(string testStatus){
 //     vector<WorkSession> vetorWS;  
@@ -171,32 +222,6 @@ ScheduledAppointments ScheduledAppointments::searchByDateBetween(Date date1, Dat
 // // confira se é seguro chamar esse método antes de o chamar
 // void Schedule::makeAppointment(Appointment newAppointment) { scheduledAppointments.push_back(newAppointment); }
 
-// // depois mudamos como lidar com os Id's
-// vector<Appointment> Schedule::searchByPatient(int byPatientID){
-//   vector<Appointment> patientAppointments; 
-//   for(Appointment appointment : patientAppointments){
-//     if(appointment.patientID == byPatientID) { patientAppointments.push_back(appointment); }
-//   }
-  
-//   return patientAppointments;
-// }
-
-// //Schedule searchByTime();
-
-// vector<Appointment> Schedule::searchByDate(){
-//   return scheduledAppointments;
-// }
-
-// vector<Appointment> Schedule::searchByStatus(){
-//   return scheduledAppointments;
-// }
-
-
-
-// bool Schedule::isAppointed(Section test){ //nome meme, pse...
-//    for(Appointment appointment : scheduledAppointments){
-//     if(sectionEquals(appointment.section, test)) { return true; } //Falta verificar o status da consulta!!!
-//   }
 
 //   return false;
 // } 

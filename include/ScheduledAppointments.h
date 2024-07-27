@@ -25,9 +25,8 @@ public:
     vector<Appointment> getAppointments();
     
 
-    // SEARCH'S: 
-    // Lembre que é só misturar searchbyStatus("canceled").searchbyDateAter();
-
+    // SEARCH'S / FILTERS:
+    // Lembre que é só misturar searchbyStatus("canceled").searchbyDateAter(); ou combine time e date pra filtrar por seção.
 
     //TIME:
     ScheduledAppointments searchByTime(Time thatTime);
@@ -41,9 +40,15 @@ public:
     ScheduledAppointments searchByDateBefore(Date thatDate);
     ScheduledAppointments searchByDateBetween(Date date1, Date date2);
 
-    vector<Appointment> searchByPatient(int byPatientID);    
-    //Schedule searchById();    
-    vector<Appointment> searchByStatus();
+    //APPOINTMENTS ATRBTS: 
+    ScheduledAppointments searchByPatient(int thatPatientID);    
+    ScheduledAppointments searchByAppointmentId(int thatAppointmentID); 
+    ScheduledAppointments searchByStatus(string thatStatus);
+    ScheduledAppointments searchByProcedure(string thatProcedure);
+
+    // string status; // Marcada, confirmada, cancelada Xou finalizada
+    //const short room;
+    // const int doctorID;
 
     //CHECKERS:
     bool testSessionPresence(Session testMe);

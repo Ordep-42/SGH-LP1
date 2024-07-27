@@ -9,17 +9,18 @@ using namespace std;
 
 class Appointment {
 private:
-    const int id ; 
-    const Session session;
+    int id ; 
+    Session session;
     string status; // Marcada, confirmada, cancelada Xou finalizada
     //const short room;
-    const int patientID;
-    const int doctorID;
-    const string procedure; //Exame Xou consulta, apenas. 
+    int patientID;
+    int doctorID;
+    string procedure; //Exame Xou consulta, apenas. 
 
 public:
     Appointment(int newID, Session newSession, string newStatus, int newPatientID, int newDoctorID, string newProcedure); 
     Appointment(int newID, Session newSession, int newPatientID, int newDoctorID, string newProcedure);
+    Appointment(int newID, Time newTime, Date newDate, int newPatientID, int newDoctorID, string newProcedure);
     Appointment() = default;
 
     //getters: 
