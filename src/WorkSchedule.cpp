@@ -5,17 +5,17 @@ using namespace std;
 // ----------------------------------------------------------------------------------------------------
 // CONSTRUCTOR'S: (Essa forma assegurará que seções iguais não serão adicionadas no vetor.)
 // ----------------------------------------------------------------------------------------------------
-WorkSchedule::WorkSchedule(/*vector<WorkSession> newSchedule,*/ int newId, int newDoctor_id)
-    : schedule(), id(newId), doctor_id(newDoctor_id) {}
+WorkSchedule::WorkSchedule(/*vector<WorkSession> newSchedule, int newId, int newDoctor_id*/)
+    : schedule()/*, id(newId), doctor_id(newDoctor_id)*/ {}
 
-WorkSchedule::WorkSchedule(vector<WorkSession> newSchedule, int newId, int newDoctor_id)
-    : schedule(), id(newId), doctor_id(newDoctor_id) {safeAdd(newSchedule);}
+WorkSchedule::WorkSchedule(vector<WorkSession> newSchedule/*, int newId, int newDoctor_id*/)
+    : schedule()/*, id(newId), doctor_id(newDoctor_id)*/ {safeAdd(newSchedule);}
 
 // ----------------------------------------------------------------------------------------------------
 // GETTERS:
 // ----------------------------------------------------------------------------------------------------
-int WorkSchedule::getID() { return id; }
-int WorkSchedule::getDoctorID() { return doctor_id; };
+// int WorkSchedule::getID() { return id; }
+// int WorkSchedule::getDoctorID() { return doctor_id; };
 vector<WorkSession> WorkSchedule::getWorkSchedule() { return schedule; }
 
 // ----------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ WorkSchedule WorkSchedule::searchByTime(Time thatTime){
              vetorWS.push_back(wSession);
         }
     }
-    WorkSchedule wScheduleByTime(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleByTime(vetorWS);
     return wScheduleByTime;   
 }
 
@@ -53,7 +53,7 @@ WorkSchedule WorkSchedule::searchByTimeBetween(Time time1, Time time2){ // trata
             vetorWS.push_back(wSession); 
         }
     }
-    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleBtwn(vetorWS);
     return wScheduleBtwn; 
 }
 
@@ -64,7 +64,7 @@ WorkSchedule WorkSchedule::searchByTimeBefore(Time thatTime){ // tratar pra ver 
             vetorWS.push_back(wSession); 
         }
     }
-    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleBtwn(vetorWS);
     return wScheduleBtwn; 
 }
 
@@ -75,7 +75,7 @@ WorkSchedule WorkSchedule::searchByTimeAfter(Time thatTime){ // tratar pra ver s
             vetorWS.push_back(wSession); 
         }
     }
-    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleBtwn(vetorWS);
     return wScheduleBtwn; 
 }
 
@@ -90,7 +90,7 @@ WorkSchedule WorkSchedule::searchByDate(Date thatDate){
              vetorWS.push_back(wSession);
         }
     }
-    WorkSchedule wScheduleByTime(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleByTime(vetorWS);
     return wScheduleByTime;   
 }
 
@@ -101,7 +101,7 @@ WorkSchedule WorkSchedule::searchByDateBetween(Date date1, Date date2){ // trata
             vetorWS.push_back(wSession); 
         }
     }
-    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleBtwn(vetorWS);
     return wScheduleBtwn; 
 }
 
@@ -112,7 +112,7 @@ WorkSchedule WorkSchedule::searchByDateBefore(Date thatDate){ // tratar pra ver 
             vetorWS.push_back(wSession); 
         }
     }
-    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleBtwn(vetorWS);
     return wScheduleBtwn; 
 }
 
@@ -123,7 +123,7 @@ WorkSchedule WorkSchedule::searchByDateAfter(Date thatDate){ // tratar pra ver s
             vetorWS.push_back(wSession); 
         }
     }
-    WorkSchedule wScheduleBtwn(vetorWS, id, doctor_id);
+    WorkSchedule wScheduleBtwn(vetorWS);
     return wScheduleBtwn; 
 }
 
@@ -139,7 +139,7 @@ WorkSchedule WorkSchedule::searchByID(int testID){ // Caso o retorno tenha size 
         }
     } 
     // Sem ser um vetor vamos ter mais dados, vai que, né... 
-    WorkSchedule scheduleByPatient(vetorWS, id, doctor_id); 
+    WorkSchedule scheduleByPatient(vetorWS); 
     return scheduleByPatient;
 }
 
@@ -149,7 +149,16 @@ WorkSchedule WorkSchedule::removeWS(WorkSession removeMe){ //remve uma workSessi
     for(WorkSession wSession : schedule){
         if(not removeMe.isEqualTo(wSession)) { vetorWS.push_back(wSession);}
     }    
-    WorkSchedule newSchedule(vetorWS, id, doctor_id); 
+    WorkSchedule newSchedule(vetorWS); 
+    return newSchedule;
+}
+
+WorkSchedule WorkSchedule::removeSession(Session removeMe){
+    vector<WorkSession> vetorWS; 
+    for(WorkSession wSession : schedule){
+        if(not removeMe.isEqualTo(wSession)) { vetorWS.push_back(wSession);}
+    }    
+    WorkSchedule newSchedule(vetorWS); 
     return newSchedule;
 }
 

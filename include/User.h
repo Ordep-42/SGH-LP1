@@ -18,10 +18,14 @@ using namespace std;
 
 class User {
   protected:
+    // MostReleants
     unsigned short userID;
     string login;
     string password;
     string name;
+    Roles::Role role;
+
+    // Less relevants:
     Date birthDate;
     string cpf;
     Gender gender;
@@ -29,7 +33,7 @@ class User {
     string address;
     string phoneNumber; // como tratar?
     string email;
-    Roles::Role role;
+   
 
   public:
     User(unsigned short newUserID, string newLogin, string newPassWord,

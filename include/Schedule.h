@@ -1,8 +1,8 @@
 #ifndef SCHEDULE_H
 #define SCHEDULE_H
 
-#include "User.h"
-#include "Time.h"
+#include "WorkSchedule.h"
+#include "ScheduledAppointments.h"
 #include <string>
 #include <vector>
 
@@ -12,8 +12,8 @@ using namespace std;
 
 class Schedule {
 private:
- vector<Appointment> scheduledAppointments;
- vector<Section>     workSchedule; // doctorSchedule vai ser o nome bom do atributo na classe doctor :D
+ ScheduledAppointments scheduledAppointments;
+ WorkSchedule workSchedule; // doctorSchedule vai ser o nome bom do atributo na classe doctor :D
  //que surjam mais atributos :pray:
  //int doctorID; 
  /* Aqui é para uma atendente poder puxar a agenda de um 
@@ -23,16 +23,21 @@ private:
 
 public:
 
-  vector<Appointment> getSchldApptms(); 
-  vector<Section> getWorkSchld(); 
+  // Constructor's:
+  Schedule(/*int newDoctorID*/); 
+  Schedule(ScheduledAppointments newScheduledAppointments);
+  Schedule(WorkSchedule newWorkSchedule);
+  Schedule(ScheduledAppointments newScheduledAppointments, WorkSchedule newWorkSchedule);
 
-  //void setWorkSchld(vector<Section> newWorkSchld);
-
-  Schedule() = default;
+  // Getter's:
+  ScheduledAppointments getScheduledAppointments(); 
+  WorkSchedule getWorkSchedule(); 
+  // Poderia ter um doctorID, mas sobraria ainda mais
     
-  //bool checkAvailability(Date tryDate, Time tryTime); // tryDate to the CatchTime ;)
-  
-
+  WorkSchedule avaiableSessions();
+  bool checkAvaiability(Session checkMe); // tryDate to the CatchTime ;)
+  void makeAppointment(Appointment addMe);
+  Session nextAvaiableSession();
   
 
 };

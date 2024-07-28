@@ -38,6 +38,6 @@ public:
 };
 
 // Funções auxiliares
-
+bool isOneAvaiableStatus(string checkMe);
 
 #endif // !APPOINTMENT_H

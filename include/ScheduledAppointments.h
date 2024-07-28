@@ -9,19 +9,19 @@ using namespace std;
 
 class ScheduledAppointments {
 private:  
-    int id;
-    int doctor_id; //??
+    // int id;
+    // int doctor_id; //??
     vector<Appointment> appointments;
     // se colocar doctor id, vai ter q fazer um vetor de scheduled appointments pra acessar o de todos os medicos, mas ainda é bem viável.
 
 public:
-    ScheduledAppointments(int id, vector<Appointment> appointments, int doctor_id);
-    ScheduledAppointments(int id, int doctor_id);
-    ScheduledAppointments() = default;
+    ScheduledAppointments(/*int id,*/ vector<Appointment> appointments/*, int doctor_id*/);
+    ScheduledAppointments(/*int id, int doctor_id*/);
+    //ScheduledAppointments() = default;
 
     // GETTERS:
-    int getID();
-    int getDoctorID(); 
+    // int getID();
+    // int getDoctorID(); 
     vector<Appointment> getAppointments();
     
 

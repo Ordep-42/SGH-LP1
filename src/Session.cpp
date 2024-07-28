@@ -1,4 +1,6 @@
 #include "../include/Session.h"
+#include "../include/ScheduledAppointments.h"
+#include "../include/WorkSchedule.h"
 
 using namespace std;
 
@@ -64,6 +66,26 @@ bool Session::isIn(vector<Session> sessions){
             return true; 
         }
     }
+    return false;
+}
+
+bool Session::isIn(vector<WorkSession> wSessions){
+  for(WorkSession wSession : wSessions){
+        if(isEqualTo(wSession)){
+            return true; 
+        }
+    }
+
+    return false;
+}
+
+bool Session::isIn(vector<Appointment> app){
+  for(Appointment appC : app){
+        if(isEqualTo(appC.getSession())){
+            return true; 
+        }
+    }
+    
     return false;
 }
 

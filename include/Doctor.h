@@ -2,6 +2,8 @@
 #define DOCTOR_H
 
 #include "Schedule.h"
+#include "WorkSchedule.h"
+#include "ScheduledAppointments.h"
 #include "User.h"
 
 using namespace std;
@@ -21,9 +23,11 @@ class Doctor : public User {
   public:
     Doctor(string name, string password, string especialidade);
 
-    vector<Section> getWorkSchedule();
-    vector<Appointment> getAppointments();
-    vector<User> getAppointmentsByDate();
+
+    Schedule getDoctorSchedule();
+    WorkSchedule getWorkSchedule();
+    ScheduledAppointments getAppointments();
+    //vector<User> getAppointmentsByDate();
 
     void doAppointment(Section);
     void requestMedicalEquipment(Equipment);

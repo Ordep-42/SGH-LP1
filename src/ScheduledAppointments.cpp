@@ -3,22 +3,23 @@
 using namespace std; 
 
 // --------------------------------------------------------------------------------------------
-// CONSTRUCTOR'S:
+// CONSTRUCTOR'S: 
 // --------------------------------------------------------------------------------------------
 
-ScheduledAppointments::ScheduledAppointments(int newID, int newDoctorID) // faltou garantir a integridade dos status
-    : id(newID), doctor_id(newDoctorID), appointments()  {}
+ScheduledAppointments::ScheduledAppointments(/*int newID, int newDoctorID*/) // faltou garantir a integridade dos status
+    : /*id(newID), doctor_id(newDoctorID), */ appointments()  {}
 
-ScheduledAppointments::ScheduledAppointments(int newID, vector<Appointment> newAppointments, int newDoctorID)
-    : id(newID), doctor_id(newDoctorID), appointments()  { safeAdd(newAppointments); }
+ScheduledAppointments::ScheduledAppointments(/*int newID,*/ vector<Appointment> newAppointments/*, int newDoctorID*/)
+    : /*id(newID), doctor_id(newDoctorID),*/ appointments()  { safeAdd(newAppointments); }
 
 // --------------------------------------------------------------------------------------------
 // GETTER'S:
 // --------------------------------------------------------------------------------------------
 
-int ScheduledAppointments::getID() { return id; }
+// int ScheduledAppointments::getID() { return id; }
+// int ScheduledAppointments::getDoctorID() { return doctor_id; } 
 vector<Appointment> ScheduledAppointments::getAppointments() { return appointments; }
-int ScheduledAppointments::getDoctorID() { return doctor_id; } 
+
 
 // --------------------------------------------------------------------------------------------
 // ADD'S:
@@ -56,7 +57,7 @@ bool ScheduledAppointments::testSessionPresence(Session testMe){
 bool ScheduledAppointments::testSessionAvaiability(Session testMe){
     bool isAvaiable = true;
     for(Appointment app : appointments){
-        if(( app.getSession().isEqualTo(testMe)) && (app.getStatus() != "canceled") ){
+        if(( app.getSession().isEqualTo(testMe)) && (not isOneAvaiableStatus(app.getStatus())) ){
             isAvaiable = false;
         }
     }
@@ -72,7 +73,7 @@ bool ScheduledAppointments::isAppointed(Session test) { return testSessionAvaiab
 
 //TIME:
 ScheduledAppointments ScheduledAppointments::searchByTime(Time thatTime){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getSession().getTime().isEqualTo(thatTime)) { newSchedule.getAppointments().push_back(app); }
     }
@@ -81,7 +82,7 @@ ScheduledAppointments ScheduledAppointments::searchByTime(Time thatTime){
 }
 
 ScheduledAppointments ScheduledAppointments::searchByTimeAfter(Time thatTime){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(thatTime.isBeforeThan(app.getSession().getTime())) { newSchedule.getAppointments().push_back(app); }
     }
@@ -90,7 +91,7 @@ ScheduledAppointments ScheduledAppointments::searchByTimeAfter(Time thatTime){
 }
 
 ScheduledAppointments ScheduledAppointments::searchByTimeBefore(Time thatTime){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getSession().getTime().isBeforeThan(thatTime)) { newSchedule.getAppointments().push_back(app); }
     }
@@ -99,7 +100,7 @@ ScheduledAppointments ScheduledAppointments::searchByTimeBefore(Time thatTime){
 }
 
 ScheduledAppointments ScheduledAppointments::searchByTimeBetween(Time time1, Time time2){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getSession().getTime().isBetween(time1, time2)) { newSchedule.getAppointments().push_back(app); }
     }
@@ -109,7 +110,7 @@ ScheduledAppointments ScheduledAppointments::searchByTimeBetween(Time time1, Tim
 
 //DATE: 
 ScheduledAppointments ScheduledAppointments::searchByDate(Date thatDate){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getSession().getDate().isEqualTo(thatDate)) { newSchedule.getAppointments().push_back(app); }
     }
@@ -118,7 +119,7 @@ ScheduledAppointments ScheduledAppointments::searchByDate(Date thatDate){
 }
 
 ScheduledAppointments ScheduledAppointments::searchByDateAfter(Date thatDate){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(thatDate.isBeforeThan(app.getSession().getDate())) { newSchedule.getAppointments().push_back(app); }
     }
@@ -127,7 +128,7 @@ ScheduledAppointments ScheduledAppointments::searchByDateAfter(Date thatDate){
 }
 
 ScheduledAppointments ScheduledAppointments::searchByDateBefore(Date thatDate){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getSession().getDate().isBeforeThan(thatDate)) { newSchedule.getAppointments().push_back(app); }
     }
@@ -136,7 +137,7 @@ ScheduledAppointments ScheduledAppointments::searchByDateBefore(Date thatDate){
 }
 
 ScheduledAppointments ScheduledAppointments::searchByDateBetween(Date date1, Date date2){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getSession().getDate().isBetween(date1, date2)) { newSchedule.getAppointments().push_back(app); }
     }
@@ -146,7 +147,7 @@ ScheduledAppointments ScheduledAppointments::searchByDateBetween(Date date1, Dat
 
 //APPOINTMENT ATRBTS:
 ScheduledAppointments ScheduledAppointments::searchByPatient(int thatPatientID){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getPatientID() == thatPatientID) { newSchedule.getAppointments().push_back(app); }
     }
@@ -154,7 +155,7 @@ ScheduledAppointments ScheduledAppointments::searchByPatient(int thatPatientID){
     return newSchedule;
 }  
 ScheduledAppointments ScheduledAppointments::searchByAppointmentId(int thatAppointmentID){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getId() == thatAppointmentID) { newSchedule.getAppointments().push_back(app); }
     }
@@ -163,7 +164,7 @@ ScheduledAppointments ScheduledAppointments::searchByAppointmentId(int thatAppoi
 } 
 
 ScheduledAppointments ScheduledAppointments::searchByStatus(string thatStatus){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getStatus() == thatStatus) { newSchedule.getAppointments().push_back(app); }
     }
@@ -172,7 +173,7 @@ ScheduledAppointments ScheduledAppointments::searchByStatus(string thatStatus){
 }
 
 ScheduledAppointments ScheduledAppointments::searchByProcedure(string thatProcedure){
-    ScheduledAppointments newSchedule(id, doctor_id);
+    ScheduledAppointments newSchedule;
     for(Appointment app : appointments){
         if(app.getProcedure() == thatProcedure) { newSchedule.getAppointments().push_back(app); }
     }

@@ -33,6 +33,8 @@ public:
     bool isBetween(Session session1, Session session2);
 
     bool isIn(vector<Session> sessions);
+    bool isIn(vector<WorkSession> wSessions);
+    bool isIn(vector<Appointment> app);
 
 };
 

@@ -1,4 +1,4 @@
-#include "Appointment.h"
+#include "../include/Appointment.h"
 #include <stdexcept>
 
 using namespace std;
@@ -40,3 +40,11 @@ void Appointment::setStatus(string newStatus) {
 }
 
 // Métodos adicionais, se necessários, podem ser implementados aqui
+
+bool isOneAvaiableStatus(string checkMe){
+    if(checkMe == "confirmed" || checkMe == "conclude" || checkMe == "scheduled"){
+      return false;
+    }    
+    
+    return true;    
+  }
