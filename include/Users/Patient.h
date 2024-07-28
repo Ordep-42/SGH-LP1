@@ -1,7 +1,9 @@
 #ifndef PATIENT_H
 #define PATIENT_H
+
 #include "../MedicalFile.h"
 #include "../Time/Schedule.h"
+#include "./User.h"
 
 using namespace std;
 

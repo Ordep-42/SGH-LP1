@@ -86,4 +86,6 @@ void HospitalDatabase::deleteDoctor(unsigned short doctorId) {
     sqlite3_close(db);
 }
 
-bool HospitalDatabase::validateDoctor(string name, string password) {}
+bool HospitalDatabase::validateDoctor(string name, string password) {
+    return true;
+}

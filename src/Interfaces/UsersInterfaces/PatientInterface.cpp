@@ -86,15 +86,17 @@ void HospitalInterface::marcarConsulta() {
         Session(stringToTime(hora), stringToDate(data));
 
     system("clear");
-    titleMaker("AGENDAMENTEO DE CONSULTA");
+    titleMaker("AGENDAMENTO DE CONSULTA");
     string consultType;
     cout << "Qual o tipo de consulta?\n";
     cin >> consultType;
     getchar();
 
-    Appointment agendamentoMarcado =
-        Appointment("Marcado", 3, medId, consultType, appointmentSession);
-    // #TODO
+    int patientId = this->getCurrentUser()->getUserID();
+
+    Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
+                                           patientId, medId, consultType);
+
     // AGENDAR NO BANCO DE DADOS
 }
 

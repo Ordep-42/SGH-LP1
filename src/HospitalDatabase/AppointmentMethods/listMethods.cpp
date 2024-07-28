@@ -27,8 +27,8 @@ void HospitalDatabase::listAppointmentsByPatient(int patientId) {
         string session =
             reinterpret_cast<const char *>(sqlite3_column_text(stmt, 5));
 
-        Appointment app = Appointment(id, status, patientID, doctorID,
-                                      procedure, tdStringToSession(session));
+        Appointment app = Appointment(id, tdStringToSession(session), status,
+                                      patientID, doctorID, procedure);
 
         appointments.push_back(app);
     }

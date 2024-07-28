@@ -10,22 +10,22 @@ using namespace std;
 
 class Appointment {
   private:
-    int id ; 
+    int id;
     Session session;
     string status; // Marcada, confirmada, cancelada Xou finalizada
-   
+
     int patientID;
     int doctorID;
-    string procedure; //Exame Xou consulta, apenas. 
+    string procedure; // Exame Xou consulta, apenas.
 
   public:
-    Appointment(int newID, Session newSession, string newStatus, int newPatientID, int newDoctorID, string newProcedure); 
-    Appointment(int newID, Session newSession, int newPatientID, int newDoctorID, string newProcedure);
-    Appointment(int newID, Time newTime, Date newDate, int newPatientID, int newDoctorID, string newProcedure);
-    Appointment() = default;
+    Appointment(Session newSession, string newStatus, int newPatientID,
+                int newDoctorID, string newProcedure);
+    Appointment(int newID, Session newSession, string newStatus,
+                int newPatientID, int newDoctorID, string newProcedure);
 
-    //getters: 
-    int getId(); 
+    // getters:
+    int getId();
     Session getSession();
     string getStatus();
     int getPatientID();
