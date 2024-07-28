@@ -10,20 +10,22 @@ using namespace std;
 
 class Appointment {
   private:
-    int id;
+    int id ; 
     Session session;
     string status; // Marcada, confirmada, cancelada Xou finalizada
-                   // const short room;
+   
     int patientID;
     int doctorID;
-    string procedure; // Exame Xou consulta, apenas.
+    string procedure; //Exame Xou consulta, apenas. 
 
   public:
-    Appointment(string, int, int, string, Session);
-    Appointment(int, string, int, int, string, Session);
+    Appointment(int newID, Session newSession, string newStatus, int newPatientID, int newDoctorID, string newProcedure); 
+    Appointment(int newID, Session newSession, int newPatientID, int newDoctorID, string newProcedure);
+    Appointment(int newID, Time newTime, Date newDate, int newPatientID, int newDoctorID, string newProcedure);
+    Appointment() = default;
 
-    // getters:
-    int getId();
+    //getters: 
+    int getId(); 
     Session getSession();
     string getStatus();
     int getPatientID();
@@ -32,6 +34,8 @@ class Appointment {
 
     // setters:
     void setStatus(string newStatus); // precisa conferir se é um status válido
+
+    // Métodos:
     void printAppointment() {
         cout << "Appointment ID: " << id << endl;
         cout << "Status: " << status << endl;
@@ -41,9 +45,9 @@ class Appointment {
         cout << "Session Date: " << this->session.getDateString() << endl;
         cout << "Session Time: " << session.getTimeString() << endl;
     }
-    // Métodos??
 };
 
 // Funções auxiliares
+bool isOneAvaiableStatus(string checkMe);
 
 #endif // !APPOINTMENT_H

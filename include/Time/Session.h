@@ -3,6 +3,8 @@
 
 #include "Date.h"
 #include "Time.h"
+#include "WorkSession.h"
+#include "Appointment.h"
 #include <string>
 #include <vector>
 
@@ -33,6 +35,8 @@ public:
     bool isBetween(Session session1, Session session2);
 
     bool isIn(vector<Session> sessions);
+    bool isIn(vector<WorkSession> wSessions);
+    bool isIn(vector<Appointment> app);
 
 };
 
@@ -46,7 +50,5 @@ Session tdStringToSession(string convertMe);
 Session stringToSession(string convertMe);
 string getFirstPart(string firstSecond);
 string getSecondPart(string firstSecond);
-
-
 
 #endif // !SESSION_H

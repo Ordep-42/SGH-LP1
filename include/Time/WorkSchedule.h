@@ -8,23 +8,26 @@ using namespace std;
 class WorkSchedule : public Session {
 private:
 // Se sobrar: apaga.
-    int id; 
-    int doctor_id;
+    // int id; 
+    // int doctor_id;
     vector<WorkSession> schedule; 
 
 public:
     // Construtores*
-    WorkSchedule(/*vector<WorkSession> newSchedule,*/ int newId, int newDoctor_id);
-    WorkSchedule(vector<WorkSession> newSchedule, int newId, int newDoctor_id);
+    WorkSchedule(/*vector<WorkSession> newSchedule, int newId, int newDoctor_id*/);
+    WorkSchedule(vector<WorkSession> newSchedule/*, int newId, int newDoctor_id*/);
     // Getters para os novos atributos
     
-    int getID(); // Daria pra ser const
-    int getDoctorID();
+    // int getID(); // Daria pra ser const
+    // int getDoctorID();
     vector<WorkSession> getWorkSchedule(); // Esse nome fica estranho...
 
     //getHoraInicio() =  getSession().getTime(); 
     //getHoraFinal() = getSession().getTime().sum(Time time(0,0,definido));
     bool testSession(Session testSession);
+
+
+    // Fazer overload pra facilitar chamados igual na ScheduledAppointments
         
     //TIME:
     WorkSchedule searchByTime(Time thatTime);
@@ -42,6 +45,7 @@ public:
     //ANOTHER STUFF:
     WorkSchedule searchByID(int id);
     WorkSchedule removeWS(WorkSession removeMe);
+    WorkSchedule removeSession(Session removeMe);
     WorkSession lastSession(); // pelo vetor
     WorkSession nextWorkSection(); //pela data X time
     void safeAdd(WorkSession addMe);

@@ -1,92 +1,75 @@
-// #include "../include/Schedule.h"
-// #include <algorithm>
-// #include <vector>
+#include "../../include/Time/Schedule.h"
 
-// //Schedule() = default;
 
-//  vector<Appointment> Schedule::getSchldApptms() { return scheduledAppointments; }
-//  vector<Section> Schedule::getWorkSchld() { return workSchedule; }
+  // ----------------------------------------------------------------------------------------------
+  // CONSTRUCTOR'S:
+  // ----------------------------------------------------------------------------------------------  
 
-// // confira se é seguro chamar esse método antes de o chamar
-// void Schedule::makeAppointment(Appointment newAppointment) { scheduledAppointments.push_back(newAppointment); }
+  Schedule::Schedule(/*int newDoctorID*/)
+    : scheduledAppointments(), workSchedule() {} 
+    
+  Schedule::Schedule(ScheduledAppointments newScheduledAppointments)
+    : scheduledAppointments(newScheduledAppointments), workSchedule() {}
 
-// // depois mudamos como lidar com os Id's
-// vector<Appointment> Schedule::searchByPatient(int byPatientID){
-//   vector<Appointment> patientAppointments; 
-//   for(Appointment appointment : patientAppointments){
-//     if(appointment.patientID == byPatientID) { patientAppointments.push_back(appointment); }
-//   }
+  Schedule::Schedule(WorkSchedule newWorkSchedule)
+    : scheduledAppointments(), workSchedule(newWorkSchedule) {}
+
+  Schedule::Schedule(ScheduledAppointments newScheduledAppointments, WorkSchedule newWorkSchedule)
+    : scheduledAppointments(newScheduledAppointments), workSchedule(newWorkSchedule) {}
+
+  // ----------------------------------------------------------------------------------------------
+  // GETTER'S:
+  // ----------------------------------------------------------------------------------------------
+
+  ScheduledAppointments Schedule::getScheduledAppointments() { return scheduledAppointments; }
+
+  WorkSchedule Schedule::getWorkSchedule() { return workSchedule; } 
   
-//   return patientAppointments;
-// }
+  // ----------------------------------------------------------------------------------------------
+  // ANOTHER STUFF:
+  // ----------------------------------------------------------------------------------------------
 
-// //Schedule searchByTime();
+  WorkSchedule Schedule::avaiableSessions(){
+    WorkSchedule avaiableSessions = workSchedule; 
+    for(Appointment app : scheduledAppointments.getAppointments()){
+      if(not isOneAvaiableStatus(app.getStatus())){
+        avaiableSessions.removeSession(app.getSession()); 
+      }      
+    }
+    return avaiableSessions;
+  }
 
-// vector<Appointment> Schedule::searchByDate(){
-//   return scheduledAppointments;
-// }
+  bool Schedule::checkAvaiability(Session checkMe){
+    if(checkMe.isIn(avaiableSessions().getWorkSchedule())){
+      return true;
+    }
+    return false;
+  } 
 
-// vector<Appointment> Schedule::searchByStatus(){
-//   return scheduledAppointments;
-// }
+  void Schedule::makeAppointment(Appointment addMe){
+    if(checkAvaiability(addMe.getSession())){
+      scheduledAppointments.safeAdd(addMe); 
+      //Método certo pra conferir as coisas no BD!!!
+    }
+    else{
+      // Deu erro!!!!
+    }
 
-
-
-// bool Schedule::isAppointed(Section test){ //nome meme, pse...
-//    for(Appointment appointment : scheduledAppointments){
-//     if(sectionEquals(appointment.section, test)) { return true; } //Falta verificar o status da consulta!!!
-//   }
-
-//   return false;
-// } 
-
-// Section Schedule::nextWorkSection(){ // o mais recente em tempo
-//   Time timeC(-1,-1,-1); Date dataC(-1, -1); 
-//   Section sectionC(timeC, dataC); // de Candidate
-//   if(workSchedule.size() == 0) { return sectionC; }
+  }
   
-//   sectionC.date = workSchedule[0].date; sectionC.time = workSchedule[0].time;   
-//   for(Section section : workSchedule){
-//     if(sectionIsBeforethan(section, sectionC)){ 
-//       sectionC.date = section.date; sectionC.time = section.time; 
-//     }
-//   }
+  Session Schedule::nextAvaiableSession(){
+    Date date(-1, -1, -1); Time time(-1, -1, -1);
+    Session candidate(time, date); 
+    if(avaiableSessions().getWorkSchedule().size() == 0) { return candidate; }
 
-//   return sectionC;  
-// }
+    candidate = avaiableSessions().getWorkSchedule()[0];
+    for(WorkSession wSession : avaiableSessions().getWorkSchedule()){
+      if(wSession.isBeforeThan(candidate)){
+        candidate = wSession;
+      }
+    }
 
-// // Pro médico conferir, sei lá... Tbm vai servir pra uma outra função chamar.
-// Appointment Schedule::nextAppointment(){
-//   Time timeC(-1,-1,-1); Date dataC(-1, -1); 
-//   Section sectionC(timeC, dataC); // de Candidate
-//   Appointment appointmentC(sectionC, "erro", -1);
-//   if(scheduledAppointments.size() == 0) { return appointmentC; }
-  
-//   appointmentC = scheduledAppointments[0];
-//   for(Appointment appointment : scheduledAppointments){
-//     if(sectionIsBeforethan(appointment.section, appointmentC.section)){ // FALTA VERIFICAR O STATUS!!!! 
-//       appointmentC = appointment;
-//     }
-//   }
-  
-//   return appointmentC;
-// }
+    return candidate;    
+  }
 
-// Section Schedule::nextAvaiableSection(){
-//   Time timeC(-1,-1,-1); Date dateC(-1, -1); 
-//   Section sectionC(timeC, dateC); // de Candidate 
-//   if(workSchedule.size() == 0){ return sectionC; }
-
-//   vector<Section> sectionsToTry; sectionsToTry.assign(workSchedule.begin(), workSchedule.end());
-  
-//   while(sectionsToTry.size() > 0){
-//     sectionC = nextSection(sectionsToTry);
-//     if(not isAppointed(sectionC)) { return sectionC; }
-//     sectionsToTry = removeSection(sectionsToTry, sectionC);
-//   }
-
-//   sectionC.time = timeC; sectionC.date = dateC;
-//   return sectionC; 
-// }
-
-// // sortByDate!!
+  // SORT'S ???
