@@ -1,5 +1,4 @@
 #include "../../include/Time/WorkSession.h"
-
 using namespace std;
 
 // Construtor

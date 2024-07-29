@@ -26,6 +26,7 @@ class Appointment {
 
     // getters:
     int getId();
+
     Session getSession();
     string getStatus();
     int getPatientID();

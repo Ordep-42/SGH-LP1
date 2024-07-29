@@ -85,5 +85,3 @@ Session Schedule::nextAvaiableSession() {
 
     return candidate;
 }
-
-// SORT'S ???

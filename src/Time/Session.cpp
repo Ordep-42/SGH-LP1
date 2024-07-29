@@ -1,6 +1,4 @@
 #include "../../include/Time/Session.h"
-#include "../../include/Time/ScheduledAppointments.h"
-#include "../../include/Time/WorkSchedule.h"
 
 using namespace std;
 

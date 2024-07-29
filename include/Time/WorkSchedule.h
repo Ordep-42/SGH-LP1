@@ -28,6 +28,7 @@ class WorkSchedule : public Session {
     // Fazer overload pra facilitar chamados igual na ScheduledAppointments
 
     // TIME:
+
     WorkSchedule searchByTime(Time thatTime);
     WorkSchedule searchByTimeAfter(Time thatTime);
     WorkSchedule searchByTimeBefore(Time thatTime);
@@ -35,6 +36,7 @@ class WorkSchedule : public Session {
 
     // DATE:
     WorkSchedule searchByDate(Date thatDate);
+
     WorkSchedule searchByDateAfter(Date thatDate);
     WorkSchedule searchByDateBefore(Date thatDate);
     WorkSchedule searchByDateBetween(Date date1, Date date2);

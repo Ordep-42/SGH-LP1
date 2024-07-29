@@ -16,7 +16,6 @@ ScheduledAppointments::ScheduledAppointments(
     : /*id(newID), doctor_id(newDoctorID),*/ appointments() {
     safeAdd(newAppointments);
 }
-
 // --------------------------------------------------------------------------------------------
 // GETTER'S:
 // --------------------------------------------------------------------------------------------
@@ -257,8 +256,8 @@ Appointment ScheduledAppointments::lastAppointment() {
 // //Schedule() = default;
 
 //  vector<Appointment> Schedule::getSchldApptms() { return
-//  scheduledAppointments; } vector<Section> Schedule::getWorkSchld() { return
-//  workSchedule; }
+//  scheduledAppointments; } vector<Section> Schedule::getWorkSchld() {
+//  return workSchedule; }
 
 // // confira se é seguro chamar esse método antes de o chamar
 // void Schedule::makeAppointment(Appointment newAppointment) {
@@ -272,8 +271,8 @@ Appointment ScheduledAppointments::lastAppointment() {
 //   Section sectionC(timeC, dataC); // de Candidate
 //   if(workSchedule.size() == 0) { return sectionC; }
 
-//   sectionC.date = workSchedule[0].date; sectionC.time = workSchedule[0].time;
-//   for(Section section : workSchedule){
+//   sectionC.date = workSchedule[0].date; sectionC.time =
+//   workSchedule[0].time; for(Section section : workSchedule){
 //     if(sectionIsBeforethan(section, sectionC)){
 //       sectionC.date = section.date; sectionC.time = section.time;
 //     }
@@ -282,8 +281,8 @@ Appointment ScheduledAppointments::lastAppointment() {
 //   return sectionC;
 // }
 
-// // Pro médico conferir, sei lá... Tbm vai servir pra uma outra função chamar.
-// Appointment Schedule::nextAppointment(){
+// // Pro médico conferir, sei lá... Tbm vai servir pra uma outra função
+// chamar. Appointment Schedule::nextAppointment(){
 //   Time timeC(-1,-1,-1); Date dataC(-1, -1);
 //   Section sectionC(timeC, dataC); // de Candidate
 //   Appointment appointmentC(sectionC, "erro", -1);
@@ -291,8 +290,8 @@ Appointment ScheduledAppointments::lastAppointment() {
 
 //   appointmentC = scheduledAppointments[0];
 //   for(Appointment appointment : scheduledAppointments){
-//     if(sectionIsBeforethan(appointment.section, appointmentC.section)){ //
-//     FALTA VERIFICAR O STATUS!!!!
+//     if(sectionIsBeforethan(appointment.section, appointmentC.section)){
+//     // FALTA VERIFICAR O STATUS!!!!
 //       appointmentC = appointment;
 //     }
 //   }
@@ -305,8 +304,8 @@ Appointment ScheduledAppointments::lastAppointment() {
 //   Section sectionC(timeC, dateC); // de Candidate
 //   if(workSchedule.size() == 0){ return sectionC; }
 
-//   vector<Section> sectionsToTry; sectionsToTry.assign(workSchedule.begin(),
-//   workSchedule.end());
+//   vector<Section> sectionsToTry;
+//   sectionsToTry.assign(workSchedule.begin(), workSchedule.end());
 
 //   while(sectionsToTry.size() > 0){
 //     sectionC = nextSection(sectionsToTry);
