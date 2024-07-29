@@ -1,10 +1,12 @@
 #include "../../include/HospitalDatabase/HospitalDatabase.h"
 #include "../../include/Interface.h"
 #include "../../include/Users/Patient.h"
+#include <cstdlib>
 #include <iostream>
 #include <unistd.h>
 
 void HospitalInterface::createPatientInterface() {
+    system("clear");
     titleMaker("CRIANDO NOVO PACIENTE");
 
     string nome;
