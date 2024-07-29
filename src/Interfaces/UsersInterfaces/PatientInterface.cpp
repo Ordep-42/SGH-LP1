@@ -118,3 +118,9 @@ void HospitalInterface::listarConsultas() {
         this->getCurrentUser()->getUserID());
     hr();
 }
+
+
+// choices.push_back("Listas consultas");
+//    choices.push_back("Cancelar consulta");
+//    choices.push_back("Listar dados");
+//    choices.push_back("Atualizar dados");
