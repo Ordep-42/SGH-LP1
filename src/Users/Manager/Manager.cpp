@@ -20,18 +20,18 @@ void Manager::createAttendant(User attendant) {
     HospitalDatabase::createAttendant(attendant);
 }
 
-void Manager::deleteManager(Manager manager) {
-    HospitalDatabase::deleteManager(manager.getUserID());
+void Manager::deleteManager(int managerId) {
+    HospitalDatabase::deleteManager(managerId);
 };
 
-void Manager::deleteDoctor(Doctor doctor) {
-    HospitalDatabase::deleteDoctor(doctor.getUserID());
+void Manager::deleteDoctor(int doctorId) {
+    HospitalDatabase::deleteDoctor(doctorId);
 }
 
-void Manager::deletePatient(User patient) {
-    HospitalDatabase::deletePatient(patient.getUserID());
+void Manager::deletePatient(int patientId) {
+    HospitalDatabase::deletePatient(patientId);
 }
 
-void Manager::deleteAttendant(User attendant) {
-    HospitalDatabase::deleteAttendant(attendant.getUserID());
+void Manager::deleteAttendant(int attendantId) {
+    HospitalDatabase::deleteAttendant(attendantId);
 }

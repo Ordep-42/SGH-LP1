@@ -48,6 +48,10 @@ class HospitalInterface {
     void managerListManager();
 
     void managerDeleteInterface();
+    void managerDeletePatient();
+    void managerDeleteAttendant();
+    void managerDeleteDoctor();
+    void managerDeleteManager();
 
     bool assertAccessLevel(int);
 
