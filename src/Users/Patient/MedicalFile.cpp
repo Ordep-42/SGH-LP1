@@ -1,5 +1,6 @@
-#include "../include/MedicalFile.h"
+#include "../../../include/MedicalFile.h"
 #include <string>
+#include <vector>
 using namespace std;
 
 MedicalFile::MedicalFile(BloodType newBloodType, RhFactor newRhFactor,
@@ -33,9 +34,7 @@ void MedicalFile::setBloodType(BloodType newBloodType) {
     bloodType = newBloodType;
 }
 
-void MedicalFile::setRhFactor(RhFactor newRhFactor) {
-    rhFactor = newRhFactor;
-}
+void MedicalFile::setRhFactor(RhFactor newRhFactor) { rhFactor = newRhFactor; }
 
 void MedicalFile::setAllergies(vector<string> newAllergies) {
     allergies = newAllergies;
@@ -46,11 +45,8 @@ void MedicalFile::addCurrentMedication(string newCurrentMedication) {
     currentMedications.push_back(newCurrentMedication);
 }
 
-void MedicalFile::addVaccinationRegistry(string newVaccinationRegistry) { 
+void MedicalFile::addVaccinationRegistry(string newVaccinationRegistry) {
     vaccinationRegistry.push_back(newVaccinationRegistry);
 }
 
-void MedicalFile::addNote(string newNote) {
-    notes.push_back(newNote);
-}
-
+void MedicalFile::addNote(string newNote) { notes.push_back(newNote); }
