@@ -1,11 +1,16 @@
-#include "../include/Doctor.h"
-#include "../include/HospitalDatabase/HospitalDatabase.h"
+#include "../../../include/Users/Doctor.h"
+#include "../../../include/HospitalDatabase/HospitalDatabase.h"
 #include <string>
 
 Doctor::Doctor(string name, string password, string especialidade)
     : User(name, password, Roles::Doctor), especialidade(especialidade) {
     this->especialidade = especialidade;
 }
+
+Doctor::Doctor(string name, string password, string especialidade,
+               int consultCost)
+    : User(name, password, Roles::Doctor), especialidade(especialidade),
+      consultCost(consultCost) {}
 
 vector<Appointment> Doctor::getAppointments() {
     vector<string> stringedAppointments =

@@ -2,7 +2,7 @@
 #ifndef USER_H
 #define USER_H
 // #include <iostream>
-#include "Date.h"
+#include "../Time/Date.h"
 #include <string>
 #include <vector>
 
@@ -45,7 +45,6 @@ class User {
 
     User() {}
 
-
     unsigned short getUserID();
     string getLogin();
     string getPassword();
@@ -71,6 +70,9 @@ class User {
     void setPhoneNumber(string newPhoneNumber);
     void setEmail(string newEmail);
     void setRole(Roles::Role role);
+
+    virtual ~User() = default;
+    virtual void whoAmI() {}
 };
 
 // Funções auxiliares

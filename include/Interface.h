@@ -1,7 +1,8 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#include "User.h"
+#include "./Users/User.h"
+#include "Users/Patient.h"
 #include <string>
 #include <vector>
 
@@ -25,12 +26,32 @@ class HospitalInterface {
     void createUserInterface();
 
     void patientInterface();
+    void marcarConsulta();
+    void listarConsultas();
 
     void attendantInterface();
 
     void doctorInterface();
 
+    // MANAGER INTERFACE
     void managerInterface();
+    void managerCreateInterface();
+    void managerCreatePatient();
+    void managerCreateAttendant();
+    void managerCreateDoctor();
+    void managerCreateManager();
+
+    void managerListInterface();
+    void managerListPatient();
+    void managerListAttendant();
+    void managerListDoctor();
+    void managerListManager();
+
+    void managerDeleteInterface();
+    void managerDeletePatient();
+    void managerDeleteAttendant();
+    void managerDeleteDoctor();
+    void managerDeleteManager();
 
     bool assertAccessLevel(int);
 

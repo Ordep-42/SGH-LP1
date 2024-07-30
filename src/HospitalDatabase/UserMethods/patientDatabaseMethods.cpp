@@ -27,7 +27,6 @@ void HospitalDatabase::createPatient(User patient) {
         return;
     }
     returnCode = sqlite3_step(stmt);
-    verifyErrorCode();
 
     sqlite3_close(db);
 }

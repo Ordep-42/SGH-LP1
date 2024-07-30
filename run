@@ -1,0 +1,10 @@
+#!/bin/bash
+
+mkdir build
+cd build || exit 1
+wait
+cmake .. || exit 1
+wait
+make || exit 1
+
+./SGH-LP1

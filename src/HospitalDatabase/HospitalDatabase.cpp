@@ -45,10 +45,11 @@ HospitalDatabase::HospitalDatabase() {
 
     const char *agendaSql = "CREATE TABLE IF NOT EXISTS SCHEDULE("
                             "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
-                            "DATA TEXT NOT NULL,"
                             "STATUS TEXT NOT NULL,"
                             "PATIENT_ID INTEGER NOT NULL,"
                             "DOCTOR_ID INTEGER NOT NULL,"
+                            "PROCEDURE TEXT ,"
+                            "SESSION TEXT NOT NULL,"
                             "FOREIGN KEY (PATIENT_ID) REFERENCES PATIENT (ID)"
                             "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID));";
 

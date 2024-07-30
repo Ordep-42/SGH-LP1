@@ -1,4 +1,4 @@
-#include "../include/Patient.h"
+#include "../../../include/Users/Patient.h"
 
 using namespace std;
 
@@ -17,9 +17,7 @@ vector<EmergencyContact> Patient::getEmergencyContacts() {
     return emergencyContacts;
 }
 
-MedicalFile Patient::getMedicalFile() {
-    return medicalFile; 
-}
+MedicalFile Patient::getMedicalFile() { return medicalFile; }
 
 vector<Appointment> Patient::getScheduledAppointments() {
     return scheduledAppointments;
@@ -34,7 +32,8 @@ vector<Appointment> Patient::getCanceledAppointments() {
 }
 
 // Setters
-void Patient::setEmergencyContact(vector<EmergencyContact> newEmergencyContacts) {
+void Patient::setEmergencyContact(
+    vector<EmergencyContact> newEmergencyContacts) {
     emergencyContacts = newEmergencyContacts;
 }
 
@@ -47,7 +46,8 @@ void Patient::addEmergencyContact(EmergencyContact newEmergencyContact) {
     emergencyContacts.push_back(newEmergencyContact);
 }
 
-void Patient::setScheduledAppointments(vector<Appointment> newScheduledAppointments) {
+void Patient::setScheduledAppointments(
+    vector<Appointment> newScheduledAppointments) {
     scheduledAppointments = newScheduledAppointments;
 }
 
@@ -55,6 +55,7 @@ void Patient::setEndedAppointments(vector<Appointment> newEndedAppointments) {
     endedAppointments = newEndedAppointments;
 }
 
-void Patient::setCanceledAppointments(vector<Appointment> newCanceledAppointments) {
+void Patient::setCanceledAppointments(
+    vector<Appointment> newCanceledAppointments) {
     canceledAppointments = newCanceledAppointments;
 }

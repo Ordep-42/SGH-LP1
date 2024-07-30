@@ -9,22 +9,20 @@
 using namespace std;
 
 class Session {
-private:
+  private:
     Time time;
-    Date date; 
-    //short room;
-    // int doctorId
+    Date date;
 
-public:
+  public:
     Session(Time newTime, Date newDate);
-    Session(); // isso resolveu sabe-se lá pq.
+    Session();
 
     Time getTime();
     Date getDate();
     string getTimeString();
     string getDateString();
     string toTDString();
-    string toString(); // Ou toDTString
+    string toString();
 
     void fixSession();
 
@@ -33,14 +31,11 @@ public:
     bool isBetween(Session session1, Session session2);
 
     bool isIn(vector<Session> sessions);
-    bool isIn(vector<WorkSession> wSessions);
-    bool isIn(vector<Appointment> app);
-
 };
 
 // Funções auxiliares
-Session nextSessionFrom(vector<Session> sessions); // Seção mais recente em data
-Session lastSessionFrom(vector<Session> sections); // Última sessão feita
+Session nextSessionFrom(vector<Session> sessions);
+Session lastSessionFrom(vector<Session> sections);
 Session firstSession(Session session1, Session session2);
 Session lastSession(Session session1, Session session2);
 
@@ -48,7 +43,5 @@ Session tdStringToSession(string convertMe);
 Session stringToSession(string convertMe);
 string getFirstPart(string firstSecond);
 string getSecondPart(string firstSecond);
-
-
 
 #endif // !SESSION_H
