@@ -34,16 +34,16 @@ void HospitalInterface::patientInterface() {
         HospitalInterface::pacienteMarcarConsulta();
         break;
     case 2:
-        HospitalInterface::pacienteListarConsultas();
+        //       HospitalInterface::pacienteListarConsultas();
         break;
     case 3:
-        HospitalInterface::pacienteCancelarConsulta();
+        //       HospitalInterface::pacienteCancelarConsulta();
         break;
     case 4:
-        HospitalInterface::pacienteListarDados();
+        //     HospitalInterface::pacienteListarDados();
         break;
     case 5:
-        HospitalInterface::pacienteAtualizarDados();
+        //   HospitalInterface::pacienteAtualizarDados();
         break;
     case 6:
         this->setCurrentUser(nullptr);
@@ -79,20 +79,20 @@ void HospitalInterface::pacienteMarcarConsulta() {
         HospitalInterface::patientInterface();
         return;
     }
+    /*
+        Schedule medSchedule = getScheduleByDoctorIdFromBD(medId);
 
-    Schedule medSchedule = getScheduleByDoctorIdFromBD(medId);
+        // int  pickedSession =
+        // choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0
+        // volta?
 
-    // int  pickedSession =
-    // choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0
-    // volta?
+        // implementar o toStringVector tbm
+        vector<string> SessionsToChoice =
+            medSchedule.avaiableSessions().toStringVector();
+        int pickedSession = choiceMaker(SessionsToChoice);
 
-    // implementar o toStringVector tbm
-    vector<string> SessionsToChoice =
-        medSchedule.avaiableSessions().toStringVector();
-    int pickedSession = choiceMaker(SessionsToChoice);
-
-    MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
-
+        MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
+    */
     // system("clear");
     // titleMaker("AGENDAMENTO DE CONSULTA");
     // string data;
@@ -136,7 +136,7 @@ void HospitalInterface::pacienteMarcarConsulta() {
     }
     HospitalInterface::patientInterface();
 }
-
+/*
 void HospitalInterface::pacienteListarConsultas() {
     system("clear");
     titleMaker("LISTAGEM DE CONSULTAS");
@@ -186,7 +186,7 @@ void HospitalInterface::pacienteCancelarConsulta() {
     }
     HospitalInterface::patientInterface();
 }
-
+*/
 void HospitalInterface::pacienteListarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
