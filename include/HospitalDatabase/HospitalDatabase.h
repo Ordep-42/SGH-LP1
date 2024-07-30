@@ -65,7 +65,7 @@ class HospitalDatabase {
     static optional<Appointment> getAppointmentByID(int appointmentID);
     static void listAppointments();
     static void listAppointmentsByDoctor();
-    static void listAppointmentsByPatient(int patientId);
+    static vector<Appointment> listAppointmentsByPatient(int patientId);
     static void listAppointmentsByDate();
     static void deleteAppointment(short unsigned);
 

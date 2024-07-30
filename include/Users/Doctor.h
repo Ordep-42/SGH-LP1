@@ -11,8 +11,8 @@ using namespace std;
 struct Equipment {
     int id;
     string name;
-    string descrição;
-    double preço;
+    string descricao;
+    double preco;
 };
 
 class Doctor : public User {

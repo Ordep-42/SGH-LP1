@@ -9,11 +9,11 @@ using namespace std;
 
 typedef enum relations {
     Pai,
-    Mãe,
-    Irmão,
-    Irmã,
-    Avô,
-    Avó,
+    Mae,
+    Irmao,
+    Irma,
+    Avou,
+    Avoh,
     Tio,
     Tia,
     Sobrinho,
