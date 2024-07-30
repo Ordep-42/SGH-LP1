@@ -54,9 +54,10 @@ HospitalDatabase::HospitalDatabase() {
                             "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID));";
 
     const char *wSessions = "CREATE TABLE IF NOT EXISTS WORK_SCHEDULE("
-                            "ID INTEGER PRIMARY KEY AUTOINCREMENT"
-                            "DOCTOR_ID INTEGER NOT NULL"
-                            "SESSION TEXT NOT NULL";
+                            "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            "DOCTOR_ID INTEGER NOT NULL,"
+                            "SESSION TEXT NOT NULL,"
+                            "FOREIGN KEY (DOCTOR_ID REFERENCES DOCTOR (ID));";
 
     returnCode = sqlite3_exec(db, gestorSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, atendenteSql, 0, 0, &errMsg);

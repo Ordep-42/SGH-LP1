@@ -38,13 +38,6 @@ class HospitalDatabase {
     static void deleteDoctor(short unsigned);
     static bool validateDoctor(string name, string password);
 
-    static void createAppointment(Doctor doctor, Patient patient, Date);
-    static void listAppointments();
-    static void listAppointmentsByDoctor();
-    static void listAppointmentsByPatient(int patientId);
-    static void listAppointmentsByDate();
-    static void deleteAppointment(short unsigned);
-
     static void createAttendant(User);
     static void listAttendants();
     static void deleteAttendant(short unsigned);
@@ -52,6 +45,19 @@ class HospitalDatabase {
     static void createManager(Manager);
     static void listManagers();
     static void deleteManager(short unsigned);
+
+    static void createAppointment(Doctor doctor, Patient patient, Date date,
+                                  string procedure);
+    static void listAppointments();
+    static void listAppointmentsByDoctor();
+    static void listAppointmentsByPatient(int patientId);
+    static void listAppointmentsByDate();
+    static void deleteAppointment(short unsigned);
+
+    static void createWSession(Doctor, Session);
+    static void listWSessions();
+    static void listWsessionByDoctor(int DoctorID);
+    static void deleteWSession(int wSessionID);
 
     string getScheduleByDate(Date);
     string getScheduleBetweenDates(Date, Date);
