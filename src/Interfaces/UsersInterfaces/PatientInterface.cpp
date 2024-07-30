@@ -80,34 +80,44 @@ void HospitalInterface::marcarConsulta() {
         return;
     }
 
-    system("clear");
-    titleMaker("AGENDAMENTO DE CONSULTA");
-    string data;
-    string hora;
-    cout << "Formato: DD/MM/YYYY\n";
-    cout << "Digite a DATA para realizar a consulta: ";
-    cin >> data;
-    getchar();
-    cout << "\n";
-    cout << "Formato: HH:MM\n";
-    cout << "Digite a HORA para realizar a consulta: ";
-    cin >> hora;
-    getchar();
+    Schedule medSchedule = getScheduleByDoctorId(medId); 
 
-    Session appointmentSession =
-        Session(stringToTime(hora), stringToDate(data));
+     //int  pickedSession = choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0 volta?
 
-    system("clear");
-    titleMaker("AGENDAMENTO DE CONSULTA");
-    string consultType;
-    cout << "Qual o tipo de consulta?\n";
-    cin >> consultType;
-    getchar();
+    // implementar o toStringVector tbm
+    vector<string> SessionsToChoice = medSchedule.avaiableSessions().toStringVector();
+    int pickedSession = choiceMaker(SessionsToChoice);
+
+    MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
+    
+    // system("clear");
+    // titleMaker("AGENDAMENTO DE CONSULTA");
+    // string data;
+    // string hora;
+    // cout << "Formato: DD/MM/YYYY\n";
+    // cout << "Digite a DATA para realizar a consulta: ";
+    // cin >> data;
+    // getchar();
+    // cout << "\n";
+    // cout << "Formato: HH:MM\n";
+    // cout << "Digite a HORA para realizar a consulta: ";
+    // cin >> hora;
+    // getchar();
+
+    // Session appointmentSession =
+    //     Session(stringToTime(hora), stringToDate(data));
+
+    // system("clear");
+    // titleMaker("AGENDAMENTO DE CONSULTA");
+    // string consultType;
+    // cout << "Qual o tipo de consulta?\n";
+    // cin >> consultType;
+    // getchar();
 
     /*int patientId = this->getCurrentUser()->getUserID();
 
-    Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
-                                           patientId, medId, consultType);
+    // Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
+    //                                        patientId, medId, consultType);
 
     // AGENDAR NO BANCO DE DADOS*/
     cout << "Consulta marcada com sucesso para a data " << data << " às " << hora << "!" << endl;
