@@ -33,6 +33,18 @@ void HospitalInterface::patientInterface() {
     case 1:
         HospitalInterface::marcarConsulta();
         break;
+    case 2:
+        HospitalInterface::listarConsultas();
+        break;
+    case 3:
+        HospitalInterface::cancelarConsulta();
+        break;
+    case 4:
+        HospitalInterface::listarDados();
+        break;
+    case 5:
+        HospitalInterface::atualizarDados();
+        break;
     case 6:
         this->setCurrentUser(nullptr);
         HospitalInterface::entryProgramInterface();
@@ -51,7 +63,7 @@ void HospitalInterface::marcarConsulta() {
     set<int> IdList = HospitalDatabase::listDoctors();
     hr();
     cout << "Digite o ID do médico que você quer se consultar." << endl;
-    cout << "0 para voltar.\n";
+    cout << "[0] para voltar.\n";
 
     cin >> medId;
     getchar();
@@ -92,19 +104,84 @@ void HospitalInterface::marcarConsulta() {
     cin >> consultType;
     getchar();
 
-    int patientId = this->getCurrentUser()->getUserID();
+    /*int patientId = this->getCurrentUser()->getUserID();
 
     Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
                                            patientId, medId, consultType);
 
-    // AGENDAR NO BANCO DE DADOS
+    // AGENDAR NO BANCO DE DADOS*/
+    cout << "Consulta marcada com sucesso para a data " << data << " às " << hora << "!" << endl;
+    
+    while (true) {
+        cout << "Digite [0] para voltar." << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 0) {
+            break;
+        }
+    }
+    HospitalInterface::patientInterface();
 }
 
 void HospitalInterface::listarConsultas() {
     system("clear");
-    titleMaker("LISTAR CONSULTAS");
+    titleMaker("LISTAGEM DE CONSULTAS");
 
-    HospitalDatabase::listAppointmentsByPatient(
-        this->getCurrentUser()->getUserID());
+    //HospitalDatabase::listAppointmentsByPatient(
+        //this->getCurrentUser()->getUserID());
     hr();
+    while (true) {
+        cout << "Digite [0] para voltar." << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 0) {
+            break;
+        }
+    }
+    HospitalInterface::patientInterface();
+}
+
+void HospitalInterface::cancelarConsulta() {
+    system("clear");
+    titleMaker("CANCELAR CONSULTA");
+
+    int appointmentId;
+    cout << "Digite o ID da consulta que deseja cancelar: ";
+    cin >> appointmentId;
+    getchar();
+
+    //HospitalDatabase::deleteAppointment(appointmentId);
+
+    cout << "Consulta cancelada com sucesso!" << endl;
+    while (true) {
+        cout << "Digite [0] para voltar." << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 0) {
+            break;
+        }
+    }
+    HospitalInterface::patientInterface();
+}
+
+void HospitalInterface::listarDados() {
+    system("clear");
+    titleMaker("LISTAGEM DE DADOS");
+    //Lista os dados
+    while( true ) {
+        cout << "Digite [0] para voltar." << endl;
+        int choice;
+        cin >> choice;
+        if( choice == 0 ) {
+            break;
+        }
+    }
+    HospitalInterface::patientInterface();
+}
+
+void HospitalInterface::atualizarDados() {
+    system("clear");
+    titleMaker("ATUALIZAÇÃO DE DADOS");
+
+    
 }
