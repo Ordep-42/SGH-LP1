@@ -130,27 +130,12 @@ string getSecondPart(string firstSecond) {
     return firstSecond.substr(pos + 1);
 }
 
-// TimeDateString
-string Session::toTDString() {
-    string sessionString = "";
-    sessionString += (this->time.toString()) + " " + (this->date.toString());
-
-    return sessionString;
-}
-
 string Session::toString() {
-    string sessionString = toTDString();
+    string sessionString = toString();
     string time = getFirstPart(sessionString),
            date = getSecondPart(sessionString);
 
     return date + " " + time;
-}
-
-Session tdStringToSession(string convertMe) {
-    Session newSession(stringToTime(getFirstPart(convertMe)),
-                       stringToDate(getSecondPart(convertMe)));
-
-    return newSession;
 }
 
 // Eu só flippei os gets oq deixou BEM gambiarroso!!
