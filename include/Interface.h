@@ -26,11 +26,11 @@ class HospitalInterface {
     void createUserInterface();
 
     void patientInterface();
-    void marcarConsulta();
-    void listarConsultas();
-    void cancelarConsulta();
-    void listarDados();
-    void atualizarDados();
+    void pacienteMarcarConsulta();
+    void pacienteListarConsultas();
+    void pacienteCancelarConsulta();
+    void pacienteListarDados();
+    void pacienteAtualizarDados();
 
     void attendantInterface();
 

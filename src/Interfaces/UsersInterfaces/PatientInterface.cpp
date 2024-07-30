@@ -31,19 +31,19 @@ void HospitalInterface::patientInterface() {
 
     switch (choice) {
     case 1:
-        HospitalInterface::marcarConsultaNOBD();
+        HospitalInterface::pacienteMarcarConsulta();
         break;
     case 2:
-        HospitalInterface::listarConsultas();
+        HospitalInterface::pacienteListarConsultas();
         break;
     case 3:
-        HospitalInterface::cancelarConsulta();
+        HospitalInterface::pacienteCancelarConsulta();
         break;
     case 4:
-        HospitalInterface::listarDados();
+        HospitalInterface::pacienteListarDados();
         break;
     case 5:
-        HospitalInterface::atualizarDados();
+        HospitalInterface::pacienteAtualizarDados();
         break;
     case 6:
         this->setCurrentUser(nullptr);
@@ -55,7 +55,7 @@ void HospitalInterface::patientInterface() {
     }
 }
 
-void HospitalInterface::marcarConsulta() {
+void HospitalInterface::pacienteMarcarConsulta() {
     int medId;
 
     system("clear");
@@ -80,16 +80,19 @@ void HospitalInterface::marcarConsulta() {
         return;
     }
 
-    Schedule medSchedule = getScheduleByDoctorIdFromBD(medId); 
+    Schedule medSchedule = getScheduleByDoctorIdFromBD(medId);
 
-     //int  pickedSession = choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0 volta?
+    // int  pickedSession =
+    // choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0
+    // volta?
 
     // implementar o toStringVector tbm
-    vector<string> SessionsToChoice = medSchedule.avaiableSessions().toStringVector();
+    vector<string> SessionsToChoice =
+        medSchedule.avaiableSessions().toStringVector();
     int pickedSession = choiceMaker(SessionsToChoice);
 
     MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
-    
+
     // system("clear");
     // titleMaker("AGENDAMENTO DE CONSULTA");
     // string data;
@@ -120,8 +123,9 @@ void HospitalInterface::marcarConsulta() {
     //                                        patientId, medId, consultType);
 
     // AGENDAR NO BANCO DE DADOS*/
-    //cout << "Consulta marcada com sucesso para a data " << data << " às " << hora << "!" << endl;
-    
+    // cout << "Consulta marcada com sucesso para a data " << data << " às " <<
+    // hora << "!" << endl;
+
     while (true) {
         cout << "Digite [0] para voltar." << endl;
         int choice;
@@ -133,15 +137,16 @@ void HospitalInterface::marcarConsulta() {
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::listarConsultas() {
+void HospitalInterface::pacienteListarConsultas() {
     system("clear");
     titleMaker("LISTAGEM DE CONSULTAS");
 
-    ScheduledAppointments patientAppointments = Banco.getConsultasByPatientId(<id do paciente>); 
+    ScheduledAppointments patientAppointments =
+        Banco.getConsultasByPatientId(<id do paciente>);
     printarVetorDeStrings(patientAppointments.toString);
-    System("pause");
-    //HospitalDatabase::listAppointmentsByPatient(
-        //this->getCurrentUser()->getUserID());
+    system("pause");
+    // HospitalDatabase::listAppointmentsByPatient(
+    // this->getCurrentUser()->getUserID());
     hr();
     while (true) {
         cout << "Digite [0] para voltar." << endl;
@@ -154,17 +159,21 @@ void HospitalInterface::listarConsultas() {
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::cancelarConsulta() {
+void HospitalInterface::pacienteCancelarConsulta() {
     system("clear");
     titleMaker("CANCELAR CONSULTA");
 
-    ScheduledAppointments consultasAgendadas = Banco.getAppointmentsByPatientId(<id do paciente>).searchByStatus("scheduled"); 
-    if(patientAppointments.getAppointments().size() == 0) { cout << "\"Mas ninguém veio\""; }
-    else{
+    ScheduledAppointments consultasAgendadas =
+        Banco.getAppointmentsByPatientId(<id do paciente>)
+            .searchByStatus("scheduled");
+    if (patientAppointments.getAppointments().size() == 0) {
+        cout << "\"Mas ninguém veio\"";
+    } else {
         int choice = choiceMaker(consultasAgendadas.toString());
 
-        TrocarStatusNoBanco(consultasAgendadas.getAppointments()[choice].getId(), "canceled");
-        cout << " sábado animado "; 
+        TrocarStatusNoBanco(
+            consultasAgendadas.getAppointments()[choice].getId(), "canceled");
+        cout << " sábado animado ";
     }
     cout << "Consulta cancelada com sucesso!" << endl;
     while (true) {
@@ -178,22 +187,22 @@ void HospitalInterface::cancelarConsulta() {
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::listarDados() {
+void HospitalInterface::pacienteListarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
-    //Lista os dados
-    while( true ) {
+    // Lista os dados
+    while (true) {
         cout << "Digite [0] para voltar." << endl;
         int choice;
         cin >> choice;
-        if( choice == 0 ) {
+        if (choice == 0) {
             break;
         }
     }
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::atualizarDados() {
+void HospitalInterface::pacienteAtualizarDados() {
     system("clear");
     titleMaker("ATUALIZAÇÃO DE DADOS");
 }
