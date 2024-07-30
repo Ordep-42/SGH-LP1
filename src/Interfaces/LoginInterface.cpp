@@ -71,6 +71,18 @@ void HospitalInterface::loginInterface() {
         doctorInterface();
         break;
     case 4:
+        optional<Manager> maybeManager =
+            HospitalDatabase::getManagerByNameAndPassword(nome, senha);
+
+        if (!maybeManager.has_value()) {
+            cout << "Manager invalido... Tente novamente.\n";
+            sleep(1);
+            return;
+        }
+        this->setCurrentUser(&maybeManager.value());
+        this->setAccessLevel(tipoDeUsuario);
+        this->setIsLogged(true);
+
         managerInterface();
         break;
     }

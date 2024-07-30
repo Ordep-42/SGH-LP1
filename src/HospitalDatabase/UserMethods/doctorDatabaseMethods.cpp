@@ -3,6 +3,7 @@
 #include <iostream>
 #include <set>
 #include <string>
+#include <unistd.h>
 
 void HospitalDatabase::createDoctor(Doctor doctor) {
     int returnCode = sqlite3_open("../data/hospital.db", &db);
@@ -15,14 +16,11 @@ void HospitalDatabase::createDoctor(Doctor doctor) {
     sqlite3_bind_text(stmt, 1, doctor.getName().c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, doctor.getPassword().c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_int(stmt, 3, doctor.getConsultCost());
-    returnCode = sqlite3_bind_text(stmt, 4, doctor.getEspecialidade().c_str(),
-                                   -1, SQLITE_STATIC);
-    if (!verifyErrorCode()) {
-        sqlite3_close(db);
-        return;
-    }
+    sqlite3_bind_text(stmt, 4, doctor.getEspecialidade().c_str(), -1,
+                      SQLITE_STATIC);
 
-    returnCode = sqlite3_step(stmt);
+    sqlite3_step(stmt);
+
     sqlite3_close(db);
 }
 

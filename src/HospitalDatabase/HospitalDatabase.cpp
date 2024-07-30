@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <unistd.h>
 
 sqlite3 *HospitalDatabase::db;
 sqlite3_stmt *HospitalDatabase::stmt;
@@ -168,7 +169,9 @@ HospitalDatabase::getAppointmentsByDoctor(short unsigned doctorId) {
 
 bool HospitalDatabase::verifyErrorCode() {
     if (returnCode != SQLITE_OK) {
+
         std::cerr << "SQLITE ERROR : " << sqlite3_errmsg(db) << std::endl;
+        sleep(4);
         return false;
     }
     return true;

@@ -98,7 +98,6 @@ HospitalDatabase::getPatientByNameAndPassword(string name, string password) {
 
     returnCode = sqlite3_step(stmt);
 
-    cout << "Cheguei aqui :" << returnCode << endl;
     if (returnCode == SQLITE_ROW) {
         int retrievedID = sqlite3_column_int(stmt, 0);
 
