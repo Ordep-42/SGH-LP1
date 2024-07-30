@@ -39,27 +39,25 @@ optional<Manager> HospitalDatabase::getManagerByID(int managerID) {
     int returnCode;
 
     returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
-    if (returnCode != SQLITE_OK) {
-        std::cerr << "Failed to prepare statement: " << sqlite3_errmsg(db)
-                  << std::endl;
+    if (!verifyErrorCode()) {
         return std::nullopt;
     }
 
     returnCode = sqlite3_bind_int(stmt, 1, managerID);
-    if (returnCode != SQLITE_OK) {
-        std::cerr << "Failed to bind manager ID: " << sqlite3_errmsg(db)
-                  << std::endl;
-        sqlite3_finalize(stmt);
+    if (!verifyErrorCode()) {
         return std::nullopt;
     }
 
     returnCode = sqlite3_step(stmt);
     if (returnCode == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);
-        std::string name =
+
+        string name =
             reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
-        std::string password =
+
+        string password =
             reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+
         sqlite3_finalize(stmt);
         return Manager(id, name, password);
     } else if (returnCode == SQLITE_DONE) {

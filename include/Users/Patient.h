@@ -57,6 +57,12 @@ class Patient : public User {
         this->password = senha;
     }
 
+    Patient(int id, string nome, string senha) {
+        this->userID = id;
+        this->name = nome;
+        this->password = senha;
+    }
+
     vector<EmergencyContact> getEmergencyContacts();
     MedicalFile getMedicalFile();
     vector<Appointment> getScheduledAppointments();
