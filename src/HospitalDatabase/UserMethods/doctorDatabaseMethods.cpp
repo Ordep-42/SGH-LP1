@@ -68,15 +68,9 @@ optional<Doctor> HospitalDatabase::getDoctorByNameAndPassword(string name,
                       "DOCTOR WHERE NAME = ? AND PASSWORD = ?;";
 
     returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
-    if (returnCode != SQLITE_OK) {
-        cout << "Erro na linha 72...doctorDatabase.cpp\n";
-        sleep(1);
-    }
     returnCode = sqlite3_bind_text(stmt, 1, name.c_str(), -1, SQLITE_STATIC);
-
     returnCode =
         sqlite3_bind_text(stmt, 2, password.c_str(), -1, SQLITE_STATIC);
-
     returnCode = sqlite3_step(stmt);
 
     if (returnCode == SQLITE_ROW) {

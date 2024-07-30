@@ -8,25 +8,10 @@ void HospitalDatabase::createPatient(User patient) {
     string sql = "INSERT INTO PATIENT (NAME, PASSWORD) VALUES (?, ?);";
 
     returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
-    if (!verifyErrorCode()) {
-        sqlite3_close(db);
-        return;
-    }
     returnCode = sqlite3_bind_text(stmt, 1, patient.getName().c_str(), -1,
                                    SQLITE_STATIC);
-    if (!verifyErrorCode()) {
-        sqlite3_finalize(stmt);
-        sqlite3_close(db);
-        return;
-    }
-
     returnCode = sqlite3_bind_text(stmt, 2, patient.getPassword().c_str(), -1,
                                    SQLITE_STATIC);
-    if (!verifyErrorCode()) {
-        sqlite3_close(db);
-        return;
-    }
-
     returnCode = sqlite3_step(stmt);
 
     sqlite3_close(db);
@@ -70,23 +55,9 @@ HospitalDatabase::getPatientByNameAndPassword(string name, string password) {
                       "AND PASSWORD = ?;";
 
     returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
-    if (!verifyErrorCode()) {
-        sqlite3_finalize(stmt);
-        return std::nullopt;
-    }
     returnCode = sqlite3_bind_text(stmt, 1, name.c_str(), -1, SQLITE_STATIC);
-    if (!verifyErrorCode()) {
-        sqlite3_finalize(stmt);
-        return std::nullopt;
-    }
-
     returnCode =
         sqlite3_bind_text(stmt, 2, password.c_str(), -1, SQLITE_STATIC);
-    if (!verifyErrorCode()) {
-        sqlite3_finalize(stmt);
-        return std::nullopt;
-    }
-
     returnCode = sqlite3_step(stmt);
 
     if (returnCode == SQLITE_ROW) {
