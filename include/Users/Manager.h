@@ -8,6 +8,7 @@ class Manager : public User {
   private:
   public:
     Manager(string name, string password);
+    Manager(int id, string name, string password);
 
     void createManager(Manager);
     void deleteManager(int);

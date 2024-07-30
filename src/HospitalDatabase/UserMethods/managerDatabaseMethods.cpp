@@ -1,5 +1,6 @@
 #include "../../../include/HospitalDatabase/HospitalDatabase.h"
 #include <iostream>
+#include <optional>
 #include <string>
 
 using namespace std;
@@ -30,6 +31,45 @@ void HospitalDatabase::createManager(Manager manager) {
         return;
 
     sqlite3_close(db);
+}
+
+optional<Manager> HospitalDatabase::getManagerByID(int managerID) {
+    std::string sql = "SELECT (ID ,NAME, PASSWORD) FROM MANAGER WHERE ID = ?;";
+    sqlite3_stmt *stmt;
+    int returnCode;
+
+    returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (returnCode != SQLITE_OK) {
+        std::cerr << "Failed to prepare statement: " << sqlite3_errmsg(db)
+                  << std::endl;
+        return std::nullopt;
+    }
+
+    returnCode = sqlite3_bind_int(stmt, 1, managerID);
+    if (returnCode != SQLITE_OK) {
+        std::cerr << "Failed to bind manager ID: " << sqlite3_errmsg(db)
+                  << std::endl;
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    }
+
+    returnCode = sqlite3_step(stmt);
+    if (returnCode == SQLITE_ROW) {
+        int id = sqlite3_column_int(stmt, 0);
+        std::string name =
+            reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        std::string password =
+            reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        sqlite3_finalize(stmt);
+        return Manager(id, name, password);
+    } else if (returnCode == SQLITE_DONE) {
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    } else {
+        std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    };
 }
 
 void HospitalDatabase::listManagers() {
