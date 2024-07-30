@@ -22,7 +22,7 @@ void HospitalInterface::patientInterface() {
 
     vector<string> choices;
     choices.push_back("Marcar consulta");
-    choices.push_back("Listas consultas");
+    choices.push_back("Listar consultas");
     choices.push_back("Cancelar consulta");
     choices.push_back("Listar dados");
     choices.push_back("Atualizar dados");
@@ -31,7 +31,7 @@ void HospitalInterface::patientInterface() {
 
     switch (choice) {
     case 1:
-        HospitalInterface::marcarConsulta();
+        HospitalInterface::marcarConsultaNOBD();
         break;
     case 6:
         this->setCurrentUser(nullptr);
@@ -68,7 +68,7 @@ void HospitalInterface::marcarConsulta() {
         return;
     }
 
-    Schedule medSchedule = getScheduleByDoctorId(medId); 
+    Schedule medSchedule = getScheduleByDoctorIdFromBD(medId); 
 
      //int  pickedSession = choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0 volta?
 
@@ -119,8 +119,27 @@ void HospitalInterface::listarConsultas() {
     hr();
 }
 
+void HospitalInterface::ListarConsultas(){
+    ScheduledAppointments patientAppointments = Banco.getConsultasByPatientId(<id do paciente>); 
+    printarVetorDeStrings(patientAppointments.toString);
+    System("pause");
 
-// choices.push_back("Listas consultas");
-//    choices.push_back("Cancelar consulta");
-//    choices.push_back("Listar dados");
-//    choices.push_back("Atualizar dados");
+    //volta pra algum lugar no codigo... 
+
+}
+void HospitalInterface::cancelarConsulta(){
+    ScheduledAppointments consultasAgendadas = Banco.getAppointmentsByPatientId(<id do paciente>).searchByStatus("scheduled"); 
+    if(patientAppointments.getAppointments().size() == 0) { cout << "\"Mas ninguém veio\""; }
+    else{
+        int choice = choiceMaker(consultasAgendadas.toString());
+
+        TrocarStatusNoBanco(consultasAgendadas.getAppointments()[choice].getId(), "canceled");
+        cout << " sábado animado "; 
+    }
+}
+
+
+// void HospitalInterface::listarDados(){
+
+// }
+// //    choices.push_back("Atualizar dados");
