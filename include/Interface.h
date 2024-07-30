@@ -28,6 +28,9 @@ class HospitalInterface {
     void patientInterface();
     void marcarConsulta();
     void listarConsultas();
+    void cancelarConsulta();
+    void listarDados();
+    void atualizarDados();
 
     void attendantInterface();
 
