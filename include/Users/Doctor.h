@@ -23,6 +23,8 @@ class Doctor : public User {
   public:
     Doctor(string name, string password, string especialidade);
     Doctor(string name, string password, string especialidade, int consultCost);
+    Doctor(int id, string name, string password, string especialidade,
+           int consultCost);
 
     vector<Session> getWorkSchedule();
     vector<Appointment> getAppointments();

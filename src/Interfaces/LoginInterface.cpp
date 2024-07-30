@@ -67,10 +67,23 @@ void HospitalInterface::loginInterface() {
     case 2:
         attendantInterface();
         break;
-    case 3:
+    case 3: {
+        optional<Doctor> maybeDoctor =
+            HospitalDatabase::getDoctorByNameAndPassword(nome, senha);
+        if (!maybeDoctor.has_value()) {
+            cout << "Doutor invalido... Tente novamente.\n";
+            sleep(1);
+            return;
+        }
+
+        this->setCurrentUser(&maybeDoctor.value());
+        this->setIsLogged(true);
+        this->setAccessLevel(tipoDeUsuario);
+
         doctorInterface();
         break;
-    case 4:
+    }
+    case 4: {
         optional<Manager> maybeManager =
             HospitalDatabase::getManagerByNameAndPassword(nome, senha);
 
@@ -85,6 +98,7 @@ void HospitalInterface::loginInterface() {
 
         managerInterface();
         break;
+    }
     }
 
     sleep(1);
