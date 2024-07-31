@@ -1,23 +1,12 @@
-// #include "../../../include/HospitalDatabase/HospitalDatabase.h"
+#include "../../../include/HospitalDatabase/HospitalDatabase.h"
 
+Schedule HospitalDatabase::getScheduleByDoctorID(int doctorID) {
+    vector<WorkSession> wss = getWorkSessionsByDoctorID(doctorID);
+    vector<Appointment> apps = getAppointmentsByDoctorID(doctorID);
 
-// Schedule HospitalDatabase::getScheduleByDoctorID(int doctorID){
+    WorkSchedule workSchedule = WorkSchedule(wss);
+    ScheduledAppointments appointments = ScheduledAppointments(apps);
 
-// ScheduledAppointments appointments = getScheduledAppointmentsByDoctorID(doctorID);
-// WorkSchedule workSessions = getWorkScheduleByDoctorID(doctorID); 
-
-// Schedule newSchedule(appointments, workSessions);
-// return newSchedule;
-// }
-
-// ScheduledAppointments getScheduledAppointmentsByDoctorID(int doctorID){
-//     ScheduledAppointments scheduledAppointments(getAppointmentsByDoctorID(int doctorID));
-
-//     return scheduledAppointments;
-// }
-
-// WorkSchedule getWorkScheduleByDoctorID(int doctorID){
-//     WorkSchedule workSchedule(getWorkSessionsByDoctorID(int doctorID));
-
-//     return workSchedule;
-// } 
+    Schedule newSchedule(appointments, workSchedule);
+    return newSchedule;
+}
