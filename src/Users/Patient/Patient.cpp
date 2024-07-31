@@ -8,7 +8,7 @@ Patient::Patient(unsigned short newUserID, string newLogin, string newPassWord,
                  string newAddress, string newPhoneNumber, string newEmail,
                  vector<EmergencyContact> newEmergencyContacts,
                  MedicalFile newMedicalFile)
-    : User(newUserID, newLogin, newPassWord, newName, newBirthDate, newGender,
+    : User(newUserID, newLogin, newPassWord, newName, newCpf, newBirthDate, newGender,
            newCivilStatus, newAddress, newPhoneNumber, newEmail),
       emergencyContacts(newEmergencyContacts), medicalFile(newMedicalFile) {}
 
@@ -58,4 +58,39 @@ void Patient::setEndedAppointments(vector<Appointment> newEndedAppointments) {
 void Patient::setCanceledAppointments(
     vector<Appointment> newCanceledAppointments) {
     canceledAppointments = newCanceledAppointments;
+}
+
+string relationToString(Relation relation) {
+    switch(relation){
+    case Pai:
+        return "Pai";
+    case Mãe:
+        return "Mãe";
+    case Irmão:
+        return "Irmão";
+    case Irmã:
+        return "Irmã";
+    case Avô:
+        return "Avô";
+    case Avó:
+        return "Avó";
+    case Tio:
+        return "Tio";
+    case Tia:
+        return "Tia";
+    case Sobrinho:
+        return "Sobrinho";
+    case Sobrinha:
+        return "Sobrinha";
+    case Esposo:
+        return "Esposo";
+    case Esposa:
+        return "Esposa";
+    case Filho:
+        return "Filho";
+    case Filha:
+        return "Filha";
+    default:
+        return "Outro";
+    }
 }

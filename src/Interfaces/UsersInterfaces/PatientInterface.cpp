@@ -50,7 +50,6 @@ void HospitalInterface::patientInterface() {
         HospitalInterface::entryProgramInterface();
         break;
     default:
-
         break;
     }
 }
@@ -80,7 +79,7 @@ void HospitalInterface::marcarConsulta() {
         return;
     }
 
-    Schedule medSchedule = getScheduleByDoctorId(medId); 
+    /*Schedule medSchedule = getScheduleByDoctorId(medId); 
 
      //int  pickedSession = choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0 volta?
 
@@ -120,7 +119,7 @@ void HospitalInterface::marcarConsulta() {
     //                                        patientId, medId, consultType);
 
     // AGENDAR NO BANCO DE DADOS*/
-    cout << "Consulta marcada com sucesso para a data " << data << " às " << hora << "!" << endl;
+    //cout << "Consulta marcada com sucesso para a data " << data << " às " << hora << "!" << endl;
     
     while (true) {
         cout << "Digite [0] para voltar." << endl;
@@ -178,7 +177,26 @@ void HospitalInterface::listarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
     //Lista os dados
-    while( true ) {
+    //User* patient = this->getCurrentUser();
+
+    User user = User(1, "login", "password", "Pedro", "123.456.789-10", Date(200, 2024), Masculino, Solteiro, "Rua tal", "084 99999-9999", "email@domínio.com");
+    User *patient = &user;
+
+    titleMaker("Dados Pessoais");
+    cout << "Nome: " << patient->getName() << endl;
+    cout << "CPF: " << patient->getCpf() << endl;
+    cout << "Data de Nascimento: " << patient->getBirthDate().toString() << endl;
+    cout << "Gênero: " << genderToString(patient->getGender()) << endl;
+    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus()) << endl;
+
+    titleMaker("Contato");
+    cout << "Endereço: " << patient->getAddress() << endl;
+    cout << "Telefone: " << patient->getPhoneNumber() << endl;
+    cout << "Email: " << patient->getEmail() << endl;
+    
+    hr();
+
+    while (true) {
         cout << "Digite [0] para voltar." << endl;
         int choice;
         cin >> choice;
@@ -193,5 +211,105 @@ void HospitalInterface::atualizarDados() {
     system("clear");
     titleMaker("ATUALIZAÇÃO DE DADOS");
 
+    User user = User(1, "login", "password", "Pedro", "123.456.789-10", Date(200, 2024), Masculino, Solteiro, "Rua tal", "084 99999-9999", "email@domínio.com");
+    User *patient = &user;
+
+    titleMaker("Dados Pessoais");
+    cout << "Nome: " << patient->getName() << endl;
+    cout << "CPF: " << patient->getCpf() << endl;
+    cout << "Data de Nascimento: " << patient->getBirthDate().toString() << endl;
+    cout << "Gênero: " << genderToString(patient->getGender()) << endl;
+    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus()) << endl;
+
+    titleMaker("Contato");
+    cout << "Endereço: " << patient->getAddress() << endl;
+    cout << "Telefone: " << patient->getPhoneNumber() << endl;
+    cout << "Email: " << patient->getEmail() << endl;
     
+    titleMaker("Qual dado deseja atualizar?");
+
+    vector<string> choices;
+    choices.push_back("CPF");
+    choices.push_back("Data de Nascimento");
+    choices.push_back("Gênero");
+    choices.push_back("Estado Civil");
+    choices.push_back("Endereço");
+    choices.push_back("Telefone");
+    choices.push_back("Email");
+    choices.push_back("Voltar");
+    int choice = choiceMaker(choices);
+    
+    string entrada;
+    vector<string> dataChoices;
+    int dataChoice;
+        
+
+    switch (choice) {
+    case 1:
+        system("clear");
+        titleMaker("ATUALIZAÇÃO DE DADOS");
+        cout << "Digite o novo CPF: ";
+        cin >> entrada;
+        getchar();
+        patient->setCpf(entrada);
+        hr();
+        cout << "CPF atualizado para " << patient->getCpf() << "!" << endl;
+        break;
+    case 2:
+        system("clear");
+        titleMaker("ATUALIZAÇÃO DE DADOS");
+        cout << "Digite a nova Data de Nascimento (no formato DD/MM/AAAA): ";
+        cin >> entrada;
+        getchar();
+        patient->setBirthDate(stringToDate(entrada));
+        hr();
+        Date data;
+        data = patient->getBirthDate();
+        cout << "Data de Nascimento atualizada para atualizado para " << data.getDay() << "/" << data.getMonth() << "/" << data.getYear() << "!" << endl;
+        break;
+    case 3:
+        system("clear");
+        titleMaker("ATUALIZAÇÃO DE DADOS");
+        cout << "Digite a opção desejada: "<< endl;
+        dataChoices = {"Masculino", "Feminino", "Outro"};
+        dataChoice = choiceMaker(dataChoices);
+
+        switch (dataChoice) {
+        case 1:
+            patient->setGender(Masculino);
+            break;
+        case 2:
+            patient->setGender(Feminino);
+            break;
+        case 3:
+            patient->setGender(Outro);
+            break;
+        }
+        cout << "Gênero atualizado para " << genderToString(patient->getGender()) << "!" << endl;
+        break;
+    case 4:
+        break;
+    case 5:
+        break;
+    case 6:
+        break;
+    case 7:
+        break;
+    case 8:
+        HospitalInterface::patientInterface();
+        break;
+    default:
+        HospitalInterface::patientInterface();
+        break;
+    }
+
+    while (true) {
+        cout << "Digite [0] para voltar." << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 0) {
+            break;
+        }
+    }
+    HospitalInterface::patientInterface();
 }
