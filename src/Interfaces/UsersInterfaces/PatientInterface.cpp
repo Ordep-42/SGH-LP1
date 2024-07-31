@@ -146,7 +146,7 @@ void HospitalInterface::pacienteListarConsultas() {
             cout << "ID: " << patientAppointments[i].getId() << endl;
             cout << "Data: " << patientAppointments[i].getSession().getDate().toString() << endl;
             cout << "Hora: " << patientAppointments[i].getSession().getTime().toString() << endl;
-            cout << "Médico: " << HospitalDatabase::getDoctorByID(patientAppointments[i].getDoctorID())->getName() << endl;
+            cout << "Médico: " << patientAppointments[i].getDoctorID() << endl;
             cout << "Procedimento: " << patientAppointments[i].getProcedure() << endl;
             cout << "Status: " << patientAppointments[i].getStatus() << endl;
             cout << endl;
