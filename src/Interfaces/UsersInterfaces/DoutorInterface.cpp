@@ -33,7 +33,7 @@ void  HospitalInterface::doctorCheckPatient(int doctorID){
 // Confira no src/HospitalDatabase/ScheduledMethods/getMethods.cpp
 Schedule doctorSchedule = HospitalDatabase::getScheduleByDoctorID(doctorID);
 ScheduledAppointments appointments = doctorSchedule.getScheduledAppointments().AppointmentsToHappen();
-int choice = choiceMaker( appointments.toString() ); 
+int choice = choiceMaker( appointments.toString() ); // possivelmente seria bom modificar o "toString" pra nao incluir TODOS os campos.
 
 cout << appointments.toString()[choice - 1];
 system("pause");
