@@ -34,6 +34,8 @@ struct EmergencyContact {
         : name(newName), relation(newRelation), phoneNumber(newPhoneNumber) {}
 };
 
+string relationToString(Relation relation);
+
 class Patient : public User {
   private:
     vector<EmergencyContact> emergencyContacts;
