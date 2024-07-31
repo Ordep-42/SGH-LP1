@@ -304,6 +304,23 @@ CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerL
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.o: ../include/Users/User.h
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.o: ../src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp
 
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/HospitalDatabase/HospitalDatabase.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Interface.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/MedicalFile.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/Appointment.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/Date.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/Schedule.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/ScheduledAppointments.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/Session.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/Time.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/WorkSchedule.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Time/WorkSession.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Users/Doctor.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Users/Manager.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Users/Patient.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../include/Users/User.h
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp
+
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o: ../include/HospitalDatabase/HospitalDatabase.h
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o: ../include/Interface.h
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o: ../include/MedicalFile.h

@@ -636,6 +636,33 @@ src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.s:
 	$(MAKE) -f CMakeFiles/SGH-LP1.dir/build.make CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.s
 .PHONY : src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.s
 
+src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.o: src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o
+
+.PHONY : src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.o
+
+# target to build an object file
+src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o:
+	$(MAKE) -f CMakeFiles/SGH-LP1.dir/build.make CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o
+.PHONY : src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o
+
+src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.i: src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.i
+
+.PHONY : src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.i
+
+# target to preprocess a source file
+src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.i:
+	$(MAKE) -f CMakeFiles/SGH-LP1.dir/build.make CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.i
+.PHONY : src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.i
+
+src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.s: src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.s
+
+.PHONY : src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.s
+
+# target to generate assembly for a file
+src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.s:
+	$(MAKE) -f CMakeFiles/SGH-LP1.dir/build.make CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.s
+.PHONY : src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.s
+
 src/Interfaces/UsersInterfaces/PatientInterface.o: src/Interfaces/UsersInterfaces/PatientInterface.cpp.o
 
 .PHONY : src/Interfaces/UsersInterfaces/PatientInterface.o
@@ -1107,6 +1134,9 @@ help:
 	@echo "... src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.o"
 	@echo "... src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.i"
 	@echo "... src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.s"
+	@echo "... src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.o"
+	@echo "... src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.i"
+	@echo "... src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.s"
 	@echo "... src/Interfaces/UsersInterfaces/PatientInterface.o"
 	@echo "... src/Interfaces/UsersInterfaces/PatientInterface.i"
 	@echo "... src/Interfaces/UsersInterfaces/PatientInterface.s"

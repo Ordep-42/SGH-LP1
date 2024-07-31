@@ -304,9 +304,22 @@ CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerL
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp -o CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.s
 
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o: ../src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o -c /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp
+
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp > CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.i
+
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp -o CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.s
+
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o: ../src/Interfaces/UsersInterfaces/PatientInterface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o -c /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/PatientInterface.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.i: cmake_force
@@ -319,7 +332,7 @@ CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.s: cm
 
 CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o: ../src/Time/Appointment.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o -c /workspaces/SGH-LP1/src/Time/Appointment.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.i: cmake_force
@@ -332,7 +345,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o: ../src/Time/Date.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o -c /workspaces/SGH-LP1/src/Time/Date.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.i: cmake_force
@@ -345,7 +358,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Time/Schedule.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/Schedule.cpp.o: ../src/Time/Schedule.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Schedule.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Schedule.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/Schedule.cpp.o -c /workspaces/SGH-LP1/src/Time/Schedule.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/Schedule.cpp.i: cmake_force
@@ -358,7 +371,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/Schedule.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Time/ScheduledAppointments.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/ScheduledAppointments.cpp.o: ../src/Time/ScheduledAppointments.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/ScheduledAppointments.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/ScheduledAppointments.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/ScheduledAppointments.cpp.o -c /workspaces/SGH-LP1/src/Time/ScheduledAppointments.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/ScheduledAppointments.cpp.i: cmake_force
@@ -371,7 +384,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/ScheduledAppointments.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Time/Session.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/Session.cpp.o: ../src/Time/Session.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Session.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Session.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/Session.cpp.o -c /workspaces/SGH-LP1/src/Time/Session.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/Session.cpp.i: cmake_force
@@ -384,7 +397,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/Session.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Time/Time.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/Time.cpp.o: ../src/Time/Time.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Time.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/Time.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/Time.cpp.o -c /workspaces/SGH-LP1/src/Time/Time.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/Time.cpp.i: cmake_force
@@ -397,7 +410,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/Time.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Time/WorkSchedule.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/WorkSchedule.cpp.o: ../src/Time/WorkSchedule.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/WorkSchedule.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/WorkSchedule.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/WorkSchedule.cpp.o -c /workspaces/SGH-LP1/src/Time/WorkSchedule.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/WorkSchedule.cpp.i: cmake_force
@@ -410,7 +423,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/WorkSchedule.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Time/WorkSession.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Time/WorkSession.cpp.o: ../src/Time/WorkSession.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/WorkSession.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Time/WorkSession.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Time/WorkSession.cpp.o -c /workspaces/SGH-LP1/src/Time/WorkSession.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Time/WorkSession.cpp.i: cmake_force
@@ -423,7 +436,7 @@ CMakeFiles/SGH-LP1.dir/src/Time/WorkSession.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Users/Doctor/Doctor.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Users/Doctor/Doctor.cpp.o: ../src/Users/Doctor/Doctor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Doctor/Doctor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Doctor/Doctor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Users/Doctor/Doctor.cpp.o -c /workspaces/SGH-LP1/src/Users/Doctor/Doctor.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Users/Doctor/Doctor.cpp.i: cmake_force
@@ -436,7 +449,7 @@ CMakeFiles/SGH-LP1.dir/src/Users/Doctor/Doctor.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Users/Manager/Manager.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Users/Manager/Manager.cpp.o: ../src/Users/Manager/Manager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Manager/Manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Manager/Manager.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Users/Manager/Manager.cpp.o -c /workspaces/SGH-LP1/src/Users/Manager/Manager.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Users/Manager/Manager.cpp.i: cmake_force
@@ -449,7 +462,7 @@ CMakeFiles/SGH-LP1.dir/src/Users/Manager/Manager.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Users/Patient/MedicalFile.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Users/Patient/MedicalFile.cpp.o: ../src/Users/Patient/MedicalFile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Patient/MedicalFile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Patient/MedicalFile.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Users/Patient/MedicalFile.cpp.o -c /workspaces/SGH-LP1/src/Users/Patient/MedicalFile.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Users/Patient/MedicalFile.cpp.i: cmake_force
@@ -462,7 +475,7 @@ CMakeFiles/SGH-LP1.dir/src/Users/Patient/MedicalFile.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Users/Patient/Patient.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Users/Patient/Patient.cpp.o: ../src/Users/Patient/Patient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Patient/Patient.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/Patient/Patient.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Users/Patient/Patient.cpp.o -c /workspaces/SGH-LP1/src/Users/Patient/Patient.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Users/Patient/Patient.cpp.i: cmake_force
@@ -475,7 +488,7 @@ CMakeFiles/SGH-LP1.dir/src/Users/Patient/Patient.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/Users/User.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/Users/User.cpp.o: ../src/Users/User.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/User.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/SGH-LP1.dir/src/Users/User.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/Users/User.cpp.o -c /workspaces/SGH-LP1/src/Users/User.cpp
 
 CMakeFiles/SGH-LP1.dir/src/Users/User.cpp.i: cmake_force
@@ -488,7 +501,7 @@ CMakeFiles/SGH-LP1.dir/src/Users/User.cpp.s: cmake_force
 
 CMakeFiles/SGH-LP1.dir/src/main.cpp.o: CMakeFiles/SGH-LP1.dir/flags.make
 CMakeFiles/SGH-LP1.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/SGH-LP1.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/SGH-LP1.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SGH-LP1.dir/src/main.cpp.o -c /workspaces/SGH-LP1/src/main.cpp
 
 CMakeFiles/SGH-LP1.dir/src/main.cpp.i: cmake_force
@@ -520,6 +533,7 @@ SGH__LP1_OBJECTS = \
 "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerCreateInterface.cpp.o" \
 "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerDeleteInterface.cpp.o" \
 "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.o" \
+"CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o" \
 "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o" \
 "CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o" \
 "CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o" \
@@ -558,6 +572,7 @@ SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces
 SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerCreateInterface.cpp.o
 SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerDeleteInterface.cpp.o
 SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.o
+SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o
 SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o
 SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o
 SGH-LP1: CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o
@@ -576,7 +591,7 @@ SGH-LP1: CMakeFiles/SGH-LP1.dir/src/main.cpp.o
 SGH-LP1: CMakeFiles/SGH-LP1.dir/build.make
 SGH-LP1: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 SGH-LP1: CMakeFiles/SGH-LP1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable SGH-LP1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/SGH-LP1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Linking CXX executable SGH-LP1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SGH-LP1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

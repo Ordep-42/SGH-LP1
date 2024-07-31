@@ -23,6 +23,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerCreateInterface.cpp" "/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerCreateInterface.cpp.o"
   "/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerDeleteInterface.cpp" "/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerDeleteInterface.cpp.o"
   "/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp" "/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.o"
+  "/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp" "/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o"
   "/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/PatientInterface.cpp" "/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o"
   "/workspaces/SGH-LP1/src/Time/Appointment.cpp" "/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o"
   "/workspaces/SGH-LP1/src/Time/Date.cpp" "/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o"

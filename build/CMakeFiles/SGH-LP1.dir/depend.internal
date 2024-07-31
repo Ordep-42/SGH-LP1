@@ -304,6 +304,23 @@ CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerL
  /workspaces/SGH-LP1/include/Users/Patient.h
  /workspaces/SGH-LP1/include/Users/User.h
  /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp
+CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o
+ /workspaces/SGH-LP1/include/HospitalDatabase/HospitalDatabase.h
+ /workspaces/SGH-LP1/include/Interface.h
+ /workspaces/SGH-LP1/include/MedicalFile.h
+ /workspaces/SGH-LP1/include/Time/Appointment.h
+ /workspaces/SGH-LP1/include/Time/Date.h
+ /workspaces/SGH-LP1/include/Time/Schedule.h
+ /workspaces/SGH-LP1/include/Time/ScheduledAppointments.h
+ /workspaces/SGH-LP1/include/Time/Session.h
+ /workspaces/SGH-LP1/include/Time/Time.h
+ /workspaces/SGH-LP1/include/Time/WorkSchedule.h
+ /workspaces/SGH-LP1/include/Time/WorkSession.h
+ /workspaces/SGH-LP1/include/Users/Doctor.h
+ /workspaces/SGH-LP1/include/Users/Manager.h
+ /workspaces/SGH-LP1/include/Users/Patient.h
+ /workspaces/SGH-LP1/include/Users/User.h
+ /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp
 CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o
  /workspaces/SGH-LP1/include/HospitalDatabase/HospitalDatabase.h
  /workspaces/SGH-LP1/include/Interface.h

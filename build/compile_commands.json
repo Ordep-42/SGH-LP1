@@ -96,6 +96,11 @@
 },
 {
   "directory": "/workspaces/SGH-LP1/build",
+  "command": "/usr/bin/c++   -I/workspaces/SGH-LP1/include  -Werror -Wfatal-errors -g   -std=gnu++17 -o CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o -c /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp",
+  "file": "/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp"
+},
+{
+  "directory": "/workspaces/SGH-LP1/build",
   "command": "/usr/bin/c++   -I/workspaces/SGH-LP1/include  -Werror -Wfatal-errors -g   -std=gnu++17 -o CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o -c /workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/PatientInterface.cpp",
   "file": "/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/PatientInterface.cpp"
 },

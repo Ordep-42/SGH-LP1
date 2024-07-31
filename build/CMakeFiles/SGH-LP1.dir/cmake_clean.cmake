@@ -18,6 +18,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerCreateInterface.cpp.o"
   "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerDeleteInterface.cpp.o"
   "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerListInterface.cpp.o"
+  "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp.o"
   "CMakeFiles/SGH-LP1.dir/src/Interfaces/UsersInterfaces/PatientInterface.cpp.o"
   "CMakeFiles/SGH-LP1.dir/src/Time/Appointment.cpp.o"
   "CMakeFiles/SGH-LP1.dir/src/Time/Date.cpp.o"
