@@ -1,3 +1,4 @@
+
 #ifndef SCHEDULEDAPPOINTMENTS_H
 #define SCHEDULEDAPPOINTMENTS_H
 
@@ -65,6 +66,8 @@ class ScheduledAppointments {
 
     optional<Appointment> nextAppointment();
     Appointment lastAppointment();
+    ScheduledAppointments AppointmentsToHappen();
+
 
     // Pra marcar uma consulta:
     // Session nextAvaiableSection();
