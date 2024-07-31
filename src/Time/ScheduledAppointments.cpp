@@ -237,6 +237,17 @@ Appointment ScheduledAppointments::lastAppointment() {
     return appointments[appointments.size() - 1];
 }
 
+
+ScheduledAppointments ScheduledAppointments::AppointmentsToHappen(){
+    vector<Appointment> filterMe = getAppointments();
+    vector<Appointment> newScheduledAppointments;
+    for(Appointment app : filterMe){
+        if(app.getStatus() != "conclude" && app.getStatus() != "canceled"){
+            newScheduledAppointments.push_back(app);
+        }
+    }
+    return newScheduledAppointments;
+}
 // WorkSchedule WorkSchedule::searchByStatus(string testStatus){
 //     vector<WorkSession> vetorWS;
 //     for(WorkSession wSession : schedule){

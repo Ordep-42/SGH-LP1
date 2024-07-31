@@ -64,23 +64,22 @@ class HospitalDatabase {
     static optional<Appointment> getAppointmentByID(int appointmentID);
     static void listAppointments();
     static void listAppointmentsByDoctor();
-    static vector<Appointment> listAppointmentsByPatient(int patientId);
+    static vector<Appointment> getAppointmentsByPatientID(int patientId);
+    static vector<Appointment> getAppointmentsByDoctorID(int doctorID);
     static void listAppointmentsByDate();
     static void deleteAppointment(short unsigned);
 
     static optional<WorkSession> getWSessionByID(int WSessionID);
+    static vector<WorkSession> getWorkSessionsByDoctorID(int doctorID);
     static void createWSession(Doctor, Session);
     static void listWSessions();
     static void listWsessionByDoctor(int DoctorID);
     static void deleteWSession(int wSessionID);
 
-    ScheduledAppointments getScheduledAppointmentsByDoctorID(int doctorID);
-    WorkSchedule getWorkScheduleByDoctorID(int doctorID);
-
     string getScheduleByDate(Date);
     string getScheduleBetweenDates(Date, Date);
     static vector<string> getAppointmentsByDoctor(short unsigned);
-    Schedule getScheduleByDoctorID(int doctorID);
+    static Schedule getScheduleByDoctorID(int doctorID);
 
     static bool verifyErrorCode();
 };

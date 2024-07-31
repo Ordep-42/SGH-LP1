@@ -103,8 +103,9 @@ void HospitalInterface::pacienteMarcarConsulta() {
     //                                        patientId, medId, "Consulta");
 
     // AGENDAR NO BANCO DE DADOS*/
-    //cout << "Consulta marcada com sucesso para a data " << data << " às " << hora << "!" << endl;
-    
+    // cout << "Consulta marcada com sucesso para a data " << data << " às " <<
+    // hora << "!" << endl;
+
     while (true) {
         cout << "Digite [0] para voltar." << endl;
         int choice;
@@ -120,17 +121,28 @@ void HospitalInterface::pacienteListarConsultas() {
     system("clear");
     titleMaker("LISTAGEM DE CONSULTAS");
 
-    vector<Appointment> patientAppointments = HospitalDatabase::listAppointmentsByPatient(this->getCurrentUser()->getUserID());
+    vector<Appointment> patientAppointments =
+        HospitalDatabase::getAppointmentsByPatientID(
+            this->getCurrentUser()->getUserID());
     if (patientAppointments.size() == 0) {
         cout << "Você não possui consultas marcadas." << endl;
     } else {
         cout << "Consultas marcadas:" << endl;
         for (int i = 0; i < patientAppointments.size(); i++) {
             cout << "ID: " << patientAppointments[i].getId() << endl;
-            cout << "Data: " << patientAppointments[i].getSession().getDate().toString() << endl;
-            cout << "Hora: " << patientAppointments[i].getSession().getTime().toString() << endl;
-            cout << "Médico: " << HospitalDatabase::getDoctorByID(patientAppointments[i].getDoctorID())->getName() << endl;
-            cout << "Procedimento: " << patientAppointments[i].getProcedure() << endl;
+            cout << "Data: "
+                 << patientAppointments[i].getSession().getDate().toString()
+                 << endl;
+            cout << "Hora: "
+                 << patientAppointments[i].getSession().getTime().toString()
+                 << endl;
+            cout << "Médico: "
+                 << HospitalDatabase::getDoctorByID(
+                        patientAppointments[i].getDoctorID())
+                        ->getName()
+                 << endl;
+            cout << "Procedimento: " << patientAppointments[i].getProcedure()
+                 << endl;
             cout << "Status: " << patientAppointments[i].getStatus() << endl;
             cout << endl;
         }
@@ -156,7 +168,7 @@ void HospitalInterface::pacienteCancelarConsulta() {
     cin >> appointmentId;
     getchar();
 
-    //HospitalDatabase::deleteAppointment(appointmentId);
+    // HospitalDatabase::deleteAppointment(appointmentId);
 
     cout << "Consulta cancelada com sucesso!" << endl;
     while (true) {
@@ -170,33 +182,38 @@ void HospitalInterface::pacienteCancelarConsulta() {
     HospitalInterface::patientInterface();
 }
 
-User user = User(1, "login", "password", "Pedro", "123.456.789-10", Date(200, 2024), Masculino, Solteiro, "Rua tal", "084 99999-9999", "email@domínio.com");
+User user =
+    User(1, "login", "password", "Pedro", "123.456.789-10", Date(200, 2024),
+         Masculino, Solteiro, "Rua tal", "084 99999-9999", "email@domínio.com");
 User *patient = &user;
 
 void HospitalInterface::pacienteListarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
-    //User* patient = this->getCurrentUser();
+    // Lista os dados
+    // User* patient = this->getCurrentUser();
 
     titleMaker("Dados Pessoais");
     cout << "Nome: " << patient->getName() << endl;
     cout << "CPF: " << patient->getCpf() << endl;
-    cout << "Data de Nascimento: " << patient->getBirthDate().toString() << endl;
+    cout << "Data de Nascimento: " << patient->getBirthDate().toString()
+         << endl;
     cout << "Gênero: " << genderToString(patient->getGender()) << endl;
-    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus()) << endl;
+    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus())
+         << endl;
 
     titleMaker("Contato");
     cout << "Endereço: " << patient->getAddress() << endl;
     cout << "Telefone: " << patient->getPhoneNumber() << endl;
     cout << "Email: " << patient->getEmail() << endl;
-    
+
     hr();
 
     while (true) {
         cout << "Digite [0] para voltar." << endl;
         int choice;
         cin >> choice;
-        if( choice == 0 ) {
+        if (choice == 0) {
             break;
         }
     }
@@ -207,19 +224,20 @@ void HospitalInterface::pacienteAtualizarDados() {
     system("clear");
     titleMaker("ATUALIZAÇÃO DE DADOS");
 
-
     titleMaker("Dados Pessoais");
     cout << "Nome: " << patient->getName() << endl;
     cout << "CPF: " << patient->getCpf() << endl;
-    cout << "Data de Nascimento: " << patient->getBirthDate().toString() << endl;
+    cout << "Data de Nascimento: " << patient->getBirthDate().toString()
+         << endl;
     cout << "Gênero: " << genderToString(patient->getGender()) << endl;
-    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus()) << endl;
+    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus())
+         << endl;
 
     titleMaker("Contato");
     cout << "Endereço: " << patient->getAddress() << endl;
     cout << "Telefone: " << patient->getPhoneNumber() << endl;
     cout << "Email: " << patient->getEmail() << endl;
-    
+
     titleMaker("Qual dado deseja atualizar?");
 
     vector<string> choices;
@@ -232,11 +250,10 @@ void HospitalInterface::pacienteAtualizarDados() {
     choices.push_back("Email");
     choices.push_back("Voltar");
     int choice = choiceMaker(choices);
-    
+
     string entrada;
     vector<string> dataChoices;
     int dataChoice;
-        
 
     switch (choice) {
     case 1:
@@ -259,12 +276,14 @@ void HospitalInterface::pacienteAtualizarDados() {
         hr();
         Date data;
         data = patient->getBirthDate();
-        cout << "Data de Nascimento atualizada para atualizado para " << data.getDay() << "/" << data.getMonth() << "/" << data.getYear() << "!" << endl;
+        cout << "Data de Nascimento atualizada para atualizado para "
+             << data.getDay() << "/" << data.getMonth() << "/" << data.getYear()
+             << "!" << endl;
         break;
     case 3:
         system("clear");
         titleMaker("ATUALIZAÇÃO DE DADOS");
-        cout << "Digite a opção desejada: "<< endl;
+        cout << "Digite a opção desejada: " << endl;
         dataChoices = {"Masculino", "Feminino", "Outro"};
         dataChoice = choiceMaker(dataChoices);
 
@@ -279,12 +298,13 @@ void HospitalInterface::pacienteAtualizarDados() {
             patient->setGender(Outro);
             break;
         }
-        cout << "Gênero atualizado para " << genderToString(patient->getGender()) << "!" << endl;
+        cout << "Gênero atualizado para "
+             << genderToString(patient->getGender()) << "!" << endl;
         break;
     case 4:
-    system("clear");
+        system("clear");
         titleMaker("ATUALIZAÇÃO DE DADOS");
-        cout << "Digite a opção desejada: "<< endl;
+        cout << "Digite a opção desejada: " << endl;
         dataChoices = {"Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)"};
         dataChoice = choiceMaker(dataChoices);
 
@@ -301,7 +321,8 @@ void HospitalInterface::pacienteAtualizarDados() {
         case 4:
             patient->setCivilStatus(Viuvo);
         }
-        cout << "Estado civil atualizado para " << civilStatusToString(patient->getCivilStatus()) << "!" << endl;
+        cout << "Estado civil atualizado para "
+             << civilStatusToString(patient->getCivilStatus()) << "!" << endl;
         break;
     case 5:
         system("clear");
@@ -311,7 +332,8 @@ void HospitalInterface::pacienteAtualizarDados() {
         getchar();
         patient->setAddress(entrada);
         hr();
-        cout << "Endereço atualizado para " << patient->getAddress() << "!" << endl;
+        cout << "Endereço atualizado para " << patient->getAddress() << "!"
+             << endl;
         break;
     case 6:
         system("clear");
@@ -321,7 +343,8 @@ void HospitalInterface::pacienteAtualizarDados() {
         getchar();
         patient->setPhoneNumber(entrada);
         hr();
-        cout << "Telefone atualizado para " << patient->getPhoneNumber() << "!" << endl;
+        cout << "Telefone atualizado para " << patient->getPhoneNumber() << "!"
+             << endl;
         break;
     case 7:
         system("clear");
