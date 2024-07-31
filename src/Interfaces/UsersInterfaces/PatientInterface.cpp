@@ -139,12 +139,11 @@ void HospitalInterface::pacienteListarConsultas() {
     system("clear");
     titleMaker("LISTAGEM DE CONSULTAS");
 
-    //ScheduledAppointments patientAppointments =
-    //Banco.getConsultasByPatientId(<id do paciente>);
+    vector<Appointment> patientAppointments = HospitalDatabase::listAppointmentsByPatient(this->getCurrentUser()->getUserID());
     //printarVetorDeStrings(patientAppointments.toString);
     //system("pause");
-    // //HospitalDatabase::listAppointmentsByPatient(
-    // //this->getCurrentUser()->getUserID());
+    //HospitalDatabase::listAppointmentsByPatient(
+    //this->getCurrentUser()->getUserID());
     hr();
     while (true) {
         cout << "Digite [0] para voltar." << endl;
@@ -180,14 +179,14 @@ void HospitalInterface::pacienteCancelarConsulta() {
     HospitalInterface::patientInterface();
 }
 
+User user = User(1, "login", "password", "Pedro", "123.456.789-10", Date(200, 2024), Masculino, Solteiro, "Rua tal", "084 99999-9999", "email@domínio.com");
+User *patient = &user;
+
 void HospitalInterface::pacienteListarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
     //Lista os dados
     //User* patient = this->getCurrentUser();
-
-    User user = User(1, "login", "password", "Pedro", "123.456.789-10", Date(200, 2024), Masculino, Solteiro, "Rua tal", "084 99999-9999", "email@domínio.com");
-    User *patient = &user;
 
     titleMaker("Dados Pessoais");
     cout << "Nome: " << patient->getName() << endl;
@@ -218,8 +217,6 @@ void HospitalInterface::pacienteAtualizarDados() {
     system("clear");
     titleMaker("ATUALIZAÇÃO DE DADOS");
 
-    User user = User(1, "login", "password", "Pedro", "123.456.789-10", Date(200, 2024), Masculino, Solteiro, "Rua tal", "084 99999-9999", "email@domínio.com");
-    User *patient = &user;
 
     titleMaker("Dados Pessoais");
     cout << "Nome: " << patient->getName() << endl;
@@ -295,12 +292,56 @@ void HospitalInterface::pacienteAtualizarDados() {
         cout << "Gênero atualizado para " << genderToString(patient->getGender()) << "!" << endl;
         break;
     case 4:
+    system("clear");
+        titleMaker("ATUALIZAÇÃO DE DADOS");
+        cout << "Digite a opção desejada: "<< endl;
+        dataChoices = {"Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)"};
+        dataChoice = choiceMaker(dataChoices);
+
+        switch (dataChoice) {
+        case 1:
+            patient->setCivilStatus(Solteiro);
+            break;
+        case 2:
+            patient->setCivilStatus(Casado);
+            break;
+        case 3:
+            patient->setCivilStatus(Divorciado);
+            break;
+        case 4:
+            patient->setCivilStatus(Viuvo);
+        }
+        cout << "Estado civil atualizado para " << civilStatusToString(patient->getCivilStatus()) << "!" << endl;
         break;
     case 5:
+        system("clear");
+        titleMaker("ATUALIZAÇÃO DE DADOS");
+        cout << "Digite o novo endereço: ";
+        cin >> entrada;
+        getchar();
+        patient->setAddress(entrada);
+        hr();
+        cout << "Endereço atualizado para " << patient->getAddress() << "!" << endl;
         break;
     case 6:
+        system("clear");
+        titleMaker("ATUALIZAÇÃO DE DADOS");
+        cout << "Digite o novo telefone: ";
+        cin >> entrada;
+        getchar();
+        patient->setPhoneNumber(entrada);
+        hr();
+        cout << "Telefone atualizado para " << patient->getPhoneNumber() << "!" << endl;
         break;
     case 7:
+        system("clear");
+        titleMaker("ATUALIZAÇÃO DE DADOS");
+        cout << "Digite o novo email: ";
+        cin >> entrada;
+        getchar();
+        patient->setEmail(entrada);
+        hr();
+        cout << "Email atualizado para " << patient->getEmail() << "!" << endl;
         break;
     case 8:
         HospitalInterface::patientInterface();
