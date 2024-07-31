@@ -124,10 +124,5 @@ vector<Appointment> HospitalDatabase::getAppointmentsByDoctorID(int doctorID) {
     }
 
     sqlite3_finalize(stmt);
-    if (appointments.empty()) {
-        cout << "No appointments found for doctor ID " << doctorID << "."
-             << endl;
-    }
-
     return appointments;
 };

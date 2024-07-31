@@ -90,21 +90,59 @@ void HospitalInterface::pacienteMarcarConsulta() {
     
     cout << "Horários disponíveis para a data desejada: " << endl;
 
-    vector<string> teste = HospitalDatabase::getAppointmentsByDoctor(medId);
+    Date date = stringToDate(data);
+
+    Schedule medSchedule = HospitalDatabase::getScheduleByDoctorID(medId);
+    WorkSchedule medWorkSchedule = medSchedule.getWorkSchedule();
+    WorkSchedule dateMedWorkSchedule = medWorkSchedule.searchByDate(stringToDate(data));
+    vector<WorkSession> medWorkSessions = dateMedWorkSchedule.getWorkSchedule();
+    vector<string> availableTimes;
+    availableTimes.push_back("08:00:00");
+    availableTimes.push_back("09:00:00");
+    availableTimes.push_back("10:00:00");
+    availableTimes.push_back("11:00:00");
+    availableTimes.push_back("13:00:00");
+    availableTimes.push_back("14:00:00");
+    availableTimes.push_back("15:00:00");
+    availableTimes.push_back("16:00:00");
+    if (medWorkSessions.size() == 0) {
+        for (int i = 0; i < 8; i++) {
+            WorkSession session = WorkSession(stringToTime(availableTimes[i]), date, i+1, medId);
+            medWorkSessions.push_back(session);
+        }
+    }
+    set<int> sessionIds;
+    for (int i = 0; i < medWorkSessions.size(); i++) {
+        cout << "ID: " << medWorkSessions[i].getId();
+        sessionIds.insert(medWorkSessions[i].getId());
+        cout << " | Horário: " << medWorkSessions[i].getTime().toString() << endl;
+        hr();
+    }
+    int sessionId;
+    cout << "Digite o ID do horário desejado: ";
+    cin >> sessionId;
+    getchar();
+
+    while (sessionIds.find(sessionId) == sessionIds.end() && sessionId != 0) {
+        cout << "Digite um ID válido.\n";
+        cin >> medId;
+    }
+    if (sessionId == 0) {
+        HospitalInterface::patientInterface();
+        return;
+    }
     
-
-    // Session appointmentSession =
-    //     Session(stringToTime(hora), stringToDate(data));
-
-
+    Session appointmentSession = Session(medWorkSessions[sessionId].getTime(), date);
     int patientId = this->getCurrentUser()->getUserID();
 
-    // Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
-    //                                        patientId, medId, "Consulta");
+    Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
+                                            patientId, medId, "Consulta");
 
-    // AGENDAR NO BANCO DE DADOS*/
-    // cout << "Consulta marcada com sucesso para a data " << data << " às " <<
-    // hora << "!" << endl;
+    HospitalDatabase::createAppointment(novaConsulta);
+
+    string hora = appointmentSession.getTime().toString();
+    cout << "Consulta marcada com sucesso para a data " << data << " às " <<
+    hora << "!" << endl;
 
     while (true) {
         cout << "Digite [0] para voltar." << endl;
@@ -121,9 +159,10 @@ void HospitalInterface::pacienteListarConsultas() {
     system("clear");
     titleMaker("LISTAGEM DE CONSULTAS");
 
+    int patientId = this->getCurrentUser()->getUserID();
+
     vector<Appointment> patientAppointments =
-        HospitalDatabase::getAppointmentsByPatientID(
-            this->getCurrentUser()->getUserID());
+        HospitalDatabase::getAppointmentsByPatientID(patientId);
     if (patientAppointments.size() == 0) {
         cout << "Você não possui consultas marcadas." << endl;
     } else {
