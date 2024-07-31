@@ -79,15 +79,26 @@ void HospitalInterface::pacienteMarcarConsulta() {
     
     Schedule medSchedule = HospitalDatabase::getScheduleByDoctorID(medId);
     WorkSchedule avaiableSessions = medSchedule.avaiableSessions(); 
+    if(avaiableSessions.getWorkSchedule().size() == 0){
+        system("clear");
+        cout << "nao ha horarios disponiveis para marcar" << endl; 
+        system("pause");
+        HospitalInterface::patientInterface();
+    }
+    // Existem horários sim!
+        cout << "\"-1\" - Voltar " << endl;
         int  pickedSession =
         choiceMaker(avaiableSessions.toString());
+        if(pickedSession = -1) { HospitalInterface::patientInterface(); }
         
     while(pickedSession < 0 || 
         pickedSession > (avaiableSessions.getWorkSchedule().size() - 1)){
         system("clear"); 
         cout << "Opção invalida, tente novamente... " << endl;
+        cout << "\"-1\" - Voltar " << endl;
         int  pickedSession =
             choiceMaker(avaiableSessions.toString());
+        if(pickedSession = -1) { HospitalInterface::patientInterface(); }
 
     }
 

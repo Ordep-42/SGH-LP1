@@ -71,7 +71,7 @@ class HospitalDatabase {
 
     static optional<WorkSession> getWSessionByID(int WSessionID);
     static vector<WorkSession> getWorkSessionsByDoctorID(int doctorID);
-    static void createWSession(Doctor, Session);
+    static void createWSession(int, Session);
     static void listWSessions();
     static void listWsessionByDoctor(int DoctorID);
     static void deleteWSession(int wSessionID);
