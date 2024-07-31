@@ -76,61 +76,28 @@ void HospitalInterface::pacienteMarcarConsulta() {
         HospitalInterface::patientInterface();
         return;
     }
-    /*
-        Schedule medSchedule = getScheduleByDoctorIdFromBD(medId);
+    
+    Schedule medSchedule = HospitalDatabase::getScheduleByDoctorID(medId);
+    WorkSchedule avaiableSessions = medSchedule.avaiableSessions(); 
+        int  pickedSession =
+        choiceMaker(avaiableSessions.toString());
+        
+    while(pickedSession < 0 || 
+        pickedSession > (avaiableSessions.getWorkSchedule().size() - 1)){
+        system("clear"); 
+        cout << "Opção invalida, tente novamente... " << endl;
+        int  pickedSession =
+            choiceMaker(avaiableSessions.toString());
 
-        // int  pickedSession =
-        // choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0
-        // volta?
-
-        // implementar o toStringVector tbm
-        vector<string> SessionsToChoice =
-            medSchedule.avaiableSessions().toStringVector();
-        int pickedSession = choiceMaker(SessionsToChoice);
-
-        MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
-    */
-    // system("clear");
-    // titleMaker("AGENDAMENTO DE CONSULTA");
-    // string data;
-    // string hora;
-    // cout << "Formato: DD/MM/YYYY\n";
-    // cout << "Digite a DATA para realizar a consulta: ";
-    // cin >> data;
-    // getchar();
-    // cout << "\n";
-    // cout << "Formato: HH:MM\n";
-    // cout << "Digite a HORA para realizar a consulta: ";
-    // cin >> hora;
-    // getchar();
-
-    // Session appointmentSession =
-    //     Session(stringToTime(hora), stringToDate(data));
-
-    // system("clear");
-    // titleMaker("AGENDAMENTO DE CONSULTA");
-    // string consultType;
-    // cout << "Qual o tipo de consulta?\n";
-    // cin >> consultType;
-    // getchar();
-
-    /*int patientId = this->getCurrentUser()->getUserID();
-
-    // Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
-    //                                        patientId, medId, consultType);
-
-    // AGENDAR NO BANCO DE DADOS*/
-    // cout << "Consulta marcada com sucesso para a data " << data << " às " <<
-    // hora << "!" << endl;
-
-    while (true) {
-        cout << "Digite [0] para voltar." << endl;
-        int choice;
-        cin >> choice;
-        if (choice == 0) {
-            break;
-        }
     }
+
+        // Agora já sabemos que a opc é válida, then:
+    Session appointMe =  avaiableSessions.getWorkSchedule()[pickedSession - 1];        
+    Appointment createMe(appointMe, "scheduled", 0, medId, "consulta"); // nome ok? LOL
+    HospitalDatabase::createAppointment(createMe);
+    
+    cout << "operacao realizada com sucesso" << endl; 
+    system("clear");
     HospitalInterface::patientInterface();
 }
 
@@ -391,3 +358,86 @@ void HospitalInterface::pacienteAtualizarDados() {
     }
     HospitalInterface::patientInterface();
 }
+
+
+/* JURASSICO (pq guardei no fundo igual um fossil lol): 
+void HospitalInterface::pacienteMarcarConsulta() {
+    int medId;
+
+    system("clear");
+    titleMaker("AGENDAMENTO DE CONSULTA");
+    set<int> IdList = HospitalDatabase::listDoctors();
+    hr();
+    cout << "Digite o ID do médico que você quer se consultar." << endl;
+    cout << "[0] para voltar.\n";
+
+    cin >> medId;
+    getchar();
+
+    while (IdList.find(medId) == IdList.end() && medId != 0) {
+        cout << "Digite um ID válido.\n";
+        cin >> medId;
+    }
+
+    if (medId == 0) {
+        HospitalInterface::patientInterface();
+        return;
+    }
+    
+        Schedule medSchedule = getScheduleByDoctorIdFromBD(medId);
+
+        // int  pickedSession =
+        // choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0
+        // volta?
+
+        // implementar o toStringVector tbm
+        vector<string> SessionsToChoice =
+            medSchedule.avaiableSessions().toStringVector();
+        int pickedSession = choiceMaker(SessionsToChoice);
+
+        MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
+    */
+    // system("clear");
+    // titleMaker("AGENDAMENTO DE CONSULTA");
+    // string data;
+    // string hora;
+    // cout << "Formato: DD/MM/YYYY\n";
+    // cout << "Digite a DATA para realizar a consulta: ";
+    // cin >> data;
+    // getchar();
+    // cout << "\n";
+    // cout << "Formato: HH:MM\n";
+    // cout << "Digite a HORA para realizar a consulta: ";
+    // cin >> hora;
+    // getchar();
+
+    // Session appointmentSession =
+    //     Session(stringToTime(hora), stringToDate(data));
+
+    // system("clear");
+    // titleMaker("AGENDAMENTO DE CONSULTA");
+    // string consultType;
+    // cout << "Qual o tipo de consulta?\n";
+    // cin >> consultType;
+    // getchar();
+
+    /*int patientId = this->getCurrentUser()->getUserID();
+
+    // Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
+    //                                        patientId, medId, consultType);
+
+    // AGENDAR NO BANCO DE DADOS*/
+    // cout << "Consulta marcada com sucesso para a data " << data << " às " <<
+    // hora << "!" << endl;
+/*
+    while (true) {
+        cout << "Digite [0] para voltar." << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 0) {
+            break;
+        }
+    }
+    HospitalInterface::patientInterface();
+}
+*/

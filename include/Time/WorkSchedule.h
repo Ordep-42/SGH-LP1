@@ -53,7 +53,16 @@ class WorkSchedule : public Session {
     // Appointment nextAppointment();
     // Pra marcar uma consulta:
     // Section nextAvaiableSection();
-    /// Sorts:
+    /// Sorts:    
+
+    vector<string> toString(){
+      vector<string> returnMe; 
+      for(WorkSession wSession : schedule){
+        returnMe.push_back(wSession.toString());
+      }
+      return returnMe;
+    }
+    
 };
 
 #endif // WORKSCHEDULE_H

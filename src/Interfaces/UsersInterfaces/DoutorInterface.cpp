@@ -37,7 +37,10 @@ void HospitalInterface::doctorCheckPatient(int doctorID) {
     // possivelmente seria bom modificar o "toString" pra nao incluir TODOS os campos.
     int choice = choiceMaker(appointments.toString()); 
     cout << appointments.toString()[choice - 1];
+    
     system("pause");
+    cout << "operacao realizada com sucesso" << endl; 
+    HospitalInterface::doctorInterface();
 }
 
 void HospitalInterface::doctorConcludeAppointment(int doctorID) {
@@ -64,5 +67,6 @@ void HospitalInterface::doctorConcludeAppointment(int doctorID) {
      HospitalDatabase::createAppointment(myApp);
     
     system("pause");
-
+    cout << "operacao realizada com sucesso" << endl; 
+    HospitalInterface::doctorInterface();
 }
