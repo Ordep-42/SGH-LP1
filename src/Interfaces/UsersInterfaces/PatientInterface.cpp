@@ -1,16 +1,7 @@
 #include "../../../include/HospitalDatabase/HospitalDatabase.h"
 #include "../../../include/Interface.h"
 #include "../../../include/Time/Appointment.h"
-#include "../../../include/Time/Date.h"
-#include "../../../include/Time/Session.h"
-#include "../../../include/Time/Time.h"
-#include "../../../include/Users/Patient.h"
-#include <cstdio>
-#include <cstdlib>
-#include <iostream>
 #include <set>
-#include <string>
-#include <vector>
 
 void HospitalInterface::patientInterface() {
     system("clear");
@@ -71,7 +62,6 @@ void HospitalInterface::pacienteMarcarConsulta() {
         cout << "Digite um ID válido.\n";
         cin >> medId;
     }
-
     if (medId == 0) {
         HospitalInterface::patientInterface();
         return;
@@ -90,34 +80,27 @@ void HospitalInterface::pacienteMarcarConsulta() {
 
         MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
     */
-    // system("clear");
-    // titleMaker("AGENDAMENTO DE CONSULTA");
-    // string data;
-    // string hora;
-    // cout << "Formato: DD/MM/YYYY\n";
-    // cout << "Digite a DATA para realizar a consulta: ";
-    // cin >> data;
-    // getchar();
-    // cout << "\n";
-    // cout << "Formato: HH:MM\n";
-    // cout << "Digite a HORA para realizar a consulta: ";
-    // cin >> hora;
-    // getchar();
+    system("clear");
+    titleMaker("AGENDAMENTO DE CONSULTA");
+    string data;
+    cout << "Formato: DD/MM/AAAA" << endl;
+    cout << "Digite a data desejada para realizar a consulta: ";
+    cin >> data;
+    getchar();
+    
+    cout << "Horários disponíveis para a data desejada: " << endl;
+
+    vector<string> teste = HospitalDatabase::getAppointmentsByDoctor(medId);
+    
 
     // Session appointmentSession =
     //     Session(stringToTime(hora), stringToDate(data));
 
-    // system("clear");
-    // titleMaker("AGENDAMENTO DE CONSULTA");
-    // string consultType;
-    // cout << "Qual o tipo de consulta?\n";
-    // cin >> consultType;
-    // getchar();
 
-    /*int patientId = this->getCurrentUser()->getUserID();
+    int patientId = this->getCurrentUser()->getUserID();
 
     // Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
-    //                                        patientId, medId, consultType);
+    //                                        patientId, medId, "Consulta");
 
     // AGENDAR NO BANCO DE DADOS*/
     //cout << "Consulta marcada com sucesso para a data " << data << " às " << hora << "!" << endl;
@@ -193,7 +176,6 @@ User *patient = &user;
 void HospitalInterface::pacienteListarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
-    //Lista os dados
     //User* patient = this->getCurrentUser();
 
     titleMaker("Dados Pessoais");
