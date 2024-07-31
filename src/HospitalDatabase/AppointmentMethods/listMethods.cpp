@@ -46,9 +46,11 @@
 //         const int width_consultCost = 15;
 //         const int width_specialty = 20;
 
-//         cout << left << setw(width_id) << "id" << setw(width_nome) << "status"
+//         cout << left << setw(width_id) << "id" << setw(width_nome) <<
+//         "status"
 //              << setw(width_password) << "password" << setw(width_consultCost)
-//              << "consultCost" << setw(width_specialty) << "specialty" << endl;
+//              << "consultCost" << setw(width_specialty) << "specialty" <<
+//              endl;
 //         cout << "Appointments for patient ID " << patientId << ":" << endl;
 //         for (auto &app : appointments) {
 //             cout << left << setw(width_id) << app.getId() << setw(width_nome)
@@ -65,13 +67,10 @@ vector<Appointment> HospitalDatabase::listAppointmentsByPatient(int patientId) {
                       "SESSION"
                       "FROM SCHEDULE WHERE PATIENT_ID = ?;";
 
-
     vector<Appointment> appointments;
     sqlite3_stmt *stmt;
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
-        cerr << "Failed to fetch data: " << sqlite3_errmsg(db) << endl;
-        return appointments;
-    }
+
+    sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
     sqlite3_bind_int(stmt, 1, patientId);
 
