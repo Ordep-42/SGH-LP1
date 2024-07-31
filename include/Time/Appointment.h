@@ -59,10 +59,13 @@ class Appointment {
       appString[5] += this->session.getDateString();
 
       appString[6] = "Session Time: ";
-      appString[6] += session.getTimeString();      
+      appString[6] += session.getTimeString();   
+
+      return appString;   
   
     }
 
+    // vou nem testar nmrl
     void printAppointment(){
       vector<string> printMe = toString();
       for(int i = 0; i < printMe.size(); i++){
@@ -81,6 +84,7 @@ class Appointment {
         cout << "Session Date: " << this->session.getDateString() << endl;
         cout << "Session Time: " << session.getTimeString() << endl;
     }  */
+
 };
 
 // Funções auxiliares
