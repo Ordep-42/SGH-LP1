@@ -72,8 +72,6 @@ void HospitalInterface::pacienteMarcarConsulta() {
         cin >> medId;
     }
 
-    cout << "ID VALIDO DIGITADO!\n";
-
     if (medId == 0) {
         HospitalInterface::patientInterface();
         return;
@@ -140,10 +138,20 @@ void HospitalInterface::pacienteListarConsultas() {
     titleMaker("LISTAGEM DE CONSULTAS");
 
     vector<Appointment> patientAppointments = HospitalDatabase::listAppointmentsByPatient(this->getCurrentUser()->getUserID());
-    //printarVetorDeStrings(patientAppointments.toString);
-    //system("pause");
-    //HospitalDatabase::listAppointmentsByPatient(
-    //this->getCurrentUser()->getUserID());
+    if (patientAppointments.size() == 0) {
+        cout << "Você não possui consultas marcadas." << endl;
+    } else {
+        cout << "Consultas marcadas:" << endl;
+        for (int i = 0; i < patientAppointments.size(); i++) {
+            cout << "ID: " << patientAppointments[i].getId() << endl;
+            cout << "Data: " << patientAppointments[i].getSession().getDate().toString() << endl;
+            cout << "Hora: " << patientAppointments[i].getSession().getTime().toString() << endl;
+            cout << "Médico: " << HospitalDatabase::getDoctorByID(patientAppointments[i].getDoctorID())->getName() << endl;
+            cout << "Procedimento: " << patientAppointments[i].getProcedure() << endl;
+            cout << "Status: " << patientAppointments[i].getStatus() << endl;
+            cout << endl;
+        }
+    }
     hr();
     while (true) {
         cout << "Digite [0] para voltar." << endl;
