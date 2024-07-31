@@ -121,20 +121,20 @@ set<int> HospitalDatabase::listDoctors() {
 
     // Cabeçalhos
     cout << left << setw(width_id) << "id" << setw(width_nome) << "nome"
-         << setw(width_password) << "password" << setw(width_consultCost)
-         << "consultCost" << setw(width_specialty) << "specialty" << endl;
+         << setw(width_consultCost) << "consultCost" 
+         << setw(width_specialty) << "specialty" << endl;
     while ((returnCode = sqlite3_step(stmt)) == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);
         const unsigned char *nome = sqlite3_column_text(stmt, 1);
-        const unsigned char *password = sqlite3_column_text(stmt, 2);
+        //const unsigned char *password = sqlite3_column_text(stmt, 2);
         int consultCost = sqlite3_column_int(stmt, 3);
         const unsigned char *specialty = sqlite3_column_text(stmt, 4);
 
         idList.insert(id);
 
         cout << left << setw(width_id) << id << setw(width_nome) << nome
-             << setw(width_password) << password << setw(width_consultCost)
-             << consultCost << setw(width_specialty) << specialty << endl;
+             << setw(width_consultCost) << consultCost 
+             << setw(width_specialty) << specialty << endl;
     }
     sqlite3_finalize(stmt);
     sqlite3_close(db);

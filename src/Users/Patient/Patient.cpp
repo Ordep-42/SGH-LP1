@@ -8,7 +8,7 @@ Patient::Patient(unsigned short newUserID, string newLogin, string newPassWord,
                  string newAddress, string newPhoneNumber, string newEmail,
                  vector<EmergencyContact> newEmergencyContacts,
                  MedicalFile newMedicalFile)
-    : User(newUserID, newLogin, newPassWord, newName, newBirthDate, newGender,
+    : User(newUserID, newLogin, newPassWord, newName, newCpf, newBirthDate, newGender,
            newCivilStatus, newAddress, newPhoneNumber, newEmail),
       emergencyContacts(newEmergencyContacts), medicalFile(newMedicalFile) {}
 
@@ -46,6 +46,10 @@ void Patient::addEmergencyContact(EmergencyContact newEmergencyContact) {
     emergencyContacts.push_back(newEmergencyContact);
 }
 
+void Patient::removeEmergencyContact(int index) {
+    emergencyContacts.erase(emergencyContacts.begin() + index);
+}
+
 void Patient::setScheduledAppointments(
     vector<Appointment> newScheduledAppointments) {
     scheduledAppointments = newScheduledAppointments;
@@ -58,4 +62,39 @@ void Patient::setEndedAppointments(vector<Appointment> newEndedAppointments) {
 void Patient::setCanceledAppointments(
     vector<Appointment> newCanceledAppointments) {
     canceledAppointments = newCanceledAppointments;
+}
+
+string relationToString(Relation relation) {
+    switch(relation){
+    case Pai:
+        return "Pai";
+    case Mae:
+        return "Mãe";
+    case Irmao:
+        return "Irmão";
+    case Irma:
+        return "Irmã";
+    case Avou:
+        return "Avô";
+    case Avoh:
+        return "Avó";
+    case Tio:
+        return "Tio";
+    case Tia:
+        return "Tia";
+    case Sobrinho:
+        return "Sobrinho";
+    case Sobrinha:
+        return "Sobrinha";
+    case Esposo:
+        return "Esposo";
+    case Esposa:
+        return "Esposa";
+    case Filho:
+        return "Filho";
+    case Filha:
+        return "Filha";
+    default:
+        return "Outro";
+    }
 }

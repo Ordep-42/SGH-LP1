@@ -31,6 +31,7 @@ class HospitalInterface {
     void pacienteCancelarConsulta();
     void pacienteListarDados();
     void pacienteAtualizarDados();
+    void pacienteAtualizarContatosEmergencia();
 
     void attendantInterface();
 

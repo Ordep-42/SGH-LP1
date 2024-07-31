@@ -14,6 +14,10 @@ typedef enum genders { Masculino, Feminino, Outro } Gender;
 
 typedef enum civilStatus { Solteiro, Casado, Divorciado, Viuvo } CivilStatus;
 
+std::string civilStatusToString(CivilStatus civilStatus);
+
+std::string genderToString(Gender gender);
+
 using namespace std;
 
 class User {
@@ -37,7 +41,7 @@ class User {
 
   public:
     User(unsigned short newUserID, string newLogin, string newPassWord,
-         string newName, Date newBirthDate, Gender newGender,
+         string newName, string newCpf, Date newBirthDate, Gender newGender,
          CivilStatus newCivilStatus, string newAddress, string newPhoneNumber,
          string newEmail);
 
