@@ -72,8 +72,9 @@ class Patient : public User {
     vector<Appointment> getCanceledAppointments();
 
     void addEmergencyContact(EmergencyContact newEmergencyContact);
+    void removeEmergencyContact(int index);
     void makeAppointment(Appointment newAppointment);
-    bool cancelScheduledAppointment(Appointment appointment);
+    bool cancelScheduledAppointment(int index);
 
     void setEmergencyContact(vector<EmergencyContact> newEmergencyContacts);
     void setMedicalFile(MedicalFile newMedicalFile);

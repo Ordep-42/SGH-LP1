@@ -58,6 +58,8 @@ void User::setCivilStatus(CivilStatus newCivilStatus) {
     civilStatus = newCivilStatus;
 }
 
+void User::setAddress(string newAddress) { address = newAddress; }
+
 void User::setPhoneNumber(string newPhoneNumber) {
     phoneNumber = newPhoneNumber;
 }

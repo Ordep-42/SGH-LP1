@@ -46,6 +46,10 @@ void Patient::addEmergencyContact(EmergencyContact newEmergencyContact) {
     emergencyContacts.push_back(newEmergencyContact);
 }
 
+void Patient::removeEmergencyContact(int index) {
+    emergencyContacts.erase(emergencyContacts.begin() + index);
+}
+
 void Patient::setScheduledAppointments(
     vector<Appointment> newScheduledAppointments) {
     scheduledAppointments = newScheduledAppointments;
@@ -64,15 +68,15 @@ string relationToString(Relation relation) {
     switch(relation){
     case Pai:
         return "Pai";
-    case Mãe:
+    case Mae:
         return "Mãe";
-    case Irmão:
+    case Irmao:
         return "Irmão";
-    case Irmã:
+    case Irma:
         return "Irmã";
-    case Avô:
+    case Avou:
         return "Avô";
-    case Avó:
+    case Avoh:
         return "Avó";
     case Tio:
         return "Tio";
