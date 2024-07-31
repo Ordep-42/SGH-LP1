@@ -68,7 +68,13 @@ class ScheduledAppointments {
     Appointment lastAppointment();
     ScheduledAppointments AppointmentsToHappen();
 
-
+    vector<string> toString(){
+      vector<string> returnMe;
+      if(getAppointments().size() == 0) { return returnMe; }
+      for(Appointment app : getAppointments()){
+        returnMe.push_back(app.toLINEARString()); 
+      }
+    }
     // Pra marcar uma consulta:
     // Session nextAvaiableSection();
 

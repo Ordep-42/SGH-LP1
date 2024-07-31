@@ -65,6 +65,16 @@ class Appointment {
   
     }
 
+    string toLINEARString(){
+      vector<string> lineMe = toString();
+      string returnMe = "";
+      for(string thing : lineMe){
+        returnMe += thing + " | ";
+      }
+
+      return returnMe;    
+    }
+
     // vou nem testar nmrl
     void printAppointment(){
       vector<string> printMe = toString();
