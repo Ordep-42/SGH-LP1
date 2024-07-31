@@ -60,8 +60,7 @@ class HospitalDatabase {
     static void listManagers();
     static void deleteManager(short unsigned);
 
-    static void createAppointment(Doctor doctor, Patient patient, Date date,
-                                  string procedure);
+    static void createAppointment(Appointment newAppointment);
     static optional<Appointment> getAppointmentByID(int appointmentID);
     static void listAppointments();
     static void listAppointmentsByDoctor();
