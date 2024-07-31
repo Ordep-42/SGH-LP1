@@ -27,18 +27,18 @@ bash ./run.sh
     - [ ] validatePatient
     - [ ] validateManager
     - [ ] validateAttendant
-- [ ] Criar Interface de manager 
-    - [ ] Criar :
+- [x] Criar Interface de manager 
+    - [x] Criar :
         - [x] paciente
         - [x] doutor
         - [x] manager
-    - [ ] Listar:
-        - [ ] paciente
-        - [ ] doutor
-        - [ ] manager
-    - [ ] Deletar:
-        - [ ] paciente
-        - [ ] doutor
-        - [ ] manager
+    - [x] Listar:
+        - [x] paciente
+        - [x] doutor
+        - [x] manager
+    - [x] Deletar:
+        - [x] paciente
+        - [x] doutor
+        - [x] manager
 
 - [ ] Criar função createAppointment para classe HospitalDatabase

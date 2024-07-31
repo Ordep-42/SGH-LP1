@@ -8,27 +8,76 @@ void HospitalDatabase::createPatient(User patient) {
     string sql = "INSERT INTO PATIENT (NAME, PASSWORD) VALUES (?, ?);";
 
     returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
-    if (!verifyErrorCode()) {
-        sqlite3_close(db);
-        return;
-    }
     returnCode = sqlite3_bind_text(stmt, 1, patient.getName().c_str(), -1,
                                    SQLITE_STATIC);
-    if (!verifyErrorCode()) {
-        sqlite3_finalize(stmt);
-        sqlite3_close(db);
-        return;
-    }
-
     returnCode = sqlite3_bind_text(stmt, 2, patient.getPassword().c_str(), -1,
                                    SQLITE_STATIC);
-    if (!verifyErrorCode()) {
-        sqlite3_close(db);
-        return;
-    }
     returnCode = sqlite3_step(stmt);
 
     sqlite3_close(db);
+}
+
+optional<Patient> HospitalDatabase::getPatientByID(int patientID) {
+
+    returnCode = sqlite3_open("../data/hospital.db", &db);
+
+    std::string sql = "SELECT (ID ,NAME, PASSWORD) FROM PATIENT WHERE ID = ?;";
+    sqlite3_stmt *stmt;
+    int returnCode;
+
+    returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    returnCode = sqlite3_bind_int(stmt, 1, patientID);
+    returnCode = sqlite3_step(stmt);
+    if (returnCode == SQLITE_ROW) {
+        int id = sqlite3_column_int(stmt, 0);
+        std::string name =
+            reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        std::string password =
+            reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        sqlite3_finalize(stmt);
+        return Patient(id, name, password);
+    } else if (returnCode == SQLITE_DONE) {
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    } else {
+        std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    };
+}
+
+optional<Patient>
+HospitalDatabase::getPatientByNameAndPassword(string name, string password) {
+
+    int returnCode = sqlite3_open("../data/hospital.db", &db);
+
+    std::string sql = "SELECT ID, NAME, PASSWORD FROM PATIENT WHERE NAME = ? "
+                      "AND PASSWORD = ?;";
+
+    returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    returnCode = sqlite3_bind_text(stmt, 1, name.c_str(), -1, SQLITE_STATIC);
+    returnCode =
+        sqlite3_bind_text(stmt, 2, password.c_str(), -1, SQLITE_STATIC);
+    returnCode = sqlite3_step(stmt);
+
+    if (returnCode == SQLITE_ROW) {
+        int retrievedID = sqlite3_column_int(stmt, 0);
+
+        std::string retrievedName =
+            reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+
+        std::string retrievedPassword =
+            reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        sqlite3_finalize(stmt);
+        return Patient(retrievedID, retrievedName, retrievedPassword);
+    } else if (returnCode == SQLITE_DONE) {
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    } else {
+        std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    }
 }
 
 void HospitalDatabase::listPatients() {

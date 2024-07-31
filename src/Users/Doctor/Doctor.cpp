@@ -7,6 +7,15 @@ Doctor::Doctor(string name, string password, string especialidade)
     this->especialidade = especialidade;
 }
 
+Doctor::Doctor(int id, string name, string password, string especialidade,
+               int consultCost) {
+    this->userID = id;
+    this->name = name;
+    this->password = password;
+    this->especialidade = especialidade;
+    this->consultCost = consultCost;
+}
+
 Doctor::Doctor(string name, string password, string especialidade,
                int consultCost)
     : User(name, password, Roles::Doctor), especialidade(especialidade),

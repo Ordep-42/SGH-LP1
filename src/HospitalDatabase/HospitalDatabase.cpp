@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <unistd.h>
 
 sqlite3 *HospitalDatabase::db;
 sqlite3_stmt *HospitalDatabase::stmt;
@@ -53,11 +54,18 @@ HospitalDatabase::HospitalDatabase() {
                             "FOREIGN KEY (PATIENT_ID) REFERENCES PATIENT (ID)"
                             "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID));";
 
+    const char *wSessions = "CREATE TABLE IF NOT EXISTS WORK_SCHEDULE("
+                            "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            "DOCTOR_ID INTEGER NOT NULL,"
+                            "SESSION TEXT NOT NULL,"
+                            "FOREIGN KEY (DOCTOR_ID REFERENCES DOCTOR (ID));";
+
     returnCode = sqlite3_exec(db, gestorSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, atendenteSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, doutorSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, pacienteSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, agendaSql, 0, 0, &errMsg);
+    returnCode = sqlite3_exec(db, wSessions, 0, 0, &errMsg);
 
     if (returnCode != SQLITE_OK) {
         std::cerr << "SQL error: " << errMsg << std::endl;
@@ -161,7 +169,9 @@ HospitalDatabase::getAppointmentsByDoctor(short unsigned doctorId) {
 
 bool HospitalDatabase::verifyErrorCode() {
     if (returnCode != SQLITE_OK) {
+
         std::cerr << "SQLITE ERROR : " << sqlite3_errmsg(db) << std::endl;
+        sleep(4);
         return false;
     }
     return true;

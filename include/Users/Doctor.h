@@ -11,8 +11,8 @@ using namespace std;
 struct Equipment {
     int id;
     string name;
-    string descrição;
-    double preço;
+    string descricao;
+    double preco;
 };
 
 class Doctor : public User {
@@ -23,6 +23,8 @@ class Doctor : public User {
   public:
     Doctor(string name, string password, string especialidade);
     Doctor(string name, string password, string especialidade, int consultCost);
+    Doctor(int id, string name, string password, string especialidade,
+           int consultCost);
 
     vector<Session> getWorkSchedule();
     vector<Appointment> getAppointments();

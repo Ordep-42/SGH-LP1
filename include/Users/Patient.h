@@ -9,11 +9,11 @@ using namespace std;
 
 typedef enum relations {
     Pai,
-    Mãe,
-    Irmão,
-    Irmã,
-    Avô,
-    Avó,
+    Mae,
+    Irmao,
+    Irma,
+    Avou,
+    Avoh,
     Tio,
     Tia,
     Sobrinho,
@@ -55,6 +55,12 @@ class Patient : public User {
     Patient() {}
 
     Patient(string nome, string senha) {
+        this->name = nome;
+        this->password = senha;
+    }
+
+    Patient(int id, string nome, string senha) {
+        this->userID = id;
         this->name = nome;
         this->password = senha;
     }

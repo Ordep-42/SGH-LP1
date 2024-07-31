@@ -21,7 +21,6 @@ class Session {
     Date getDate();
     string getTimeString();
     string getDateString();
-    string toTDString();
     string toString();
 
     void fixSession();
@@ -39,7 +38,6 @@ Session lastSessionFrom(vector<Session> sections);
 Session firstSession(Session session1, Session session2);
 Session lastSession(Session session1, Session session2);
 
-Session tdStringToSession(string convertMe);
 Session stringToSession(string convertMe);
 string getFirstPart(string firstSecond);
 string getSecondPart(string firstSecond);

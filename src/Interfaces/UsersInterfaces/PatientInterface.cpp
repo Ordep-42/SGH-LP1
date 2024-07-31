@@ -22,7 +22,7 @@ void HospitalInterface::patientInterface() {
 
     vector<string> choices;
     choices.push_back("Marcar consulta");
-    choices.push_back("Listas consultas");
+    choices.push_back("Listar consultas");
     choices.push_back("Cancelar consulta");
     choices.push_back("Listar dados");
     choices.push_back("Atualizar dados");
@@ -31,19 +31,19 @@ void HospitalInterface::patientInterface() {
 
     switch (choice) {
     case 1:
-        HospitalInterface::marcarConsulta();
+        HospitalInterface::pacienteMarcarConsulta();
         break;
     case 2:
-        HospitalInterface::listarConsultas();
+        HospitalInterface::pacienteListarConsultas();
         break;
     case 3:
-        HospitalInterface::cancelarConsulta();
+        HospitalInterface::pacienteCancelarConsulta();
         break;
     case 4:
-        HospitalInterface::listarDados();
+        HospitalInterface::pacienteListarDados();
         break;
     case 5:
-        HospitalInterface::atualizarDados();
+        HospitalInterface::pacienteAtualizarDados();
         break;
     case 6:
         this->setCurrentUser(nullptr);
@@ -54,7 +54,7 @@ void HospitalInterface::patientInterface() {
     }
 }
 
-void HospitalInterface::marcarConsulta() {
+void HospitalInterface::pacienteMarcarConsulta() {
     int medId;
 
     system("clear");
@@ -78,17 +78,20 @@ void HospitalInterface::marcarConsulta() {
         HospitalInterface::patientInterface();
         return;
     }
+    /*
+        Schedule medSchedule = getScheduleByDoctorIdFromBD(medId);
 
-    /*Schedule medSchedule = getScheduleByDoctorId(medId); 
+        // int  pickedSession =
+        // choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0
+        // volta?
 
-     //int  pickedSession = choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0 volta?
+        // implementar o toStringVector tbm
+        vector<string> SessionsToChoice =
+            medSchedule.avaiableSessions().toStringVector();
+        int pickedSession = choiceMaker(SessionsToChoice);
 
-    // implementar o toStringVector tbm
-    vector<string> SessionsToChoice = medSchedule.avaiableSessions().toStringVector();
-    int pickedSession = choiceMaker(SessionsToChoice);
-
-    MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
-    
+        MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
+    */
     // system("clear");
     // titleMaker("AGENDAMENTO DE CONSULTA");
     // string data;
@@ -132,12 +135,16 @@ void HospitalInterface::marcarConsulta() {
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::listarConsultas() {
+void HospitalInterface::pacienteListarConsultas() {
     system("clear");
     titleMaker("LISTAGEM DE CONSULTAS");
 
-    //HospitalDatabase::listAppointmentsByPatient(
-        //this->getCurrentUser()->getUserID());
+    //ScheduledAppointments patientAppointments =
+    //Banco.getConsultasByPatientId(<id do paciente>);
+    //printarVetorDeStrings(patientAppointments.toString);
+    //system("pause");
+    // //HospitalDatabase::listAppointmentsByPatient(
+    // //this->getCurrentUser()->getUserID());
     hr();
     while (true) {
         cout << "Digite [0] para voltar." << endl;
@@ -150,7 +157,7 @@ void HospitalInterface::listarConsultas() {
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::cancelarConsulta() {
+void HospitalInterface::pacienteCancelarConsulta() {
     system("clear");
     titleMaker("CANCELAR CONSULTA");
 
@@ -173,7 +180,7 @@ void HospitalInterface::cancelarConsulta() {
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::listarDados() {
+void HospitalInterface::pacienteListarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
     //Lista os dados
@@ -207,7 +214,7 @@ void HospitalInterface::listarDados() {
     HospitalInterface::patientInterface();
 }
 
-void HospitalInterface::atualizarDados() {
+void HospitalInterface::pacienteAtualizarDados() {
     system("clear");
     titleMaker("ATUALIZAÇÃO DE DADOS");
 

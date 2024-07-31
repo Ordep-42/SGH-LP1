@@ -1,8 +1,9 @@
-
+#include "../../include/HospitalDatabase/HospitalDatabase.h"
 #include "../../include/Interface.h"
 #include <cstdlib>
 #include <iostream>
 #include <map>
+#include <optional>
 #include <unistd.h>
 
 void HospitalInterface::loginInterface() {
@@ -44,32 +45,60 @@ void HospitalInterface::loginInterface() {
 
     cout << "Fazendo login...\n";
 
-    User goingToLogUser =
-        User(nome, senha, roleMap.find(tipoDeUsuario)->second);
-
-    /*if (!isValidUser(goingToLogUser)) {*/
-    /*  cout << "Usuário inválido. Tente novamente" << endl;
-     *  sleep(1);
-     *  return;*/
-    /*}*/
-
-    this->setAccessLevel(tipoDeUsuario);
-    this->setCurrentUser(&goingToLogUser);
-    this->setIsLogged(true);
-
     switch (tipoDeUsuario) {
-    case 1:
+    case 1: {
+        optional<Patient> maybePatient =
+            HospitalDatabase::getPatientByNameAndPassword(nome, senha);
+
+        if (!maybePatient.has_value()) {
+            cout << "Paciente invalido... Tente novamente.\n";
+            sleep(1);
+            return;
+        }
+
+        this->setCurrentUser(&maybePatient.value());
+        this->setAccessLevel(tipoDeUsuario);
+        this->setIsLogged(true);
+
         patientInterface();
+
         break;
+    }
     case 2:
         attendantInterface();
         break;
-    case 3:
+    case 3: {
+        optional<Doctor> maybeDoctor =
+            HospitalDatabase::getDoctorByNameAndPassword(nome, senha);
+        if (!maybeDoctor.has_value()) {
+            cout << "Doutor invalido... Tente novamente.\n";
+            sleep(1);
+            return;
+        }
+
+        this->setCurrentUser(&maybeDoctor.value());
+        this->setIsLogged(true);
+        this->setAccessLevel(tipoDeUsuario);
+
         doctorInterface();
         break;
-    case 4:
+    }
+    case 4: {
+        optional<Manager> maybeManager =
+            HospitalDatabase::getManagerByNameAndPassword(nome, senha);
+
+        if (!maybeManager.has_value()) {
+            cout << "Manager invalido... Tente novamente.\n";
+            sleep(1);
+            return;
+        }
+        this->setCurrentUser(&maybeManager.value());
+        this->setAccessLevel(tipoDeUsuario);
+        this->setIsLogged(true);
+
         managerInterface();
         break;
+    }
     }
 
     sleep(1);
