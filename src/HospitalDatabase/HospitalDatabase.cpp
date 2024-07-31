@@ -144,14 +144,8 @@ HospitalDatabase::getAppointmentsByDoctor(short unsigned doctorId) {
     if (returnCode) {
         std::cerr << "Não foi possível abrir banco de dados: "
                   << sqlite3_errmsg(db) << std::endl;
-    } else {
-        std::cout << "Acesso ao banco de dados realizado" << std::endl;
     }
     returnCode = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
-    if (returnCode != SQLITE_OK) {
-        std::cerr << "Statement com erro: " << sqlite3_errmsg(db) << std::endl;
-        exit(1);
-    }
 
     while ((returnCode = sqlite3_step(stmt)) == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);

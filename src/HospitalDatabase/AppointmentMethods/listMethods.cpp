@@ -92,10 +92,5 @@ vector<Appointment> HospitalDatabase::listAppointmentsByPatient(int patientId) {
     }
 
     sqlite3_finalize(stmt);
-    if (appointments.empty()) {
-        cout << "No appointments found for patient ID " << patientId << "."
-             << endl;
-    }
-
     return appointments;
 }
