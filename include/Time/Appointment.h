@@ -38,7 +38,7 @@ class Appointment {
 
     // Métodos:
     vector<string> toString(){
-      vector<string> appString;
+      vector<string> appString(7);
 
       appString[0] = "Appointment ID: " + id;
       appString[0] += id;
