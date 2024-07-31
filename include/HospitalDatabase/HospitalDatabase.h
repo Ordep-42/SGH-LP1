@@ -74,9 +74,16 @@ class HospitalDatabase {
     static void listWsessionByDoctor(int DoctorID);
     static void deleteWSession(int wSessionID);
 
+    ScheduledAppointments getScheduledAppointmentsByDoctorID(int doctorID);
+    WorkSchedule getWorkScheduleByDoctorID(int doctorID);
+
     string getScheduleByDate(Date);
     string getScheduleBetweenDates(Date, Date);
     static vector<string> getAppointmentsByDoctor(short unsigned);
+    Schedule HospitalDatabase::getScheduleByDoctorID(int doctorID);
+
+
+    
 
     static bool verifyErrorCode();
 };
