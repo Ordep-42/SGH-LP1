@@ -87,7 +87,7 @@ void HospitalInterface::pacienteMarcarConsulta() {
         cout << "[-1] Voltar " << endl;
         int  pickedSession =
         choiceMaker(avaiableSessions.toString());
-        if(pickedSession = -1) { HospitalInterface::patientInterface(); }
+        if(pickedSession == -1) { HospitalInterface::patientInterface(); }
             
         while(pickedSession < 0 || 
             pickedSession > (avaiableSessions.getWorkSchedule().size() - 1)){
