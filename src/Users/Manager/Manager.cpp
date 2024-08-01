@@ -4,6 +4,11 @@
 Manager::Manager(string name, string password)
     : User(name, password, Roles::Manager) {}
 
+Manager::Manager(int id, string name, string password)
+    : User(name, password, Roles::Manager) {
+    this->userID = id;
+}
+
 void Manager::createManager(Manager manager) {
     HospitalDatabase::createManager(manager);
 }

@@ -9,11 +9,11 @@ using namespace std;
 
 typedef enum relations {
     Pai,
-    Mãe,
-    Irmão,
-    Irmã,
-    Avô,
-    Avó,
+    Mae,
+    Irmao,
+    Irma,
+    Avou,
+    Avoh,
     Tio,
     Tia,
     Sobrinho,
@@ -33,6 +33,8 @@ struct EmergencyContact {
                      const string &newPhoneNumber)
         : name(newName), relation(newRelation), phoneNumber(newPhoneNumber) {}
 };
+
+string relationToString(Relation relation);
 
 class Patient : public User {
   private:
@@ -57,6 +59,12 @@ class Patient : public User {
         this->password = senha;
     }
 
+    Patient(int id, string nome, string senha) {
+        this->userID = id;
+        this->name = nome;
+        this->password = senha;
+    }
+
     vector<EmergencyContact> getEmergencyContacts();
     MedicalFile getMedicalFile();
     vector<Appointment> getScheduledAppointments();
@@ -64,8 +72,9 @@ class Patient : public User {
     vector<Appointment> getCanceledAppointments();
 
     void addEmergencyContact(EmergencyContact newEmergencyContact);
+    void removeEmergencyContact(int index);
     void makeAppointment(Appointment newAppointment);
-    bool cancelScheduledAppointment(Appointment appointment);
+    bool cancelScheduledAppointment(int index);
 
     void setEmergencyContact(vector<EmergencyContact> newEmergencyContacts);
     void setMedicalFile(MedicalFile newMedicalFile);

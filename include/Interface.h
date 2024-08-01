@@ -26,8 +26,12 @@ class HospitalInterface {
     void createUserInterface();
 
     void patientInterface();
-    void marcarConsulta();
-    void listarConsultas();
+    void pacienteMarcarConsulta();
+    void pacienteListarConsultas();
+    void pacienteCancelarConsulta();
+    void pacienteListarDados();
+    void pacienteAtualizarDados();
+    void pacienteAtualizarContatosEmergencia();
 
     void attendantInterface();
 
@@ -62,6 +66,11 @@ class HospitalInterface {
     void setIsLogged(bool);
     void setAccessLevel(int);
     void setCurrentUser(User *);
+    void doctorCheckPatient(int doctorID);
+    void doctorConcludeAppointment(int doctorID);
+
+
+    void managerRegisterInterface();
 };
 
 // Funções auxiliares

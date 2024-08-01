@@ -3,10 +3,10 @@
 using namespace std;
 
 User::User(unsigned short newUserID, string newLogin, string newPassWord,
-           string newName, Date newBirthDate, Gender newGender,
+           string newName, string newCpf, Date newBirthDate, Gender newGender,
            CivilStatus newCivilStatus, string newAddress, string newPhoneNumber,
            string newEmail)
-    : userID(newUserID), login(newLogin), name(newName),
+    : userID(newUserID), login(newLogin), name(newName), cpf(newCpf),
       birthDate(newBirthDate), gender(newGender), civilStatus(newCivilStatus),
       address(newAddress), phoneNumber(newPhoneNumber), email(newEmail) {}
 
@@ -58,8 +58,36 @@ void User::setCivilStatus(CivilStatus newCivilStatus) {
     civilStatus = newCivilStatus;
 }
 
+void User::setAddress(string newAddress) { address = newAddress; }
+
 void User::setPhoneNumber(string newPhoneNumber) {
     phoneNumber = newPhoneNumber;
 }
 
 void User::setEmail(string newEmail) { email = newEmail; }
+
+string civilStatusToString(CivilStatus civilStatus) {
+    switch (civilStatus) {
+    case Solteiro:
+        return "Solteiro";
+    case Casado:
+        return "Casado";
+    case Divorciado:
+        return "Divorciado";
+    case Viuvo:
+        return "Viuvo";
+    default:
+        return "Inválido";
+    }
+}
+
+string genderToString(Gender gender) {
+    switch (gender) {
+    case Masculino:
+        return "Masculino";
+    case Feminino:
+        return "Feminino";
+    default:
+        return "Outro";
+    }
+}
