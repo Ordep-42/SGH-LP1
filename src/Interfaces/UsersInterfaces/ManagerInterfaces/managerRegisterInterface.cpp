@@ -19,7 +19,8 @@ void HospitalInterface::managerRegisterInterface(){
     vector<string> toChoice;
     for(int id : doctors){
         optional<Doctor> maybeDoctor = HospitalDatabase::getDoctorByID(id);  
-        if (!maybeDoctor.has_value()) { system("pause"); HospitalInterface::managerInterface(); }
+        if (!maybeDoctor.has_value()) { cout << "pressione enter /p continuar" << endl; getchar(); 
+            HospitalInterface::managerInterface(); }
         Doctor doutor = maybeDoctor.value();            
         
         string line = ""; 
@@ -36,7 +37,7 @@ void HospitalInterface::managerRegisterInterface(){
         cout << "opcao invalida, tente novamente... " << endl; 
         int choice = choiceMaker(toChoice);
     }
-    system("pause");
+    cout << "pressione enter /p continuar" << endl; getchar();
     //opcao valida, then:
     Schedule doctorSchedule = HospitalDatabase::getScheduleByDoctorID(doctors[choice - 1]);
     WorkSchedule doctorWorkSessions = doctorSchedule.getWorkSchedule();
@@ -56,7 +57,7 @@ void HospitalInterface::managerRegisterInterface(){
 
          HospitalDatabase::createWSession(doctors[choice - 1], scheduleMe);
         cout << " Cadastro realizado com sucesso " << endl;
-        system("pause");
+        cout << "pressione enter /p continuar" << endl; getchar();
         HospitalInterface::managerInterface();
     }
     else{
@@ -67,24 +68,27 @@ void HospitalInterface::managerRegisterInterface(){
         }
         string date, time; 
         cout << "digite uma data desejada no formato dd/mm/yyyy " << endl;
-        getline(cin, date);
-        getchar();
-        cout << "digite hora desejada no formato hh:mm:ss " << endl;
-        getline(cin, time);
-        getchar();
+        cin >> date;         
+        
+        // Limpa o buffer
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        cout << "Digite a hora desejada no formato hh:mm:ss: ";
+        cin >> time;
 
         // talvez bugue porcausa dos "stringTo<...>", mas enfim...        
         Session scheduleMe(stringToTime(time), stringToDate(date));
         // vamos ver se nao houve um conflito nos horarios...
         if(doctorWorkSessions.testSession(scheduleMe)){  
             cout << " Horario indisponivel, voltando ao menu. " << endl;
-            system("pause");
+            cout << "pressione enter /p continuar" << endl; getchar();
             HospitalInterface::managerInterface();
         }
         else{
-            HospitalDatabase::createWSession(doctors[choice - 1], scheduleMe);
+
+            HospitalDatabase::createWSession(2, scheduleMe);
             cout << " Cadastro realizado com sucesso " << endl;
-            system("pause");
+            cout << "pressione enter /p continuar" << endl; getchar();
             HospitalInterface::managerInterface();
 
         }   
