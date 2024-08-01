@@ -1,3 +1,0 @@
-/workspaces/SGH-LP1/build/CMakeFiles/rebuild_cache.dir
-/workspaces/SGH-LP1/build/CMakeFiles/edit_cache.dir
-/workspaces/SGH-LP1/build/CMakeFiles/SGH-LP1.dir
