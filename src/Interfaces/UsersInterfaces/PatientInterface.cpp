@@ -3,6 +3,9 @@
 #include "../../../include/Time/Appointment.h"
 #include <set>
 
+using namespace std;
+
+
 void HospitalInterface::patientInterface() {
     system("clear");
     titleMaker("CENTRAL DO PACIENTE");
@@ -71,6 +74,8 @@ void HospitalInterface::pacienteMarcarConsulta() {
 
     Schedule medSchedule = HospitalDatabase::getScheduleByDoctorID(medId);
     WorkSchedule avaiableSessions = medSchedule.avaiableSessions(); 
+    cout << avaiableSessions.getWorkSchedule().size() << endl;
+    getchar(); getchar(); getchar();
     if(avaiableSessions.getWorkSchedule().size() == 0){
         cout << "Não há horarios disponíveis para marcar." << endl; 
         while (true) {

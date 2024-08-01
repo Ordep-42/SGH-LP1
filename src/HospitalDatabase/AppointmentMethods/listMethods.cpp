@@ -44,6 +44,16 @@ vector<Appointment> HospitalDatabase::getAppointmentsByDoctorID(int doctorID) {
 
     sqlite3_bind_int(stmt, 1, doctorID);
 
+    if( sqlite3_step(stmt) != SQLITE_ROW){
+          cout << SQLITE_ROW << endl;
+             getchar(); getchar(); 
+             cout << sqlite3_step(stmt) << endl;
+             getchar(); getchar(); 
+             cout << doctorID << endl;
+             getchar(); getchar(); 
+
+     }
+
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);
         string status =
