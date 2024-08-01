@@ -13,7 +13,8 @@ HospitalDatabase::getAppointmentsByPatientID(int patientId) {
     sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
     sqlite3_bind_int(stmt, 1, patientId);
-
+    cout << "Cheguei aqui! " << endl;
+    sleep(3);
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);
         string status =

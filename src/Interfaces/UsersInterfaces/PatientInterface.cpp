@@ -109,7 +109,8 @@ void HospitalInterface::pacienteMarcarConsulta() {
         // Agora já sabemos que a opc é válida, then:
         Session appointMe =
             avaiableSessions.getWorkSchedule()[pickedSession - 1];
-        Appointment createMe(appointMe, "scheduled", 0, medId,
+        Appointment createMe(appointMe, "scheduled",
+                             this->getCurrentUser()->getUserID(), medId,
                              "consulta"); // nome ok? LOL
         HospitalDatabase::createAppointment(createMe);
         cout << "Operação realizada com sucesso" << endl;
