@@ -80,6 +80,7 @@ class HospitalDatabase {
     string getScheduleBetweenDates(Date, Date);
     static vector<string> getAppointmentsByDoctor(short unsigned);
     static Schedule getScheduleByDoctorID(int doctorID);
+    static set<int> getAllDoctors();
 
     static bool verifyErrorCode();
 };

@@ -11,15 +11,15 @@
 using namespace std;
 
 void HospitalInterface::managerRegisterInterface(){
-    set<int> setsetset = HospitalDatabase::listDoctors(); 
+    system("clear");
+    std::set<int> setsetset = HospitalDatabase::getAllDoctors(); 
     // Should i? But do i need to..?
     vector<int> doctors(setsetset.begin(), setsetset.end()); 
     if(doctors.size() == 0) { return; }
-    
     vector<string> toChoice;
     for(int id : doctors){
         optional<Doctor> maybeDoctor = HospitalDatabase::getDoctorByID(id);  
-        if (!maybeDoctor.has_value()) { HospitalInterface::managerInterface(); }
+        if (!maybeDoctor.has_value()) { system("pause"); HospitalInterface::managerInterface(); }
         Doctor doutor = maybeDoctor.value();            
         
         string line = ""; 
@@ -36,12 +36,28 @@ void HospitalInterface::managerRegisterInterface(){
         cout << "opcao invalida, tente novamente... " << endl; 
         int choice = choiceMaker(toChoice);
     }
-
+    system("pause");
     //opcao valida, then:
     Schedule doctorSchedule = HospitalDatabase::getScheduleByDoctorID(doctors[choice - 1]);
     WorkSchedule doctorWorkSessions = doctorSchedule.getWorkSchedule();
     if(doctorWorkSessions.getWorkSchedule().size() == 0){
         cout << "Agenda completamente disponivel! " << endl; 
+        
+        string date, time; 
+        cout << "digite uma data desejada no formato dd/mm/yyyy " << endl;
+        getline(cin, date);
+        getchar();
+        cout << "digite hora desejada no formato hh:mm:ss " << endl;
+        getline(cin, time);
+        getchar();
+
+        // talvez bugue porcausa dos "stringTo<...>", mas enfim...        
+        Session scheduleMe(stringToTime(time), stringToDate(date));
+
+         HospitalDatabase::createWSession(doctors[choice - 1], scheduleMe);
+        cout << " Cadastro realizado com sucesso " << endl;
+        system("pause");
+        HospitalInterface::managerInterface();
     }
     else{
         //mostrar horarios já cadastrados
