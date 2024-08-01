@@ -10,7 +10,6 @@ void HospitalInterface::doctorInterface() {
     vector<string> choices;
     choices.push_back("Verificar Paciente");
     choices.push_back("Concluir consulta");
-    // choices.push_back("Solicitar equipamento médico");
     choices.push_back("Voltar");
 
     int choice = choiceMaker(choices);

@@ -48,12 +48,9 @@ vector<WorkSession> HospitalDatabase::getWorkSessionsByDoctorID(int docID) {
 
         int id = sqlite3_column_int(stmt, 0);
         int doctorID = (sqlite3_column_int(stmt, 1));
-
         std::string stringSession =
             reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
-        cout << stringSession << endl;
         Session thisSession = stringToSession(stringSession);
-        /*cout << thisSession.toString() << endl;*/
         WorkSession ws = WorkSession(thisSession.getTime(),
                                      thisSession.getDate(), id, doctorID);
 

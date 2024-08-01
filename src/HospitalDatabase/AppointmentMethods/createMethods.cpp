@@ -4,7 +4,7 @@
 void HospitalDatabase::createAppointment(Appointment newAppointment) {
     int doctorID = newAppointment.getDoctorID();
     int patientID = newAppointment.getPatientID();
-    Date date = newAppointment.getSession().getDate();
+    Session session = newAppointment.getSession();
     string procedure = newAppointment.getProcedure();
 
     returnCode = sqlite3_open("../data/hospital.db", &db);
@@ -24,8 +24,11 @@ void HospitalDatabase::createAppointment(Appointment newAppointment) {
     returnCode =
         sqlite3_bind_text(stmt, 4, procedure.c_str(), -1, SQLITE_STATIC);
 
+    string stringSession =
+        session.getDate().toString() + " " + session.getTime().toString();
+
     returnCode =
-        sqlite3_bind_text(stmt, 5, date.toString().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 5, stringSession.c_str(), -1, SQLITE_STATIC);
 
     cout << returnCode << endl;
     returnCode = sqlite3_step(stmt);
