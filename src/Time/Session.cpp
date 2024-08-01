@@ -1,4 +1,6 @@
 #include "../../include/Time/Session.h"
+#include <iostream>
+#include <unistd.h>
 
 using namespace std;
 
@@ -131,11 +133,10 @@ string getSecondPart(string firstSecond) {
 }
 
 string Session::toString() {
-    string sessionString = toString();
-    string time = getFirstPart(sessionString),
-           date = getSecondPart(sessionString);
+    string dateString = this->date.toString();
+    string timeString = this->time.toString();
 
-    return date + " " + time;
+    return dateString + " " + timeString;
 }
 
 // Eu só flippei os gets oq deixou BEM gambiarroso!!

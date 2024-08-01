@@ -65,7 +65,7 @@ HospitalDatabase::HospitalDatabase() {
                             "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                             "DOCTOR_ID INTEGER NOT NULL,"
                             "SESSION TEXT NOT NULL,"
-                            "FOREIGN KEY (DOCTOR_ID REFERENCES DOCTOR (ID));";
+                            "FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR (ID));";
 
     returnCode = sqlite3_exec(db, gestorSql, 0, 0, &errMsg);
     returnCode = sqlite3_exec(db, atendenteSql, 0, 0, &errMsg);
@@ -79,6 +79,8 @@ HospitalDatabase::HospitalDatabase() {
         return;
     }
     std::cout << "Database Tables created successfully" << std::endl;
+
+    sleep(3);
 
     this->returnCode = returnCode;
     this->errMsg = errMsg;
