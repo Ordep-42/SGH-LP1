@@ -4,9 +4,7 @@ Schedule HospitalDatabase::getScheduleByDoctorID(int doctorID) {
     vector<WorkSession> wss = getWorkSessionsByDoctorID(doctorID);
     cout << "foi " << endl;
     cout << "foi " << endl;
-    // for(WorkSession wSession : wss){
-    //     cout << "foi " << endl;
-    // }
+    getchar();  getchar();  getchar(); 
     vector<Appointment> apps = getAppointmentsByDoctorID(doctorID);
 
     WorkSchedule workSchedule = WorkSchedule(wss);

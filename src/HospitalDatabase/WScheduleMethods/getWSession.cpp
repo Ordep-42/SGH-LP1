@@ -1,6 +1,8 @@
 #include "../../../include/HospitalDatabase/HospitalDatabase.h"
 #include <optional>
 
+//using namespace std;
+
 optional<WorkSession> HospitalDatabase::getWSessionByID(int WSessionID) {
     std::string sql =
         "SELECT (ID ,DOCTOR_ID, SESSION) FROM WORK_SCHEDULE WHERE ID = ?;";
@@ -54,20 +56,31 @@ vector<WorkSession> HospitalDatabase::getWorkSessionsByDoctorID(int doctorID) {
              getchar(); getchar(); 
 
      }
-    while (returnCode == SQLITE_ROW) {
+    while  (returnCode == SQLITE_ROW) {
+        
         int id = sqlite3_column_int(stmt, 0);
         int doctorID = (sqlite3_column_int(stmt, 1));
+        
         std::string stringSession =
             reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
-            cout << stringSession << endl;
-            getchar(); getchar(); 
-        sqlite3_finalize(stmt);
+            //cout << stringSession << endl;
+            // getchar(); getchar(); 
+             
+        //sqlite3_finalize(stmt); 
+       
         Session thisSession = stringToSession(stringSession);
+        cout << thisSession.toString() << endl;
         WorkSession ws = WorkSession(thisSession.getTime(),
                                      thisSession.getDate(), id, doctorID);
+                                     
         wSchedule.push_back(ws);
+
+        
+        returnCode = sqlite3_step(stmt);
     }
-    sqlite3_finalize(stmt);
+    
+    sqlite3_finalize(stmt);    
+    sqlite3_close(db);
 
     return wSchedule;
 }
