@@ -164,7 +164,7 @@ set<int> HospitalDatabase::listDoctors() {
     const int width_consultCost = 15;
     const int width_specialty = 20;
 
-    Cabeçalhos
+    // Cabeçalhos
     cout << left << setw(width_id) << "id" << setw(width_nome) << "nome"
          << setw(width_consultCost) << "consultCost" 
          << setw(width_specialty) << "specialty" << endl;

@@ -28,16 +28,6 @@ string
 vector
 -
 
-/workspaces/SGH-LP1/include/Interface.h
-./Users/User.h
-/workspaces/SGH-LP1/include/Users/User.h
-Users/Patient.h
-/workspaces/SGH-LP1/include/Users/Patient.h
-string
--
-vector
--
-
 /workspaces/SGH-LP1/include/MedicalFile.h
 ./Time/Date.h
 /workspaces/SGH-LP1/include/Time/Date.h
@@ -136,22 +126,16 @@ string
 vector
 -
 
-/workspaces/SGH-LP1/src/Interfaces/UsersInterfaces/ManagerInterfaces/managerRegisterInterface.cpp
-../../../../include/HospitalDatabase/HospitalDatabase.h
+/workspaces/SGH-LP1/src/HospitalDatabase/UserMethods/doctorDatabaseMethods.cpp
+../../../include/HospitalDatabase/HospitalDatabase.h
 /workspaces/SGH-LP1/include/HospitalDatabase/HospitalDatabase.h
-../../../../include/Interface.h
-/workspaces/SGH-LP1/include/Interface.h
-cstdio
--
-cstdlib
--
-optional
--
-cstdlib
+iomanip
 -
 iostream
 -
-map
+set
+-
+string
 -
 unistd.h
 -
