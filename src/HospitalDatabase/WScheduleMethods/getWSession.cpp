@@ -56,8 +56,10 @@ vector<WorkSession> HospitalDatabase::getWorkSessionsByDoctorID(int doctorID) {
              getchar(); getchar(); 
 
      }
-    while  (returnCode == SQLITE_ROW) {
-        
+    
+    while(returnCode == SQLITE_ROW){
+       
+        cout << "foi 0" << endl;
         int id = sqlite3_column_int(stmt, 0);
         int doctorID = (sqlite3_column_int(stmt, 1));
         
@@ -75,8 +77,9 @@ vector<WorkSession> HospitalDatabase::getWorkSessionsByDoctorID(int doctorID) {
                                      
         wSchedule.push_back(ws);
 
-        
+        cout << "foi 1" << endl;
         returnCode = sqlite3_step(stmt);
+        cout << "foi 2" << endl;
     }
     
     sqlite3_finalize(stmt);    
