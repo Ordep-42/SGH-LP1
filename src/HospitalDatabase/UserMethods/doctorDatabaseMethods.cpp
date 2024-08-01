@@ -164,10 +164,10 @@ set<int> HospitalDatabase::listDoctors() {
     const int width_consultCost = 15;
     const int width_specialty = 20;
 
-    // Cabeçalhos
-    // cout << left << setw(width_id) << "id" << setw(width_nome) << "nome"
-    //      << setw(width_consultCost) << "consultCost" 
-    //      << setw(width_specialty) << "specialty" << endl;
+    Cabeçalhos
+    cout << left << setw(width_id) << "id" << setw(width_nome) << "nome"
+         << setw(width_consultCost) << "consultCost" 
+         << setw(width_specialty) << "specialty" << endl;
     while ((returnCode = sqlite3_step(stmt)) == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);
         const unsigned char *nome = sqlite3_column_text(stmt, 1);
@@ -177,9 +177,9 @@ set<int> HospitalDatabase::listDoctors() {
 
         idList.insert(id);
 
-        // cout << left << setw(width_id) << id << setw(width_nome) << nome
-        //      << setw(width_consultCost) << consultCost 
-        //      << setw(width_specialty) << specialty << endl;
+        cout << left << setw(width_id) << id << setw(width_nome) << nome
+             << setw(width_consultCost) << consultCost 
+             << setw(width_specialty) << specialty << endl;
     }
     sqlite3_finalize(stmt);
     sqlite3_close(db);
