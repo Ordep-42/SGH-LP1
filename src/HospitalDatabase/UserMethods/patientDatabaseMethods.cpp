@@ -131,7 +131,6 @@ void HospitalDatabase::updatePatient(unsigned short patientId, string attributeN
     }
     string sql = "UPDATE PATIENT SET " + attributeName + " = " + attributeValue + " WHERE ID = " + to_string(patientId) + ";";
     int returnCode = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &errMsg);
-    cout << returnCode << "AQui" << endl;
     if (verifyErrorCode()) {
         cout << "Patient with ID = " << patientId << " updated" << endl;
     }
