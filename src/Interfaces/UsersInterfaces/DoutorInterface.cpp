@@ -30,24 +30,21 @@ void HospitalInterface::doctorInterface() {
 
 void HospitalInterface::doctorCheckPatient(int doctorID) {
     // Confira no src/HospitalDatabase/ScheduledMethods/getMethods.cpp
-    Schedule doctorSchedule = HospitalDatabase::getScheduleByDoctorID(doctorID);
-    ScheduledAppointments appointments =
-        doctorSchedule.getScheduledAppointments().AppointmentsToHappen();
+    vector<WorkSession> workSessions =
+        HospitalDatabase::getWorkSessionsByDoctorID(doctorID);
 
-    // possivelmente seria bom modificar o "toString" pra nao incluir TODOS os campos.
-    int choice = choiceMaker(appointments.toString()); 
-    cout << appointments.toString()[choice - 1];
-    
-    system("pause");
-    cout << "operacao realizada com sucesso" << endl; 
+    // possivelmente seria bom modificar o "toString" pra nao incluir TODOS os
+    // campos.
+
+    cout << "operacao realizada com sucesso" << endl;
     HospitalInterface::doctorInterface();
 }
 
 void HospitalInterface::doctorConcludeAppointment(int doctorID) {
     // Confira no src/HospitalDatabase/ScheduledMethods/getMethods.cpp
     Schedule doctorSchedule = HospitalDatabase::getScheduleByDoctorID(doctorID);
-    ScheduledAppointments sAppointments =  doctorSchedule.getScheduledAppointments().AppointmentsToHappen();
-
+    ScheduledAppointments sAppointments =
+        doctorSchedule.getScheduledAppointments().AppointmentsToHappen();
 
     system("clear");
     if (sAppointments.getAppointments().size() == 0) {
@@ -56,17 +53,17 @@ void HospitalInterface::doctorConcludeAppointment(int doctorID) {
 
         return;
     }
-    
-     vector<string> appointments = sAppointments.toString();
-     int choice = choiceMaker(appointments);     
-     Appointment myApp = sAppointments.getAppointments()[choice - 1];
-     unsigned short deleteMe = static_cast<unsigned short>( myApp.getId() );
-     //HospitalDatabase::deleteAppointment(deleteMe);
 
-     myApp.setStatus("conclude");
-     HospitalDatabase::createAppointment(myApp);
-    
+    vector<string> appointments = sAppointments.toString();
+    int choice = choiceMaker(appointments);
+    Appointment myApp = sAppointments.getAppointments()[choice - 1];
+    unsigned short deleteMe = static_cast<unsigned short>(myApp.getId());
+    // HospitalDatabase::deleteAppointment(deleteMe);
+
+    myApp.setStatus("conclude");
+    HospitalDatabase::createAppointment(myApp);
+
     system("pause");
-    cout << "operacao realizada com sucesso" << endl; 
+    cout << "operacao realizada com sucesso" << endl;
     HospitalInterface::doctorInterface();
 }

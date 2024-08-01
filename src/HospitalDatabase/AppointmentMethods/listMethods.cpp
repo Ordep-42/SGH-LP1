@@ -1,7 +1,9 @@
 #include "../../../include/HospitalDatabase/HospitalDatabase.h"
+#include <unistd.h>
 
 vector<Appointment>
 HospitalDatabase::getAppointmentsByPatientID(int patientId) {
+    returnCode = sqlite3_open("../data/hospital.db", &db);
     const char *sql = "SELECT ID, STATUS, PATIENT_ID, DOCTOR_ID, PROCEDURE, "
                       "SESSION"
                       "FROM SCHEDULE WHERE PATIENT_ID = ?;";
@@ -30,12 +32,15 @@ HospitalDatabase::getAppointmentsByPatientID(int patientId) {
     }
 
     sqlite3_finalize(stmt);
+    sqlite3_close(db);
     return appointments;
 }
 
 vector<Appointment> HospitalDatabase::getAppointmentsByDoctorID(int doctorID) {
+
+    returnCode = sqlite3_open("../data/hospital.db", &db);
     const char *sql = "SELECT ID, STATUS, PATIENT_ID, DOCTOR_ID, PROCEDURE, "
-                      "SESSION"
+                      "SESSION "
                       "FROM SCHEDULE WHERE DOCTOR_ID = ?;";
 
     vector<Appointment> appointments;
@@ -43,16 +48,6 @@ vector<Appointment> HospitalDatabase::getAppointmentsByDoctorID(int doctorID) {
     sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
     sqlite3_bind_int(stmt, 1, doctorID);
-
-    if( sqlite3_step(stmt) != SQLITE_ROW){
-          cout << SQLITE_ROW << endl;
-             getchar(); getchar(); 
-             cout << sqlite3_step(stmt) << endl;
-             getchar(); getchar(); 
-             cout << doctorID << endl;
-             getchar(); getchar(); 
-
-     }
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         int id = sqlite3_column_int(stmt, 0);
@@ -67,10 +62,10 @@ vector<Appointment> HospitalDatabase::getAppointmentsByDoctorID(int doctorID) {
 
         Appointment app = Appointment(id, stringToSession(session), status,
                                       patientID, doctorID, procedure);
-
+        cout << app.getId() << endl;
         appointments.push_back(app);
     }
-
     sqlite3_finalize(stmt);
+    sqlite3_close(db);
     return appointments;
 };

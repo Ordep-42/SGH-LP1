@@ -1,5 +1,8 @@
 // Date.cpp
 #include "../../include/Time/Date.h"
+#include "../../include/Time/Time.h"
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -203,8 +206,15 @@ string Date::toString() {
 }
 
 Date stringToDate(string convertMe) {
-    short day = stoi(convertMe.substr(0, 2));
-    short month = stoi(convertMe.substr(3, 2));
-    short year = stoi(convertMe.substr(6, 4));
+    vector<string> parts = splitString(convertMe, '/');
+
+    if (parts.size() != 3) {
+
+        throw invalid_argument("Invalid date format");
+    }
+
+    short day = stoi(parts[0]);
+    short month = stoi(parts[1]);
+    short year = stoi(parts[2]);
     return Date(day, month, year);
 }

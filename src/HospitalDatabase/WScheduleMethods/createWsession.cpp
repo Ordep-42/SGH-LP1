@@ -1,5 +1,4 @@
 #include "../../../include/HospitalDatabase/HospitalDatabase.h"
-#include <optional>
 #include <string>
 #include <unistd.h>
 
@@ -12,8 +11,8 @@ void HospitalDatabase::createWSession(int doctor_id, Session session) {
     returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
 
     returnCode = sqlite3_bind_int(stmt, 1, doctor_id);
-    string sessionStr = session.toString();
-    cout << sessionStr << endl;
+    string sessionStr =
+        session.getDate().toString() + " " + session.getTime().toString();
     returnCode =
         sqlite3_bind_text(stmt, 2, sessionStr.c_str(), -1, SQLITE_STATIC);
 
@@ -21,5 +20,4 @@ void HospitalDatabase::createWSession(int doctor_id, Session session) {
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     sqlite3_close(db);
-    sleep(3);
 }

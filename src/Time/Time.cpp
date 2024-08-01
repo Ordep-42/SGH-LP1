@@ -1,6 +1,8 @@
 #include "../../include/Time/Time.h"
 #include <sstream>
+#include <stdexcept>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -144,18 +146,27 @@ string Time::toString() {
     return timeString;
 }
 
-Time stringToTime(string convertMe) {
-    // stringSpliter:
-    int hour, minute, second;
-    istringstream iss(convertMe);
+vector<string> splitString(string str, char delimiter) {
+    vector<string> tokens;
+    string token;
+    istringstream tokenStream(str);
+    while (getline(tokenStream, token, delimiter)) {
+        tokens.push_back(token);
+    }
 
-    // let's go!
-    getline(iss, convertMe, ':');
-    hour = stoi(convertMe);
-    getline(iss, convertMe, ':');
-    minute = stoi(convertMe);
-    getline(iss, convertMe, ':');
-    second = stoi(convertMe);
+    return tokens;
+}
+
+Time stringToTime(string convertMe) {
+    vector<string> parts = splitString(convertMe, ':');
+
+    if (parts.size() != 3) {
+        throw invalid_argument("Invalid time format");
+    }
+
+    int hour = stoi(parts[0]);
+    int minute = stoi(parts[1]);
+    int second = stoi(parts[2]);
 
     Time newTime(hour, minute, second);
     return newTime;

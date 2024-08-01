@@ -8,29 +8,29 @@ using namespace std;
 // Fiz 4fun msm. Devia ter uns mlres na net :P Mas nem deu trabai
 
 class Time {
-private:
+  private:
     short hour;
     short minute;
-    short second; 
+    short second;
 
-public:
+  public:
     Time(short newHour, short newMin, short newSec);
     Time();
 
-    //getters:
+    // getters:
     short getHour();
     short getMin();
     short getSec();
     string toString();
-    //setters: 
-    void setHour(short newHour); 
-    void setMin(short newMin); 
-    void setSec(short newSec); 
+    // setters:
+    void setHour(short newHour);
+    void setMin(short newMin);
+    void setSec(short newSec);
 
-    //resto: 
+    // resto:
     void fixSec();
-    void fixMin();   
-    void fixHour(); 
+    void fixMin();
+    void fixHour();
     void fixTime();
     void sumTime(Time toSum);
 
@@ -38,13 +38,12 @@ public:
     bool isBeforeThan(Time thisTime);
 
     bool isBetween(Time time1, Time time2);
-
 };
 
 // Funções auxiliares
 Time firsTime(Time time1, Time time2);
 Time lastTime(Time time1, Time time2);
 Time stringToTime(string convertMe);
-
+vector<string> splitString(string, char);
 
 #endif // !TIME_H

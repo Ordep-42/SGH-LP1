@@ -80,8 +80,6 @@ HospitalDatabase::HospitalDatabase() {
     }
     std::cout << "Database Tables created successfully" << std::endl;
 
-    sleep(3);
-
     this->returnCode = returnCode;
     this->errMsg = errMsg;
     this->db = db;

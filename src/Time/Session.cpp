@@ -139,7 +139,6 @@ string Session::toString() {
     return dateString + " " + timeString;
 }
 
-// Eu só flippei os gets oq deixou BEM gambiarroso!!
 Session stringToSession(string convertMe) {
     Session newSession(stringToTime(getSecondPart(convertMe)),
                        stringToDate(getFirstPart(convertMe)));
