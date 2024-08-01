@@ -9,6 +9,7 @@ void HospitalInterface::managerInterface() {
     choices.push_back("Criar");
     choices.push_back("Listar");
     choices.push_back("Deletar");
+    choices.push_back("Cadastrar");
     choices.push_back("Deslogar");
     int choice = choiceMaker(choices);
 
@@ -22,6 +23,8 @@ void HospitalInterface::managerInterface() {
     case 3:
         HospitalInterface::managerDeleteInterface();
     case 4:
+        HospitalInterface::managerRegisterInterface();
+    case 5:
         this->setAccessLevel(0);
         this->setIsLogged(false);
         this->setCurrentUser(nullptr);

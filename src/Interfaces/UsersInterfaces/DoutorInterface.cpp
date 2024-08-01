@@ -33,23 +33,40 @@ void HospitalInterface::doctorCheckPatient(int doctorID) {
     Schedule doctorSchedule = HospitalDatabase::getScheduleByDoctorID(doctorID);
     ScheduledAppointments appointments =
         doctorSchedule.getScheduledAppointments().AppointmentsToHappen();
-    int choice = choiceMaker(
-        appointments.toString()); // possivelmente seria bom modificar o
-                                  // "toString" pra nao incluir TODOS os campos.
 
+    // possivelmente seria bom modificar o "toString" pra nao incluir TODOS os campos.
+    int choice = choiceMaker(appointments.toString()); 
     cout << appointments.toString()[choice - 1];
+    
     system("pause");
+    cout << "operacao realizada com sucesso" << endl; 
+    HospitalInterface::doctorInterface();
 }
 
 void HospitalInterface::doctorConcludeAppointment(int doctorID) {
     // Confira no src/HospitalDatabase/ScheduledMethods/getMethods.cpp
     Schedule doctorSchedule = HospitalDatabase::getScheduleByDoctorID(doctorID);
-    ScheduledAppointments appointments =
-        doctorSchedule.getScheduledAppointments().AppointmentsToHappen();
-    if (appointments.getAppointments().size() == 0) {
-        cout << "Não há consultas marcadas";
+    ScheduledAppointments sAppointments =  doctorSchedule.getScheduledAppointments().AppointmentsToHappen();
+
+
+    system("clear");
+    if (sAppointments.getAppointments().size() == 0) {
+        cout << "Não há consultas marcadas" << endl;
         system("pause");
 
         return;
     }
+    
+     vector<string> appointments = sAppointments.toString();
+     int choice = choiceMaker(appointments);     
+     Appointment myApp = sAppointments.getAppointments()[choice - 1];
+     unsigned short deleteMe = static_cast<unsigned short>( myApp.getId() );
+     //HospitalDatabase::deleteAppointment(deleteMe);
+
+     myApp.setStatus("conclude");
+     HospitalDatabase::createAppointment(myApp);
+    
+    system("pause");
+    cout << "operacao realizada com sucesso" << endl; 
+    HospitalInterface::doctorInterface();
 }
