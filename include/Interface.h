@@ -71,6 +71,9 @@ class HospitalInterface {
 
 
     void managerRegisterInterface();
+    
+    static void managerRegisterInterface2(int doctor_id, int month, int year, int);
+
 };
 
 // Funções auxiliares

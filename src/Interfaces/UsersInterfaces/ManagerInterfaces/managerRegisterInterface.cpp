@@ -43,14 +43,33 @@ void HospitalInterface::managerRegisterInterface(){
     WorkSchedule doctorWorkSessions = doctorSchedule.getWorkSchedule();
     if(doctorWorkSessions.getWorkSchedule().size() == 0){
         cout << "Agenda completamente disponivel! " << endl; 
+        int choicce; 
+        vector<string> choose; 
+        choose.push_back("cadastro mensal");
+        choose.push_back("cadastro manual");
+        choicce = choiceMaker(choose);
+
+        if(choicce == 1) { 
+        system("clear");
+        int mes, ano, dia; 
+        cout << "digite um ano desejado  "; 
+        cin >> ano; 
+        cout << "digite um mes desejado  ";
+        cin >> mes;
+        cout << "digite um dia desejado  "; 
+        cin >> dia; 
+
+        HospitalInterface::managerRegisterInterface2(doctors[choice - 1], mes, ano, dia);
+
+        }
         
         string date, time; 
-        cout << "digite uma data desejada no formato dd/mm/yyyy " << endl;
+        cout << "digite uma data desejada no formato dd/mm/yyyy ";
         getline(cin, date);
-        getchar();
-        cout << "digite hora desejada no formato hh:mm:ss " << endl;
+        //sem getchar karalho
+        cout << "digite hora desejada no formato hh:mm:ss " ;
         getline(cin, time);
-        getchar();
+        // SEM GETCHAR CARALHo
 
         // talvez bugue porcausa dos "stringTo<...>", mas enfim...        
         Session scheduleMe(stringToTime(time), stringToDate(date));
@@ -71,7 +90,7 @@ void HospitalInterface::managerRegisterInterface(){
         cin >> date;         
         
         // Limpa o buffer
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        //cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         cout << "Digite a hora desejada no formato hh:mm:ss: ";
         cin >> time;
@@ -95,4 +114,26 @@ void HospitalInterface::managerRegisterInterface(){
 
     }
 
+}
+
+void HospitalInterface::managerRegisterInterface2(int doctor_id, int month, int year, int day){
+    //coloque um mes de 30 dias apenas
+    for(int i = day; i <= 5; i++){
+        Time time(7,0,0); Date date(i,month, year ); Time sumMe(1,0,0);
+        Session secao(time, date); HospitalDatabase::createWSession(doctor_id, secao);
+        time.sumTime(sumMe);
+        Session secao2(time, date); HospitalDatabase::createWSession(doctor_id, secao2);
+        time.sumTime(sumMe);
+        Session secao3(time, date); HospitalDatabase::createWSession(doctor_id, secao3);
+        time.sumTime(sumMe);
+        Session secao4(time, date); HospitalDatabase::createWSession(doctor_id, secao4);
+        time.sumTime(sumMe);
+        Session secao5(time, date); HospitalDatabase::createWSession(doctor_id, secao5);
+        time.sumTime(sumMe);
+        Session secao6(time, date); HospitalDatabase::createWSession(doctor_id, secao6);        
+        
+    }
+    cout << " Cadastro realizado com sucesso " << endl;
+    cout << "pressione enter /p continuar" << endl; getchar();
+    
 }
