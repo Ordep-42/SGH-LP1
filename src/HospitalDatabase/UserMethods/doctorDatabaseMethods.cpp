@@ -97,6 +97,51 @@ optional<Doctor> HospitalDatabase::getDoctorByNameAndPassword(string name,
     };
 }
 
+set<int> HospitalDatabase::getAllDoctors() {
+    set<int> idList;
+
+    returnCode = sqlite3_open("../data/hospital.db", &db);
+    if (!verifyErrorCode()) {
+        return idList;
+    }
+
+    std::string sql = "SELECT * FROM DOCTOR;";
+
+    returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (!verifyErrorCode()) {
+        return idList;
+    }
+
+    // Largura das colunas
+    const int width_id = 10;
+    const int width_nome = 20;
+    const int width_password = 20;
+    const int width_consultCost = 15;
+    const int width_specialty = 20;
+
+    // Cabeçalhos
+    // cout << left << setw(width_id) << "id" << setw(width_nome) << "nome"
+    //      << setw(width_consultCost) << "consultCost" 
+    //      << setw(width_specialty) << "specialty" << endl;
+    while ((returnCode = sqlite3_step(stmt)) == SQLITE_ROW) {
+        int id = sqlite3_column_int(stmt, 0);
+        const unsigned char *nome = sqlite3_column_text(stmt, 1);
+        //const unsigned char *password = sqlite3_column_text(stmt, 2);
+        int consultCost = sqlite3_column_int(stmt, 3);
+        const unsigned char *specialty = sqlite3_column_text(stmt, 4);
+
+        idList.insert(id);
+
+        // cout << left << setw(width_id) << id << setw(width_nome) << nome
+        //      << setw(width_consultCost) << consultCost 
+        //      << setw(width_specialty) << specialty << endl;
+    }
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+
+    return idList;
+}
+
 set<int> HospitalDatabase::listDoctors() {
     set<int> idList;
 
