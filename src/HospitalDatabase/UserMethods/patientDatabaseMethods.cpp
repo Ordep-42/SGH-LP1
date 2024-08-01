@@ -1,5 +1,6 @@
 #include "../../../include/HospitalDatabase/HospitalDatabase.h"
 #include <iostream>
+#include <sstream>
 #include <string>
 
 void HospitalDatabase::createPatient(User patient) {
@@ -35,13 +36,16 @@ optional<Patient> HospitalDatabase::getPatientByID(int patientID) {
         std::string password =
             reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
         sqlite3_finalize(stmt);
+        sqlite3_close(db);
         return Patient(id, name, password);
     } else if (returnCode == SQLITE_DONE) {
         sqlite3_finalize(stmt);
+        sqlite3_close(db);
         return std::nullopt;
     } else {
         std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_finalize(stmt);
+        sqlite3_close(db);
         return std::nullopt;
     };
 }
@@ -69,13 +73,16 @@ HospitalDatabase::getPatientByNameAndPassword(string name, string password) {
         std::string retrievedPassword =
             reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
         sqlite3_finalize(stmt);
+        sqlite3_close(db);
         return Patient(retrievedID, retrievedName, retrievedPassword);
     } else if (returnCode == SQLITE_DONE) {
         sqlite3_finalize(stmt);
+        sqlite3_close(db);
         return std::nullopt;
     } else {
         std::cerr << "Execution failed: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_finalize(stmt);
+        sqlite3_close(db);
         return std::nullopt;
     }
 }
@@ -114,4 +121,45 @@ void HospitalDatabase::deletePatient(unsigned short patientId) {
     if (verifyErrorCode()) {
         cout << "Patient with ID = " << patientId << " deleted" << endl;
     }
+    sqlite3_close(db);
+}
+
+void HospitalDatabase::updatePatient(unsigned short patientId, string attributeName, string attributeValue) {
+    returnCode = sqlite3_open("../data/hospital.db", &db);
+    if (!verifyErrorCode()) {
+        return;
+    }
+    string sql = "UPDATE PATIENT SET " + attributeName + " = " + attributeValue + " WHERE ID = " + to_string(patientId) + ";";
+    int returnCode = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &errMsg);
+    cout << returnCode << "AQui" << endl;
+    if (verifyErrorCode()) {
+        cout << "Patient with ID = " << patientId << " updated" << endl;
+    }
+    sqlite3_close(db);
+}
+
+string HospitalDatabase::getPatientData(unsigned short patientId, string attributeName) {
+    string data = "";
+
+    returnCode = sqlite3_open("../data/hospital.db", &db);
+    if (!verifyErrorCode()) {
+        return data;
+    }
+    string sql = "SELECT " + attributeName + " FROM PATIENT WHERE ID = " + to_string(patientId) + ";";
+
+    returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (!verifyErrorCode()) {
+        return data;
+    }
+
+    returnCode = sqlite3_step(stmt);
+    if (returnCode == SQLITE_ROW) {
+        const unsigned char *dataValue = sqlite3_column_text(stmt, 0);
+        ostringstream oss;
+        oss << dataValue;
+        data = oss.str();
+    }
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+    return data;
 }

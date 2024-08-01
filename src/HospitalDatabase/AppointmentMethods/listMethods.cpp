@@ -30,11 +30,6 @@ HospitalDatabase::getAppointmentsByPatientID(int patientId) {
     }
 
     sqlite3_finalize(stmt);
-    if (appointments.empty()) {
-        cout << "No appointments found for patient ID " << patientId << "."
-             << endl;
-    }
-
     return appointments;
 }
 
@@ -67,10 +62,5 @@ vector<Appointment> HospitalDatabase::getAppointmentsByDoctorID(int doctorID) {
     }
 
     sqlite3_finalize(stmt);
-    if (appointments.empty()) {
-        cout << "No appointments found for doctor ID " << doctorID << "."
-             << endl;
-    }
-
     return appointments;
 };
