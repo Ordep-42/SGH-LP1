@@ -66,84 +66,46 @@ void HospitalInterface::pacienteMarcarConsulta() {
         HospitalInterface::patientInterface();
         return;
     }
-    /*
-        Schedule medSchedule = getScheduleByDoctorIdFromBD(medId);
-
-        // int  pickedSession =
-        // choiceMaker(medSchedule.avaiableSessions().toStringVector();); // 0
-        // volta?
-
-        // implementar o toStringVector tbm
-        vector<string> SessionsToChoice =
-            medSchedule.avaiableSessions().toStringVector();
-        int pickedSession = choiceMaker(SessionsToChoice);
-
-        MarcarConsulta(medSchedule.avaiableSessions()[pickedSession]);
-    */
-    /*system("clear");
+    system("clear");
     titleMaker("AGENDAMENTO DE CONSULTA");
-    string data;
-    cout << "Formato: DD/MM/AAAA" << endl;
-    cout << "Digite a data desejada para realizar a consulta: ";
-    cin >> data;
-    getchar();
-    
-    cout << "Horários disponíveis para a data desejada: " << endl;
-
-    Date date = stringToDate(data);
 
     Schedule medSchedule = HospitalDatabase::getScheduleByDoctorID(medId);
-    WorkSchedule medWorkSchedule = medSchedule.getWorkSchedule();
-    WorkSchedule dateMedWorkSchedule = medWorkSchedule.searchByDate(stringToDate(data));
-    vector<WorkSession> medWorkSessions = dateMedWorkSchedule.getWorkSchedule();
-    vector<string> availableTimes;
-    availableTimes.push_back("08:00:00");
-    availableTimes.push_back("09:00:00");
-    availableTimes.push_back("10:00:00");
-    availableTimes.push_back("11:00:00");
-    availableTimes.push_back("13:00:00");
-    availableTimes.push_back("14:00:00");
-    availableTimes.push_back("15:00:00");
-    availableTimes.push_back("16:00:00");
-    if (medWorkSessions.size() == 0) {
-        for (int i = 0; i < 8; i++) {
-            WorkSession session = WorkSession(stringToTime(availableTimes[i]), date, i+1, medId);
-            medWorkSessions.push_back(session);
+    WorkSchedule avaiableSessions = medSchedule.avaiableSessions(); 
+    if(avaiableSessions.getWorkSchedule().size() == 0){
+        cout << "Não há horarios disponíveis para marcar." << endl; 
+        while (true) {
+            cout << "Digite [0] para voltar." << endl;
+            int choice;
+            cin >> choice;
+            if (choice == 0) {
+                HospitalInterface::patientInterface();
+                break;
+            }
         }
+    } else {
+        // Existem horários sim!
+        cout << "[-1] Voltar " << endl;
+        int  pickedSession =
+        choiceMaker(avaiableSessions.toString());
+        if(pickedSession = -1) { HospitalInterface::patientInterface(); }
+            
+        while(pickedSession < 0 || 
+            pickedSession > (avaiableSessions.getWorkSchedule().size() - 1)){
+            system("clear"); 
+            cout << "Opção invalida, tente novamente... " << endl;
+            cout << "[-1] Voltar " << endl;
+            int  pickedSession =
+                choiceMaker(avaiableSessions.toString());
+            if(pickedSession = -1) { HospitalInterface::patientInterface(); }
+
+        }
+
+        //Agora já sabemos que a opc é válida, then:
+        Session appointMe =  avaiableSessions.getWorkSchedule()[pickedSession - 1];        
+        Appointment createMe(appointMe, "scheduled", 0, medId, "consulta"); // nome ok? LOL
+        HospitalDatabase::createAppointment(createMe);
+        cout << "Operação realizada com sucesso" << endl;
     }
-    set<int> sessionIds;
-    for (int i = 0; i < medWorkSessions.size(); i++) {
-        cout << "ID: " << medWorkSessions[i].getId();
-        sessionIds.insert(medWorkSessions[i].getId());
-        cout << " | Horário: " << medWorkSessions[i].getTime().toString() << endl;
-        hr();
-    }
-    int sessionId;
-    cout << "Digite o ID do horário desejado: ";
-    cin >> sessionId;
-    getchar();
-
-    while (sessionIds.find(sessionId) == sessionIds.end() && sessionId != 0) {
-        cout << "Digite um ID válido.\n";
-        cin >> medId;
-    }
-    if (sessionId == 0) {
-        HospitalInterface::patientInterface();
-        return;
-    }
-    
-    Session appointmentSession = Session(medWorkSessions[sessionId].getTime(), date);
-    int patientId = this->getCurrentUser()->getUserID();
-
-    Appointment novaConsulta = Appointment(appointmentSession, "Marcado",
-                                            patientId, medId, "Consulta");
-
-    HospitalDatabase::createAppointment(novaConsulta);
-
-    string hora = appointmentSession.getTime().toString();
-    cout << "Consulta marcada com sucesso para a data " << data << " às " <<
-    hora << "!" << endl;
-
     while (true) {
         cout << "Digite [0] para voltar." << endl;
         int choice;
@@ -151,40 +113,7 @@ void HospitalInterface::pacienteMarcarConsulta() {
         if (choice == 0) {
             break;
         }
-    } */
-    
-    Schedule medSchedule = HospitalDatabase::getScheduleByDoctorID(medId);
-    WorkSchedule avaiableSessions = medSchedule.avaiableSessions(); 
-    if(avaiableSessions.getWorkSchedule().size() == 0){
-        system("clear");
-        cout << "nao ha horarios disponiveis para marcar" << endl; 
-        system("pause");
-        HospitalInterface::patientInterface();
     }
-    // Existem horários sim!
-        cout << "\"-1\" - Voltar " << endl;
-        int  pickedSession =
-        choiceMaker(avaiableSessions.toString());
-        if(pickedSession = -1) { HospitalInterface::patientInterface(); }
-        
-    while(pickedSession < 0 || 
-        pickedSession > (avaiableSessions.getWorkSchedule().size() - 1)){
-        system("clear"); 
-        cout << "Opção invalida, tente novamente... " << endl;
-        cout << "\"-1\" - Voltar " << endl;
-        int  pickedSession =
-            choiceMaker(avaiableSessions.toString());
-        if(pickedSession = -1) { HospitalInterface::patientInterface(); }
-
-    }
-
-        // Agora já sabemos que a opc é válida, then:
-    Session appointMe =  avaiableSessions.getWorkSchedule()[pickedSession - 1];        
-    Appointment createMe(appointMe, "scheduled", 0, medId, "consulta"); // nome ok? LOL
-    HospitalDatabase::createAppointment(createMe);
-    
-    cout << "operacao realizada com sucesso" << endl; 
-    system("clear");
     HospitalInterface::patientInterface();
 }
 
@@ -290,20 +219,20 @@ void HospitalInterface::pacienteAtualizarDados() {
     system("clear");
     titleMaker("ATUALIZAÇÃO DE DADOS");
     User* patient = this->getCurrentUser();
-
+    int patientId = patient->getUserID();
     titleMaker("Dados Pessoais");
-    cout << "Nome: " << patient->getName() << endl;
-    cout << "CPF: " << patient->getCpf() << endl;
-    cout << "Data de Nascimento: " << patient->getBirthDate().toString()
+    cout << "Nome: " << HospitalDatabase::getPatientData(patientId, "NAME") << endl;
+    cout << "CPF: " << HospitalDatabase::getPatientData(patientId, "CPF") << endl;
+    cout << "Data de Nascimento: " << HospitalDatabase::getPatientData(patientId, "BIRTHDATE")
          << endl;
-    cout << "Gênero: " << genderToString(patient->getGender()) << endl;
-    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus())
+    cout << "Gênero: " << HospitalDatabase::getPatientData(patientId, "GENDER") << endl;
+    cout << "Estado Civil: " << HospitalDatabase::getPatientData(patientId, "CIVILSTATUS")
          << endl;
 
     titleMaker("Contato");
-    cout << "Endereço: " << patient->getAddress() << endl;
-    cout << "Telefone: " << patient->getPhoneNumber() << endl;
-    cout << "Email: " << patient->getEmail() << endl;
+    cout << "Endereço: " << HospitalDatabase::getPatientData(patientId, "ADDRESS") << endl;
+    cout << "Telefone: " << HospitalDatabase::getPatientData(patientId, "PHONENUMBER") << endl;
+    cout << "Email: " << HospitalDatabase::getPatientData(patientId, "EMAIL") << endl;
 
     titleMaker("Qual dado deseja atualizar?");
 
@@ -331,6 +260,7 @@ void HospitalInterface::pacienteAtualizarDados() {
         getchar();
         patient->setCpf(entrada);
         hr();
+        HospitalDatabase::updatePatient(patient->getUserID(), "CPF", entrada);
         cout << "CPF atualizado para " << patient->getCpf() << "!" << endl;
         break;
     case 2:

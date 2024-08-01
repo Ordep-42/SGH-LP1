@@ -115,3 +115,37 @@ void HospitalDatabase::deletePatient(unsigned short patientId) {
         cout << "Patient with ID = " << patientId << " deleted" << endl;
     }
 }
+
+void HospitalDatabase::updatePatient(unsigned short patientId, string attributeName, string attributeValue) {
+    returnCode = sqlite3_open("../data/hospital.db", &db);
+    if (!verifyErrorCode()) {
+        return;
+    }
+    string sql = "UPDATE PATIENT SET " + attributeName + " = " + attributeValue + " WHERE ID = " + to_string(patientId) + ";";
+
+    int returnCode = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &errMsg);
+    if (verifyErrorCode()) {
+        cout << "Patient with ID = " << patientId << " updated" << endl;
+    }
+}
+
+string HospitalDatabase::getPatientData(unsigned short patientId, string attributeName) {
+    returnCode = sqlite3_open("../data/hospital.db", &db);
+    if (!verifyErrorCode()) {
+        return "";
+    }
+    string sql = "SELECT " + attributeName + " FROM PATIENT WHERE ID = " + to_string(patientId) + ";";
+
+    returnCode = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+    if (!verifyErrorCode()) {
+        return "";
+    }
+
+    returnCode = sqlite3_step(stmt);
+    if (returnCode == SQLITE_ROW) {
+        const unsigned char *data = sqlite3_column_text(stmt, 0);
+        return reinterpret_cast<const char *>(data);
+    } else {
+        return "";
+    }
+}

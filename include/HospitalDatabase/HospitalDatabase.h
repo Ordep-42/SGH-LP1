@@ -36,6 +36,8 @@ class HospitalDatabase {
                                                          string password);
     static void listPatients();
     static void deletePatient(short unsigned);
+    static void updatePatient(short unsigned, string, string);
+    static string getPatientData(short unsigned, string);
 
     static void createDoctor(Doctor);
     static optional<Doctor> getDoctorByID(int doctorID);

@@ -35,7 +35,14 @@ HospitalDatabase::HospitalDatabase() {
     const char *pacienteSql = "CREATE TABLE IF NOT EXISTS PATIENT("
                               "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                               "NAME TEXT NOT NULL,"
-                              "PASSWORD TEXT NOT NULL);";
+                              "PASSWORD TEXT NOT NULL,"
+                              "CPF TEXT,"
+                              "BIRTHDATE TEXT,"
+                              "GENDER TEXT,"
+                              "CIVILSTATUS TEXT,"
+                              "ADDRESS TEXT,"
+                              "PHONENUMBER TEXT,"
+                              "EMAIL TEXT);";
 
     const char *doutorSql = "CREATE TABLE IF NOT EXISTS DOCTOR("
                             "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
