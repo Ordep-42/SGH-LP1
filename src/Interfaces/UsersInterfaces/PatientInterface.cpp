@@ -187,20 +187,21 @@ void HospitalInterface::pacienteListarDados() {
     system("clear");
     titleMaker("LISTAGEM DE DADOS");
     User* patient = this->getCurrentUser();
+    int patientId = patient->getUserID();
 
     titleMaker("Dados Pessoais");
     cout << "Nome: " << patient->getName() << endl;
-    cout << "CPF: " << patient->getCpf() << endl;
-    cout << "Data de Nascimento: " << patient->getBirthDate().toString()
+    cout << "CPF: " << HospitalDatabase::getPatientData(patientId, "CPF") << endl;
+    cout << "Data de Nascimento: " << HospitalDatabase::getPatientData(patientId, "BIRTHDATE")
          << endl;
-    cout << "Gênero: " << genderToString(patient->getGender()) << endl;
-    cout << "Estado Civil: " << civilStatusToString(patient->getCivilStatus())
+    cout << "Gênero: " << HospitalDatabase::getPatientData(patientId, "GENDER") << endl;
+    cout << "Estado Civil: " << HospitalDatabase::getPatientData(patientId, "CIVILSTATUS")
          << endl;
 
     titleMaker("Contato");
-    cout << "Endereço: " << patient->getAddress() << endl;
-    cout << "Telefone: " << patient->getPhoneNumber() << endl;
-    cout << "Email: " << patient->getEmail() << endl;
+    cout << "Endereço: " << HospitalDatabase::getPatientData(patientId, "ADDRESS") << endl;
+    cout << "Telefone: " << HospitalDatabase::getPatientData(patientId, "PHONENUMBER") << endl;
+    cout << "Email: " << HospitalDatabase::getPatientData(patientId, "EMAIL") << endl;
 
     hr();
 
@@ -210,7 +211,7 @@ void HospitalInterface::pacienteListarDados() {
         cin >> choice;
         if (choice == 0) {
             break;
-        }
+        }//ss, é isso mesmo, não tem break aqui, pq o break é no final do while boa noite!
     }
     HospitalInterface::patientInterface();
 }
@@ -258,10 +259,9 @@ void HospitalInterface::pacienteAtualizarDados() {
         cout << "Digite o novo CPF: ";
         cin >> entrada;
         getchar();
-        patient->setCpf(entrada);
         hr();
-        HospitalDatabase::updatePatient(patient->getUserID(), "CPF", entrada);
-        cout << "CPF atualizado para " << patient->getCpf() << "!" << endl;
+        HospitalDatabase::updatePatient(patientId, "CPF", entrada);
+        cout << "CPF atualizado para " << HospitalDatabase::getPatientData(patientId, "CPF") << "!" << endl;
         break;
     case 2:
         system("clear");
