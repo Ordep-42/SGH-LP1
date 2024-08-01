@@ -131,11 +131,12 @@ string getSecondPart(string firstSecond) {
 }
 
 string Session::toString() {
-    string sessionString = toString();
-    string time = getFirstPart(sessionString),
-           date = getSecondPart(sessionString);
-
-    return date + " " + time;
+    string sessionString = "";
+    sessionString += getDate().toString(); 
+    sessionString += " ";
+    sessionString += getTime().toString(); 
+    
+    return sessionString;
 }
 
 // Eu só flippei os gets oq deixou BEM gambiarroso!!
