@@ -292,13 +292,10 @@ void HospitalInterface::pacienteAtualizarDados() {
         cout << "Digite a nova Data de Nascimento (no formato DD/MM/AAAA): ";
         cin >> entrada;
         getchar();
-        patient->setBirthDate(stringToDate(entrada));
         hr();
         HospitalDatabase::updatePatient(patientId, "BIRTHDATE", entrada);
-        Date data;
-        data = patient->getBirthDate();
         cout << "Data de Nascimento atualizada para atualizado para "
-             << data.getDay() << "/" << data.getMonth() << "/" << data.getYear()
+             << HospitalDatabase::getPatientData(patientId, "BIRTHDATE")
              << "!" << endl;
         break;
     case 3:
@@ -322,7 +319,7 @@ void HospitalInterface::pacienteAtualizarDados() {
         HospitalDatabase::updatePatient(patientId, "GENDER",
                                         dataChoices[dataChoice - 1]);
         cout << "Gênero atualizado para "
-             << genderToString(patient->getGender()) << "!" << endl;
+             << HospitalDatabase::getPatientData(patientId, "GENDER") << "!" << endl;
         break;
     case 4:
         system("clear");
@@ -347,7 +344,7 @@ void HospitalInterface::pacienteAtualizarDados() {
         HospitalDatabase::updatePatient(patientId, "CIVILSTATUS",
                                         dataChoices[dataChoice - 1]);
         cout << "Estado civil atualizado para "
-             << civilStatusToString(patient->getCivilStatus()) << "!" << endl;
+             << HospitalDatabase::getPatientData(patientId, "CIVILSTATUS") << "!" << endl;
         break;
     case 5:
         system("clear");
@@ -356,9 +353,9 @@ void HospitalInterface::pacienteAtualizarDados() {
         cin >> entrada;
         getchar();
         HospitalDatabase::updatePatient(patientId, "ADDRESS", entrada);
-        patient->setAddress(entrada);
         hr();
-        cout << "Endereço atualizado para " << patient->getAddress() << "!"
+        cout << "Endereço atualizado para " 
+             << HospitalDatabase::getPatientData(patientId, "ADDRESS") << "!"
              << endl;
         break;
     case 6:
@@ -367,11 +364,10 @@ void HospitalInterface::pacienteAtualizarDados() {
         cout << "Digite o novo telefone: ";
         cin >> entrada;
         getchar();
-        patient->setPhoneNumber(entrada);
         hr();
 
         HospitalDatabase::updatePatient(patientId, "PHONENUMBER", entrada);
-        cout << "Telefone atualizado para " << patient->getPhoneNumber() << "!"
+        cout << "Telefone atualizado para " << HospitalDatabase::getPatientData(patientId, "PHONENUMBER") << "!"
              << endl;
         break;
     case 7:
@@ -380,10 +376,9 @@ void HospitalInterface::pacienteAtualizarDados() {
         cout << "Digite o novo email: ";
         cin >> entrada;
         getchar();
-        patient->setEmail(entrada);
         hr();
         HospitalDatabase::updatePatient(patientId, "EMAIL", entrada);
-        cout << "Email atualizado para " << patient->getEmail() << "!" << endl;
+        cout << "Email atualizado para " << HospitalDatabase::getPatientData(patientId, "EMAIL") << "!" << endl;
         break;
     case 8:
         HospitalInterface::patientInterface();
