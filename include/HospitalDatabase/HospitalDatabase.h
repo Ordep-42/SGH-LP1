@@ -67,7 +67,7 @@ class HospitalDatabase {
     static vector<Appointment> getAppointmentsByPatientID(int patientId);
     static vector<Appointment> getAppointmentsByDoctorID(int doctorID);
     static void listAppointmentsByDate();
-    static void deleteAppointment(short unsigned);
+    static void deleteAppointment(int);
 
     static optional<WorkSession> getWSessionByID(int WSessionID);
     static vector<WorkSession> getWorkSessionsByDoctorID(int doctorID);
